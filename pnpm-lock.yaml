@@ -4,6 +4,9 @@ dependencies:
   '@reduxjs/toolkit':
     specifier: ^1.9.3
     version: 1.9.3(react-redux@8.0.5)(react@18.2.0)
+  accurate-interval:
+    specifier: ^1.0.9
+    version: 1.0.9
   eslint:
     specifier: 8.38.0
     version: 8.38.0
@@ -351,6 +354,10 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.58.0
       eslint-visitor-keys: 3.4.0
+    dev: false
+
+  /accurate-interval@1.0.9:
+    resolution: {integrity: sha512-8kQ80kYTC+HQGLKY++TeN5XG3IIxg5KqSvw8d9svzm/yGnXcsPUBUGsok9gCTpO55crLEQdlExqAvrQTRvCYTQ==}
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.8.2):

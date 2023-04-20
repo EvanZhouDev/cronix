@@ -6,8 +6,8 @@ export default function useAccessor() {
     const sessionData = useSelector((state) => {
         return state.data[session]
     })
-    const data = useSelector((state) => {
-        return state.data
+    const state = useSelector((state) => {
+        return state
     })
-    return [session, sessionData, data]
+    return [sessionData, session, state]
 }

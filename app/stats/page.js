@@ -3,7 +3,7 @@
 import useAccessor from "@/app/redux/useAccessor"
 import Gate from '@/app/redux/gate'
 export default function Home() {
-    const [session, sessionData, data] = useAccessor()
+    const [sessionData, session, data] = useAccessor()
     return (
         <div>
             <Gate>

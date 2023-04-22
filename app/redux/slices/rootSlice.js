@@ -1,12 +1,18 @@
 'use client'
 
 import { createSlice, current } from '@reduxjs/toolkit'
-import { JudgingPhase, Penalty } from '@/app/utils/enums'
+import { JudgingPhase, TimerStatus, Penalty } from '@/app/utils/enums'
 import { DEFAULT_SESSION_NAME, SCRAMBLE_UNAVAILABLE_MSG } from '@/app/utils/constants'
 import { Events, Inputs } from "@/app/utils/settings"
 
 let initialState = {
     session: "Session 1",
+    timerData: {
+        status: TimerStatus.IDLE,
+        timer: null,
+        primer: null,
+        start: 0,
+    },
     settings: {
         defaultEvent: Events.C3,
         defaultInput: Inputs.TIMER,
@@ -17,7 +23,7 @@ let initialState = {
             list: [],
             phase: JudgingPhase.IDLE,
             event: Events.C3,
-            scramble: SCRAMBLE_UNAVAILABLE_MSG
+            scramble: SCRAMBLE_UNAVAILABLE_MSG,
         },
     },
     order: ["Session 1"]
@@ -28,7 +34,8 @@ let blankSessionTemplate = {
     list: [],
     phase: JudgingPhase.IDLE,
     event: null, // assigned inside reducer, to provide up-to-date info
-    scramble: SCRAMBLE_UNAVAILABLE_MSG
+    scramble: SCRAMBLE_UNAVAILABLE_MSG,
+    status: TimerStatus.IDLE
 }
 
 export const rootSlice = createSlice({
@@ -37,6 +44,7 @@ export const rootSlice = createSlice({
     reducers: {
         // Sets a session, intiates if non-existant
         setSession: (state, { payload }) => {
+            state.status = TimerStatus.IDLE;
             // If session is not yet initialized, create new session
             if (!state.data.hasOwnProperty(payload)) {
                 // Create new session, and assign appropriate dynamic data
@@ -104,6 +112,10 @@ export const rootSlice = createSlice({
         incrementTime: (state) => {
             state.data[state.session].time++;
         },
+        // Sets the time
+        setTime: (state, { payload }) => {
+            state.data[state.session].time = payload;
+        },
         // Simply resets the time
         resetTime: (state) => {
             state.data[state.session].time = 0;
@@ -121,6 +133,26 @@ export const rootSlice = createSlice({
             } else {
                 state.data[state.session].phase = payload
             }
+        },
+        // Sets the status of the timer to the targeted status
+        setStatus: (state, { payload }) => {
+            let possibleStatuses = Object.values(TimerStatus)
+            if (!possibleStatuses.includes(payload)) {
+                console.error(`Invalid status ${payload}. Expected one of following: ${possibleStatuses.join(", ")}`)
+            } else {
+                state.timerData.status = payload
+            }
+        },
+        setPrimer: (state, { payload }) => {
+            state.timerData.primerInterval = payload
+        },
+        setTimer: (state, { payload }) => {
+            state.timerData.timerInterval = payload
+        },
+        stopPrimer: _ => clearInterval(state.timerData.primerInterval),
+        stopTimer: _ => clearInterval(state.timerData.timerInterval),
+        setStart: (state, { payload }) => {
+            state.timerData.start = payload
         },
         // Sets the current scramble type
         setEvent: (state, { payload }) => {
@@ -157,5 +189,5 @@ export const rootSlice = createSlice({
     }
 })
 
-export const { setSession, resetTime, incrementTime, setScramble, deleteSession, renameSession, setPhase, setEvent } = rootSlice.actions;
+export const { setSession, resetTime, setTime, incrementTime, setScramble, deleteSession, renameSession, setPhase, setEvent, setStatus, setTimer, setPrimer, setStart, stopTimer, stopPrimer } = rootSlice.actions;
 export default rootSlice.reducer;

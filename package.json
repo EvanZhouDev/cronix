@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "accurate-interval": "^1.0.9",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
-    "next": "13.3.0",
+    "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
+    "reduce-reducers": "^1.0.4",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "styled-jsx": "^5.1.2"

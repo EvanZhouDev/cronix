@@ -1,16 +1,18 @@
 'use client'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setSession, renameSession, deleteSession, setEvent } from '@/app/redux/slices/rootSlice'
 import useAccessor from "@/app/redux/useAccessor"
-import Gate from '@/app/redux/gate'
-import { useEffect } from 'react'
-
 import Time from '@/app/components/time'
+import Gate from '@/app/redux/gate'
+// import { useEffect } from 'react'
 export default function Home() {
   const [sessionData, session, state] = useAccessor()
 
   const dispatch = useDispatch()
-
+  // const state = useSelector((state) => {
+  //   console.log(state);
+  //   return state
+  // })
   return (
     <div className="page">
       <button

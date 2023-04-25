@@ -1,5 +1,5 @@
 'use client';
-import Gate from "@/app/redux/gate"
+import Gate from "@redux/gate"
 
 export default function Titlebar() {
     return (

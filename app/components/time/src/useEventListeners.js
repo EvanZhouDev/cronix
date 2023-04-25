@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import dev from "@utils/dev"
 export default function useEventListeners(timerTriggerActivated, timerTriggerDeactivated, escDown, anyDown) {
     const [isMouseDown, setIsMouseDown] = useState(false);
     const elementRef = useRef(null);
@@ -33,24 +34,30 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
     useEffect(() => {
         let handleKeyDown = (e) => {
             if (e.repeat) return;
-            if (e.key === " ") {
-                timerTriggerActivated(e);
-                console.info('Timer trigger key down.')
-            } else if (e.key === "Escape") {
-                escDown(e);
+            switch (e.key) {
+                case " ":
+                    dev && console.log("Space key down")
+                    timerTriggerActivated(e);
+                    break;
+                case "Escape":
+                    escDown(e);
+                    break;
+                default:
+                    anyDown(e)
             }
         }
+
         let handleKeyUp = (e) => {
             if (e.repeat) return;
             if (e.key === " ") {
-                timerTriggerDeactivated(e);
-                console.info('Timer trigger key up.')
-            } else { 
-                anyDown(e)
-            }
+                dev && console.log("Space key released")
+                timerTriggerDeactivated(e)
+            };
         }
+
         document.addEventListener('keydown', handleKeyDown)
         document.addEventListener('keyup', handleKeyUp)
+
         return () => {
             document.removeEventListener('keydown', handleKeyDown)
             document.removeEventListener('keyup', handleKeyUp)

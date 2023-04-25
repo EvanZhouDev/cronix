@@ -3,12 +3,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
-import reduceReducers from "reduce-reducers";
-import rootReducer from "./slices/rootSlice";
+import rootReducer from "./rootSlice";
+
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['timerData']
+    blacklist: ['timer']
 }
 
 

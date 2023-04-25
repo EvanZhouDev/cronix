@@ -1,5 +1,5 @@
 import './globals.css'
-import { Providers } from "@/app/redux/provider"
+import { Providers } from "@redux/provider"
 import Footer from "./components/marginals/footer"
 import Titlebar from "./components/marginals/titlebar"
 export const metadata = {

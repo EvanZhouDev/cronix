@@ -1,9 +1,9 @@
 'use client'
 
-import useAccessor from "@/app/redux/useAccessor"
-import Gate from '@/app/redux/gate'
+import useData from "@redux/accessors/useSession"
+import Gate from '@redux/gate'
 export default function Home() {
-    const [sessionData, session, data] = useAccessor()
+    const [sessionData, session, data] = useData()
     return (
         <div>
             <Gate>

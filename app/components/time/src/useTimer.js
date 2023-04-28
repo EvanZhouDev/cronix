@@ -10,12 +10,14 @@ import dev from "@utils/dev"
 import { useSession } from '@redux/accessors'
 import { v4 as uuidv4 } from 'uuid';
 import { SCRAMBLE_UNAVAILABLE_MSG } from '@app/utils/constants'
+import { setPenalty } from '@redux/slices/sessions/operations'
+import useNewScramble from '@app/utils/useNewScramble'
 
 export default function useTimer() {
     let { status } = useTimerData()
     let [sessionData] = useSession()
     const dispatch = useDispatch()
-
+    let generateNewScramble = useNewScramble()
     const [primer, setPrimer] = useState(null);
     const [timer, setTimer] = useState(null);
     const [startTime, setStartTime] = useState(null);
@@ -35,8 +37,9 @@ export default function useTimer() {
 
     let stopTimer = () => {
         clearIntervals();
+        generateNewScramble()
+        
         let elapsed = updateTime();
-
         // TODO: make this list exhaustive
         dispatch(pushTime({
             time: elapsed,
@@ -57,6 +60,7 @@ export default function useTimer() {
                     dispatch(resetTime())
                     dispatch(setPhase(JudgingPhase.IDLE))
                     dispatch(setStatus(TimerStatus.READY));
+                    dispatch(setPenalty(Penalty.OK));
                 }, 400))
                 break;
             case TimerStatus.TIMING:

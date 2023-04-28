@@ -1,0 +1,7 @@
+.marginal {
+	height: 7.5vh;
+	width: 90vw;
+	display: flex;
+	align-items: center;
+    font-size: 30px;
+}

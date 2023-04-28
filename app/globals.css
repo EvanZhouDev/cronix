@@ -1,0 +1,21 @@
+:root {
+	--bg-color: #323437;
+	--darker-bg-color: #2c2e31;
+
+	--font-color: #d1d0c5;
+	--font-color-dull: #646669;
+
+	--highlight-color: #e2b712;
+	--error-color: #ca4754;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--bg-color);
+	color: var(--font-color);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    overflow: none;
+}

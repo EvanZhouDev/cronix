@@ -1,0 +1,42 @@
+.penaltyToggle {
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: var(--darker-bg-color);
+	border-radius: 100vw;
+	transition: all 0.1s;
+	font-size: 20px;
+	color: var(--font-color-dull);
+}
+.selected {
+    color: var(--highlight-color);
+}
+.penaltyToggle:hover {
+	color: var(--font-color);
+}
+.penaltyToggle:active {
+	color: var(--font-color-dull);
+}
+
+.deleteButton {
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	font-size: 20px;
+	transition: all 0.1s;
+	color: var(--font-color-dull);
+}
+
+.deleteButton * {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.deleteButton:hover {
+	color: var(--error-color);
+}
+.deleteButton:active {
+	color: var(--font-color-dull);
+}

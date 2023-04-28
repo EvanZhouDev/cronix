@@ -1,0 +1,5 @@
+.helpPage {
+	height: 85vh;
+	width: 60vw;
+	overflow-y: scroll;
+}

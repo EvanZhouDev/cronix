@@ -1,0 +1,84 @@
+.marginal {
+	height: 7.5vh;
+	width: 90vw;
+	display: flex;
+	align-items: center;
+}
+
+.icon {
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+	margin-right: 10px;
+	color: var(--font-color-dull);
+	cursor: pointer;
+	transition: 0.1s all;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.title {
+	font-size: 30px;
+	padding-right: 10px;
+}
+
+.icon:hover {
+	color: var(--font-color);
+}
+.icon:active {
+	color: var(--font-color-dull);
+}
+
+.dropdown {
+	position: absolute;
+	font-size: 20px;
+	border-radius: 10px;
+	background-color: var(--darker-bg-color);
+	padding: 10px;
+	display: none;
+	color: var(--font-color);
+}
+
+.options {
+	text-decoration: none;
+}
+
+.option:hover .dropdown {
+	display: block;
+}
+
+.session {
+	font-size: 20px;
+	background-color: var(--darker-bg-color);
+	border-radius: 1000px;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.sessionName {
+    cursor: pointer;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.chevronDown {
+	vertical-align: middle;
+	padding-left: 5px;
+	margin-top: 100px;
+}
+
+.sessionDropdown {
+	position: absolute;
+    font-size: 20px;
+	background-color: var(--darker-bg-color);
+	padding: 15px;
+	border-radius: 15px;
+    display: none;
+}
+
+.sessionWrapper:hover .sessionDropdown {
+    display: block;
+}

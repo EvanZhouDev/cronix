@@ -3,6 +3,7 @@ import { JudgingPhase, TimerStatus } from '@utils/enums'
 import { DEFAULT_SESSION_NAME } from '@utils/constants'
 import { Events } from "@utils/settings";
 import { Penalty } from '@utils/enums';
+import calcTime from '@utils/calcTime';
 
 let initialState = {
     current: DEFAULT_SESSION_NAME,
@@ -47,7 +48,15 @@ export const sessionSlice = createSlice({
             if (!Object.values(Events).includes(payload)) {
                 console.error(`Invalid event ${payload}. Please use the Events enum exported from @utils/settings.js`)
             } else {
-                state.event = payload
+                state.data[state.current].event = payload
+            }
+        },
+        // Sets the current penalty type
+        setPenalty: (state, { payload }) => {
+            if (!Object.values(Penalty).includes(payload)) {
+                console.error(`Invalid penalty ${payload}. Please use the Penalty enum exported from @utils/settings.js`)
+            } else {
+                state.data[state.current].penalty = payload
             }
         },
         pushTime: (state, { payload }) => {
@@ -73,41 +82,44 @@ export const sessionSlice = createSlice({
                 return;
             }
 
-            // TODO: EXTRACT ALL THIS AS A FUNCTION, takes time and penalty => makes a derived JSON with mathematicalTime and formattedTime
-            let mathematicalTime = time;
-            if (penalty === Penalty.DNF) mathematicalTime = Infinity;
-            if (penalty === Penalty.PLUS2) mathematicalTime += 200;
-
-
             state.data[state.current].list.push({
                 date,
                 time,
                 penalty,
                 scramble,
                 uuid,
-                derived: {
-                    mathematicalTime
-                }
+                derived: calcTime(time, penalty)
             })
         },
-        // Takes a uuid and a penalty; updates the time based on the penalty
+        // Takes a idx and a penalty; updates the time based on the penalty
         modifyTime: (state, { payload }) => {
-            let { uuid, penalty } = payload
+            let { idx, penalty } = payload
             if (!Object.values(Penalty).includes(penalty)) {
                 console.error(`${penalty} is not a valid penalty. Please use the Penalty enum exported from @utils/enums.js`);
                 return;
             } else {
-                for (let timeJSON of state.data[state.current].list) {
-                    if (timeJSON.uuid === uuid) {
-                        let mathematicalTime = timeJSON.time;
-                        if (penalty === Penalty.DNF) mathematicalTime = Infinity;
-                        if (penalty === Penalty.PLUS2) mathematicalTime += 200;
-                    }
-                }
+                let current = state.data[state.current].list.at(idx)
+                current.penalty = penalty;
+                current.derived = calcTime(current.time, penalty)
+            }
+        },
+        // Takes a idx and a penalty; updates the time based on the penalty
+        deleteTime: (state, { payload }) => {
+            let idx = payload
+            if (idx !== -1 && idx !== state.data[state.current].list.length - 1) {
+                state.data[state.current].list.splice(idx, 1)
+            } else {
+                // also reset times and stuff
+                state.data[state.current].list.splice(idx, 1)
+                state.data[state.current].time = 0
+                state.data[state.current].phase = JudgingPhase.IDLE
+                state.data[state.current].penalty = Penalty.OK
+
+                // TODO: ALSO GENERATE NEW SCRAMBLE
             }
         }
     },
 })
 
-export const { resetTime, setTime, incrementTime, setScramble, incrementCount, setPhase, pushTime } = sessionSlice.actions;
+export const { resetTime, setTime, incrementTime, setScramble, incrementCount, setPenalty, setPhase, pushTime, modifyTime, deleteTime } = sessionSlice.actions;
 export default sessionSlice.reducer;

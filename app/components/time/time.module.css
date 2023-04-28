@@ -1,0 +1,11 @@
+.time {
+    font-size: 125px;
+    font-weight: 500;
+}
+
+.unready {
+    color: var(--error-color);
+}
+.ready {
+    color: var(--highlight-color);
+}

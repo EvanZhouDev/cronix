@@ -1,17 +1,17 @@
 'use client'
 
-import useData from "@redux/accessors/useSession"
+import useData from '@app/redux/accessors/useSession'
+import useStore from '@app/redux/accessors/useStore'
 import Gate from '@redux/gate'
 export default function Home() {
-    const [sessionData, session, data] = useData()
+    const sessionData = useData()
+    const store = useStore()
     return (
         <div>
             <Gate>
-                <div>Current session is named: {session}</div>
-                <div>All sessions are: {Object.keys(data).join(", ")}</div>
-                <div>
-                    {JSON.stringify(sessionData)}
-                </div>
+                <pre>
+                    {JSON.stringify(sessionData, null, 2)}
+                </pre>
             </Gate>
         </div>
     )

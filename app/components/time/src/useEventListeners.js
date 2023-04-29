@@ -52,10 +52,10 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
     useEffect(() => {
         let handleKeyDown = (e) => {
+            e.preventDefault();
             if (e.repeat) return;
             switch (e.key) {
                 case " ":
-                    e.preventDefault();
                     dev && console.log("Space key down")
                     timerTriggerActivated(e);
                     break;

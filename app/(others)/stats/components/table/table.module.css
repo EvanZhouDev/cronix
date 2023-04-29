@@ -4,7 +4,7 @@
 	width: 100%;
 }
 .tableWrapper {
-	height: 70vh;
+	height: 65vh;
 	width: 40vw;
 	overflow-y: scroll;
 	display: flex;
@@ -34,11 +34,11 @@
 	cursor: pointer;
 }
 .selection:hover {
-	color: var(--font-color)
+	color: var(--font-color);
 }
 
 .selected {
-	color: var(--highlight-color)
+	color: var(--highlight-color);
 }
 
 .trash {
@@ -51,7 +51,7 @@
 	padding-top: 2px;
 }
 .trash:hover {
-	color: var(--error-color)
+	color: var(--error-color);
 }
 
 .opWrap {

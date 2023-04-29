@@ -22,11 +22,9 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             }
         };
         const handleTouchDown = (e) => {
-            if (e.target === elementRef.current) {
-                setIsMouseDown(true);
-                timerTriggerActivated(e);
-                console.info('Touch down on Timer element.');
-            }
+            setIsMouseDown(true);
+            timerTriggerActivated(e);
+            console.info('Touch down on Timer element.');
         };
 
         const handleTouchEnd = (e) => {
@@ -40,8 +38,8 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('mouseup', handleMouseUp);
-        document.addEventListener('touchdown', handleTouchDown);
-        document.addEventListener('touchend', handleTouchEnd);
+        document.addEventListener('touchdown', handleTouchDown, false);
+        document.addEventListener('touchend', handleTouchEnd, false);
 
         return () => {
             document.removeEventListener('mousedown', handleMouseDown);

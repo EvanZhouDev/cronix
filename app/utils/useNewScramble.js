@@ -16,7 +16,6 @@ export default function useNewScramble() {
     });
     return (
         async function (event = sessionData.event) {
-            console.log(event)
             dispatch(setScramble(SCRAMBLE_LOADING_MSG))
             let scramble = await randomScrambleForEvent(event)
             dispatch(setScramble(scramble.toString()))

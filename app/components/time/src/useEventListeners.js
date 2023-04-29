@@ -33,7 +33,6 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
     useEffect(() => {
         let handleKeyDown = (e) => {
-            console.log(e.target)
             if (e.repeat) return;
             switch (e.key) {
                 case " ":

@@ -9,7 +9,6 @@ import StatModule from "./components/statModule"
 import styles from "./stats.module.css"
 export default function Home() {
     const [sessionData] = useData()
-    console.log(sessionData)
     return (
         <div>
             <Gate>

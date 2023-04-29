@@ -1,4 +1,4 @@
-import useData from '@redux/accessors/useSession'
+import useData from '@app/redux/accessors/useSessionData'
 import useTimer from './src/useTimer'
 import { useTimerData, useSession } from "@redux/accessors"
 import styles from "./time.module.css"

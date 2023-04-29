@@ -1,7 +1,7 @@
 import { createSlice, current, createReducer } from '@reduxjs/toolkit'
 import { JudgingPhase, TimerStatus } from '@utils/enums'
 import { DEFAULT_SESSION_NAME } from '@utils/constants'
-import { Events } from "@utils/settings";
+import { Events, Inputs } from "@utils/settings";
 import { Penalty } from '@utils/enums';
 import calcTime from '@utils/calcTime';
 
@@ -49,6 +49,14 @@ export const sessionSlice = createSlice({
                 console.error(`Invalid event ${payload}. Please use the Events enum exported from @utils/settings.js`)
             } else {
                 state.data[state.current].event = payload
+            }
+        },
+        // Sets the current input type
+        setInput: (state, { payload }) => {
+            if (!Object.values(Inputs).includes(payload)) {
+                console.error(`Invalid input ${payload}. Please use the Inputs enum exported from @utils/settings.js`)
+            } else {
+                state.data[state.current].input = payload
             }
         },
         // Sets the current penalty type
@@ -121,5 +129,5 @@ export const sessionSlice = createSlice({
     },
 })
 
-export const { resetTime, setTime, incrementTime, setScramble, incrementCount, setPenalty, setPhase, pushTime, modifyTime, deleteTime } = sessionSlice.actions;
+export const { resetTime, setTime, incrementTime, setScramble, incrementCount, setPenalty, setPhase, pushTime, modifyTime, deleteTime, setEvent, setInput } = sessionSlice.actions;
 export default sessionSlice.reducer;

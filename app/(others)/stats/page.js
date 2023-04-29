@@ -1,6 +1,6 @@
 'use client'
 
-import useData from '@app/redux/accessors/useSession'
+import useData from '@app/redux/accessors/useSessionData'
 import useStore from '@app/redux/accessors/useStore'
 import Gate from '@redux/gate'
 export default function Home() {

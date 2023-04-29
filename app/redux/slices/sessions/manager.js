@@ -20,10 +20,9 @@ export const sessionSlice = createSlice({
             // If session is not yet initialized, create new session
             if (!state.data.hasOwnProperty(payload)) {
                 // Create new session, and assign appropriate dynamic data
-                let newSession = structuredClone(blankSessionTemplate)
-                newSession.event = state.settings.defaultEvent
+                let newSession = structuredClone(DEFAULT_SESSION)
 
-                // Based on blankSessionTemplate
+                // Based on DEFAULT_SESSION
                 state.data[payload] = newSession;
                 // Add session name to order array
                 state.order.push(payload);
@@ -44,7 +43,7 @@ export const sessionSlice = createSlice({
 
             // If no sessions left, create a new session and set to it
             if (state.order.length === 0) {
-                state.data[DEFAULT_SESSION_NAME] = structuredClone(blankSessionTemplate);
+                state.data[DEFAULT_SESSION_NAME] = structuredClone(DEFAULT_SESSION);
                 state.order.push(DEFAULT_SESSION_NAME);
                 state.current = DEFAULT_SESSION_NAME;
             } else {

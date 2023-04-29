@@ -16,11 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={firacode.className}>
       <body>
-        <Titlebar />
         <Providers>
+          <Titlebar />
           {children}
+          <Footer />
         </Providers>
-        <Footer />
       </body>
     </html>
   )

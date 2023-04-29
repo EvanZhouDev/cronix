@@ -1,7 +1,7 @@
 import PenaltyToggle from "./penaltyToggle"
 import { FiTrash } from "react-icons/fi"
 import styles from "./status.module.css"
-import useData from "@app/redux/accessors/useSession"
+import useData from "@app/redux/accessors/useSessionData"
 import { Penalty } from "@app/utils/enums"
 import { useDispatch } from 'react-redux'
 import { setPenalty, modifyTime, deleteTime } from "@app/redux/slices/sessions/operations"

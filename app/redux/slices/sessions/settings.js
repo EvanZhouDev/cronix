@@ -3,7 +3,7 @@ import { Events, Inputs } from "@utils/settings";
 
 let initialState = {
     sessionTemplate: {
-        event: Events.C3,
+        event: Events["3x3"],
         input: Inputs.TIMER,
     }
 }

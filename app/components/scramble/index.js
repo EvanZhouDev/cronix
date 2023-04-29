@@ -1,4 +1,4 @@
-import useData from "@app/redux/accessors/useSession";
+import useData from "@app/redux/accessors/useSessionData";
 import { SCRAMBLE_UNAVAILABLE_MSG } from "@app/utils/constants";
 import useNewScramble from "@app/utils/useNewScramble";
 import styles from "./scramble.module.css"

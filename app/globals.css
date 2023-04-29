@@ -18,4 +18,14 @@ body {
 	flex-direction: column;
 	align-items: center;
     overflow: none;
+	transition: all 0.1s;
+}
+body * {
+	transition: all 0.1s;
+	user-select: none;
+}
+
+body *:focus {
+	outline: 1px solid var(--highlight-color);
+	border-radius: 10px;
 }

@@ -1,0 +1,121 @@
+.bar {
+	color: var(--font-color-dull);
+	background-color: var(--darker-bg-color);
+	width: 50vw;
+	height: 5vh;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.toggle {
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	transition: all 0.1s;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.toggle:hover {
+	color: var(--font-color);
+}
+
+.toggle:active {
+	color: var(--font-color-dull);
+}
+
+.dropdownToggle {
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	transition: all 0.1s;
+	background-color: var(--bg-color);
+	color: var(--font-color);
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+.dropdownToggle:hover {
+	background-color: var(--font-color);
+	color: var(--bg-color);
+}
+
+.dropdownToggle:active {
+	color: var(--font-color-dull);
+}
+
+.dropdownToggleSelected {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+.dropdownToggleSelected:hover {
+	background-color: var(--font-color);
+	color: var(--bg-color);
+}
+
+.name {
+	padding-left: 5px;
+	transition: all 0.1s;
+}
+
+.selection {
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+}
+
+.selected {
+	color: var(--highlight-color);
+}
+
+.divider {
+	width: 5px;
+	height: 70%;
+	background-color: var(--bg-color);
+}
+
+.dropdown {
+	margin-left: 10px;
+	position: absolute;
+	opacity: 0;
+	background: var(--darker-bg-color);
+
+	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	padding: 10px;
+	padding-left: 2.5px;
+	display: none;
+	transition: all 0.25s;
+	height: 50vh;
+	overflow-y: scroll;
+}
+.dropdownParent:hover .dropdown {
+	display: block;
+	opacity: 1;
+}
+
+.label {
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	padding-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.label::after {
+	content: "";
+	width: 15vw;
+	height: 2px;
+	background-color: var(--font-color-dull);
+}

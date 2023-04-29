@@ -54,12 +54,12 @@
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .sessionName {
-    cursor: pointer;
+	cursor: pointer;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -72,13 +72,102 @@
 
 .sessionDropdown {
 	position: absolute;
-    font-size: 20px;
+	font-size: 17.5px;
 	background-color: var(--darker-bg-color);
 	padding: 15px;
 	border-radius: 15px;
-    display: none;
+	display: none;
+	padding: 15px;
 }
 
 .sessionWrapper:hover .sessionDropdown {
-    display: block;
+	display: block;
+}
+
+.sessionSelectionWrapper {
+	background-color: var(--bg-color);
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.selected {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+
+.sessionSelectionWrapper svg {
+	padding-top: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.sessionSelectionWrapper svg:hover {
+	color: var(--error-color);
+}
+.sessionSelectionWrapper svg:active {
+	color: var(--font-color);
+}
+
+.label {
+	color: var(--font-color-dull);
+}
+
+.inputBox {
+	background-color: var(--bg-color);
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+	border: none;
+	font-family: inherit;
+}
+
+.newSessionSection {
+	display: inline-block;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.inputBox {
+	flex-grow: 1;
+	color: var(--font-color);
+}
+.inputBox:focus {
+	outline: 1px solid var(--highlight-color);
+}
+.addSessionButton {
+	height: 50px;
+	width: 50px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 40px;
+	color: var(--font-color-dull);
+}
+.addSessionButton:hover {
+	color: var(--font-color);
+}
+.addSessionButton:active {
+	color: var(--font-color);
+}
+
+.disclaimer {
+	color: var(--font-color-dull);
+	display: inline-block;
+	width: 40vw;
+	padding-top: 3vh;
+}
+.disclaimer * {
+	color: var(--font-color);
 }

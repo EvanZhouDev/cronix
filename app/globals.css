@@ -17,14 +17,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-    overflow: none;
+    overflow: hidden;
 }
 body * {
 	/* transition: all 0.1s; */
 	user-select: none;
 }
-
-/* body *:focus {
-	outline: 1px solid var(--highlight-color);
-	border-radius: 10px;
-} */

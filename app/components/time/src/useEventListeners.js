@@ -15,7 +15,6 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleMouseUp = (e) => {
-
             if (isMouseDown) {
                 setIsMouseDown(false);
                 timerTriggerDeactivated(e);
@@ -24,32 +23,20 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleTouchDown = (e) => {
-            anyDown(e)
             if (e.target === elementRef.current) {
-                setIsMouseDown(true);
                 timerTriggerActivated(e);
                 console.info('Touch down on Timer element.');
-            }
-        };
-
-        const handleTouchEnd = (e) => {
-            if (isMouseDown) {
-                setIsMouseDown(false);
-                timerTriggerDeactivated(e);
-                console.info('Touch up after Timer element triggered.');
             }
         };
 
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('mouseup', handleMouseUp);
         document.addEventListener('touchstart', handleTouchDown, false);
-        document.addEventListener('touchend', handleTouchEnd, false);
 
         return () => {
             document.removeEventListener('mousedown', handleMouseDown);
             document.removeEventListener('mouseup', handleMouseUp);
             document.removeEventListener('touchstart', handleTouchDown);
-            document.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isMouseDown, timerTriggerActivated, timerTriggerDeactivated]);
 

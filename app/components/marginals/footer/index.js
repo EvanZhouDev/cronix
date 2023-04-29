@@ -7,8 +7,8 @@ export default function Footer() {
     return (
         <div className={styles.footerWrapper}>
             <div className={styles.footer}>
-                <Option link={"https://github.com/EvanZhouDev/cronix"} icon=<FiGithub size={20} /> name={"GitHub"} />
-                <Option link="https://www.github.com" icon=<FiBook size={20} /> name={"License"} />
+                <Option link="https://github.com/EvanZhouDev/cronix" icon=<FiGithub size={20} /> name={"GitHub"} />
+                <Option link="https://github.com/EvanZhouDev/cronix/blob/main/LICENSE" icon=<FiBook size={20} /> name={"License"} />
                 <Option link="/philosophy" icon=<FiInfo size={20} /> name={"Philosophy"} />
                 <Version />
             </div>

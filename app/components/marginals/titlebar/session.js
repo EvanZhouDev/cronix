@@ -11,6 +11,7 @@ import classNames from "classnames"
 import Link from "next/link"
 import useNewScramble from "@app/utils/useNewScramble"
 import { SCRAMBLE_LOADING_MSG, SCRAMBLE_UNAVAILABLE_MSG } from "@app/utils/constants"
+import { Events } from "@app/utils/settings"
 export default function Session() {
     let store = useStore()
     let [sessionData, sessionName] = useData()
@@ -46,7 +47,7 @@ export default function Session() {
                             if (inputRef.current.value) {
                                 cancelRequests()
                                 dispatch(setSession(inputRef.current.value))
-                                genScramble(undefined, store)
+                                genScramble(Events["3x3"], store)
                             }
                         }}
                         className={styles.addSessionButton}

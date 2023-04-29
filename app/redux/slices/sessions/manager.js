@@ -1,7 +1,6 @@
 import { createSlice, current, createReducer } from '@reduxjs/toolkit'
 import { JudgingPhase, TimerStatus } from '@utils/enums'
 import { DEFAULT_SESSION_NAME, SCRAMBLE_UNAVAILABLE_MSG, DEFAULT_SESSION } from '@utils/constants'
-
 let initialState = {
     current: DEFAULT_SESSION_NAME,
     order: [DEFAULT_SESSION_NAME],

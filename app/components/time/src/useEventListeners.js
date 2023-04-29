@@ -21,13 +21,33 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
                 console.info('Mouse up after Timer element triggered.');
             }
         };
+        const handleTouchDown = (e) => {
+            if (e.target === elementRef.current) {
+                setIsMouseDown(true);
+                timerTriggerActivated(e);
+                console.info('Touch down on Timer element.');
+            }
+        };
+
+        const handleTouchEnd = (e) => {
+            anyDown(e)
+            if (isMouseDown) {
+                setIsMouseDown(false);
+                timerTriggerDeactivated(e);
+                console.info('Touch up after Timer element triggered.');
+            }
+        };
 
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('mouseup', handleMouseUp);
+        document.addEventListener('touchdown', handleTouchDown);
+        document.addEventListener('touchend', handleTouchEnd);
 
         return () => {
             document.removeEventListener('mousedown', handleMouseDown);
             document.removeEventListener('mouseup', handleMouseUp);
+            document.removeEventListener('touchdown', handleTouchDown);
+            document.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isMouseDown, timerTriggerActivated, timerTriggerDeactivated]);
 
@@ -36,6 +56,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             if (e.repeat) return;
             switch (e.key) {
                 case " ":
+                    e.preventDefault();
                     dev && console.log("Space key down")
                     timerTriggerActivated(e);
                     break;

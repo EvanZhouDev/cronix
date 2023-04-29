@@ -15,7 +15,7 @@ import useNewScramble from '@app/utils/useNewScramble'
 
 export default function useTimer() {
     let { status } = useTimerData()
-    let [sessionData] = useSession()
+    let [sessionData, sessionName] = useSession()
     const dispatch = useDispatch()
     let generateNewScramble = useNewScramble()
     const [primer, setPrimer] = useState(null);
@@ -35,16 +35,15 @@ export default function useTimer() {
         return elapsed
     };
 
-    let stopTimer = () => {
+    let stopTimer = (penalty = Penalty.OK) => {
         clearIntervals();
-        generateNewScramble()
-        
+        generateNewScramble(undefined, sessionName)
+
         let elapsed = updateTime();
-        // TODO: make this list exhaustive
         dispatch(pushTime({
             time: elapsed,
             date: Date.now(),
-            penalty: Penalty.OK,
+            penalty: penalty,
             scramble: sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG ? null : sessionData.scramble,
             uuid: uuidv4()
         }))
@@ -88,7 +87,22 @@ export default function useTimer() {
         }
     }
 
-    let escDown = (e) => stopTimer()
+    let escDown = (e) => {
+        switch (status) {
+            case TimerStatus.TIMING:
+                stopTimer(Penalty.DNF)
+                dispatch(setPenalty(Penalty.DNF))
+                dispatch(setPhase(JudgingPhase.JUDGE))
+                break;
+            default:
+                clearIntervals();
+                dispatch(setStatus(TimerStatus.IDLE));
+                dispatch(setPenalty(Penalty.OK));
+                dispatch(resetTime())
+                generateNewScramble(undefined, sessionName)
+                break;
+        }
+    }
 
     let anyDown = (e) => {
         // Clear all timers, and reset to idle

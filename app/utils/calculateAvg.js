@@ -18,9 +18,10 @@ export default function calcAvg(list, type, amount) {
         // average of avg, remove worst and best, then take mean
         let worst = Math.max(...list);
         let best = Math.min(...list);
-        let rem = list.filter(item => item !== worst && item !== best);
+        list.splice(list.indexOf(worst), 1);
+        list.splice(list.indexOf(best), 1);
         return calcTime(
-            Math.round(rem.reduce((a, b) => a + b, 0) / rem.length)
+            Math.round(list.reduce((a, b) => a + b, 0) / list.length)
         ).formattedTimePrecise;
     }
 };

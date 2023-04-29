@@ -15,7 +15,7 @@ import useNewScramble from "@app/utils/useNewScramble"
 export default function Bar() {
     let generateNewScramble = useNewScramble();
     let dispatch = useDispatch()
-    let [sessionData] = useData()
+    let [sessionData, sessionName] = useData()
     let [options, setOptions] = useState([{
         name: "event",
         types: [
@@ -122,7 +122,7 @@ export default function Bar() {
         // setter: setEvent,
         setter: (name) => {
             dispatch(setEvent(Events[name]))
-            generateNewScramble(Events[name])
+            generateNewScramble(Events[name], sessionName)
         },
     },
     {

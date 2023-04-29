@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { setPenalty, modifyTime, deleteTime } from "@app/redux/slices/sessions/operations"
 import useNewScramble from "@app/utils/useNewScramble"
 export default function Status() {
-    let [{ penalty }] = useData()
+    let [{ penalty }, sessionName] = useData()
     let dispatch = useDispatch()
     let generateNewScramble = useNewScramble()
     let modifyPenalty = (penalty) => {
@@ -16,7 +16,7 @@ export default function Status() {
     }
     let deleteLastTime = () => {
         dispatch(deleteTime(-1))
-        generateNewScramble()
+        generateNewScramble(undefined, sessionName)
     }
     return (
         <div>

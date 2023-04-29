@@ -6,6 +6,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
     useEffect(() => {
         const handleMouseDown = (e) => {
+            anyDown(e)
             if (e.target === elementRef.current) {
                 setIsMouseDown(true);
                 timerTriggerActivated(e);
@@ -14,7 +15,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleMouseUp = (e) => {
-            anyDown(e)
+
             if (isMouseDown) {
                 setIsMouseDown(false);
                 timerTriggerDeactivated(e);
@@ -23,13 +24,15 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleTouchDown = (e) => {
-            setIsMouseDown(true);
-            timerTriggerActivated(e);
-            console.info('Touch down on Timer element.');
+            anyDown(e)
+            if (e.target === elementRef.current) {
+                setIsMouseDown(true);
+                timerTriggerActivated(e);
+                console.info('Touch down on Timer element.');
+            }
         };
 
         const handleTouchEnd = (e) => {
-            anyDown(e)
             if (isMouseDown) {
                 setIsMouseDown(false);
                 timerTriggerDeactivated(e);
@@ -52,10 +55,10 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
     useEffect(() => {
         let handleKeyDown = (e) => {
-            e.preventDefault();
             if (e.repeat) return;
             switch (e.key) {
                 case " ":
+                    e.preventDefault();
                     dev && console.log("Space key down")
                     timerTriggerActivated(e);
                     break;

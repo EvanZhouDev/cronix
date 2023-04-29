@@ -1,4 +1,5 @@
-.aboutPage {
+.philosophyPage {
     height: 85vh;
     width: 60vw;
+    mask-image: linear-gradient(to top, transparent, black 8%);
 }

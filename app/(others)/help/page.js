@@ -20,10 +20,25 @@ export default function Page() {
             If you wish to give yourself a penalty for whatever reason, after your solve, a penalty bar will appear under your time. Click &ldquo;OK&rdquo; to mark your time as fine, &ldquo;+2&rdquo; to add two seconds to your solve, and &ldquo;DNF&rdquo; to mark your solve as not finished. You may also delete your time if you wish to do so.
 
             <h4>Sessions:</h4>
-            Sessions are currently under development; a frame has already been established, so expect to see them popping up soon!
+            Currently, sessions can be switched on the top of the page. It displays the current session at the right-most position on the titlebar. Hover over it, and you can add sessions, change your session, and delete sessions.
+
+            Nearly everything is localized in sessions. The scramble and time that you have currently will be saved until you visit the session again. This means that the session will be <i>exactly</i> the same as you left it.
 
             <h3>Statistics Page:</h3>
-            The statistics page is currently under development. Check back soon!
+            The statistics page is consisted of 3 important sections: The Chart, the Table, and the Stats.
+            <h4>Table</h4>
+            In the table, you have a good overview of all of your times. You can also quickly toggle between OK, +2, and DNF penalties. There is also a measure of ao5, ao12, and mo3, updated at each solve during your session.
+
+            <h4>Chart</h4>
+            In the chart, you can see a trend in your times. It also looks very nice!
+
+            <h4>Stats</h4>
+            In stats, you can see your best and current single, ao5, ao12, and mo3. You can also see the standard deviation.
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }

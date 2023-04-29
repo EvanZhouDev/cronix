@@ -1,7 +1,7 @@
 import styles from "./philosophy.module.css"
 export default function Page() {
     return (
-        <div className={styles.aboutPage}>
+        <div className={styles.philosophyPage}>
             <h1>Why Cronix?</h1>
             &ldquo;Not another cube timer! I&rsquo;ll just go back to using CSTimer after a while!&rdquo;
 
@@ -15,6 +15,11 @@ export default function Page() {
             When viewing your statistics, the view is exhaustive. You will be able to see a time list, a chart, all forms of different data points, and maybe even an automatic analysis of your times in the future. This is built to empower you to continue cubing and tell you perhaps where to improve.
 
             <i>This is Cronix, the next-generation cubing timer.</i>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }

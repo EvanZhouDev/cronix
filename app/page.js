@@ -37,7 +37,7 @@ export default function Home() {
           {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
         </div>
         <div className={styles.vsection}>
-          <Ministats />
+          {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
         </div>
       </Gate>
     </div>

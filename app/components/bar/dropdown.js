@@ -5,10 +5,7 @@ import useData from "@app/redux/accessors/useSessionData"
 import { useDispatch } from "react-redux";
 import { Events } from "@app/utils/settings";
 import Label from "./label";
-import useNewScramble from "@app/utils/useNewScramble";
 export default function Dropdown({ icon, name, data, outer, options }) {
-    let dispatch = useDispatch()
-    let generateNewScramble = useNewScramble();
     let [sessionData] = useData()
 
     return (

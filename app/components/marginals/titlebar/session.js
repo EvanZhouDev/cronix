@@ -16,7 +16,7 @@ export default function Session() {
     let [sessionData, sessionName] = useData()
     let dispatch = useDispatch()
     let inputRef = useRef(null)
-    let generateNewScramble = useNewScramble()
+    let { genScramble, cancelRequests } = useNewScramble(undefined, useData())
     useEffect(() => {
         inputRef.current.addEventListener('keyup', function (e) {
             e.stopPropagation();
@@ -44,13 +44,9 @@ export default function Session() {
                     <button
                         onClick={() => {
                             if (inputRef.current.value) {
+                                cancelRequests()
                                 dispatch(setSession(inputRef.current.value))
-                                // if (sessionData.scramble === SCRAMBLE_LOADING_MSG) {
-                                //     generateNewScramble(undefined, sessionName)
-                                // }
-                                // if (sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG) {
-                                //     generateNewScramble(undefined, sessionName)
-                                // }
+                                genScramble(undefined, store)
                             }
                         }}
                         className={styles.addSessionButton}
@@ -62,13 +58,9 @@ export default function Session() {
                     store.sessions.order.map(x => {
                         return (
                             <span key={x} onClick={() => {
+                                cancelRequests()
                                 dispatch(setSession(x))
-                                // if (sessionData.scramble === SCRAMBLE_LOADING_MSG) {
-                                //     generateNewScramble(undefined, sessionName)
-                                // }
-                                // if (sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG) {
-                                //     generateNewScramble(undefined, sessionName)
-                                // }
+                                if (store.sessions.data[x].scramble === SCRAMBLE_LOADING_MSG || store.sessions.data[x].scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(store.sessions.data[x].event, store)
                             }} className={classNames(
                                 styles.sessionSelectionWrapper, { [styles.selected]: (x === store.sessions.current) })}>
                                 <span className={styles.sessionName}>{x}</span>

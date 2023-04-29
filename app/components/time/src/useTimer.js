@@ -4,7 +4,7 @@ import { setStatus } from '@redux/slices/timer'
 import { useState } from "react"
 import useEventListeners from './useEventListeners'
 import { TimerStatus, JudgingPhase } from "@utils/enums.js"
-import { useTimerData } from "@redux/accessors"
+import { useStore, useTimerData } from "@redux/accessors"
 import { Penalty } from "@utils/enums.js"
 import dev from "@utils/dev"
 import { useSession } from '@redux/accessors'
@@ -16,8 +16,10 @@ import useNewScramble from '@app/utils/useNewScramble'
 export default function useTimer() {
     let { status } = useTimerData()
     let [sessionData, sessionName] = useSession()
+    let store = useStore()
     const dispatch = useDispatch()
-    let generateNewScramble = useNewScramble()
+    let {genScramble} = useNewScramble(undefined, useSession())
+
     const [primer, setPrimer] = useState(null);
     const [timer, setTimer] = useState(null);
     const [startTime, setStartTime] = useState(null);
@@ -37,7 +39,8 @@ export default function useTimer() {
 
     let stopTimer = (penalty = Penalty.OK) => {
         clearIntervals();
-        generateNewScramble(undefined, sessionName)
+        console.log("doscramblecalledfromoutside")
+        genScramble(undefined, store)
 
         let elapsed = updateTime();
         dispatch(pushTime({
@@ -99,7 +102,7 @@ export default function useTimer() {
                 dispatch(setStatus(TimerStatus.IDLE));
                 dispatch(setPenalty(Penalty.OK));
                 dispatch(resetTime())
-                generateNewScramble(undefined, sessionName)
+                genScramble(undefined, store)
                 break;
         }
     }

@@ -12,10 +12,12 @@ import { useDispatch } from "react-redux"
 import Dropdown from "./dropdown"
 import { cloneArray } from "@app/utils/cloneObject"
 import useNewScramble from "@app/utils/useNewScramble"
+import { useStore } from "@app/redux/accessors"
 export default function Bar() {
-    let generateNewScramble = useNewScramble();
     let dispatch = useDispatch()
     let [sessionData, sessionName] = useData()
+    let store = useStore()
+    let {genScramble} = useNewScramble(undefined, store)
     let [options, setOptions] = useState([{
         name: "event",
         types: [
@@ -122,7 +124,7 @@ export default function Bar() {
         // setter: setEvent,
         setter: (name) => {
             dispatch(setEvent(Events[name]))
-            generateNewScramble(Events[name], sessionName)
+            genScramble(Events[name], store)
         },
     },
     {
@@ -148,7 +150,6 @@ export default function Bar() {
             }
             dispatch(setInput(map[name]))
         },
-        updater: () => { }
     }])
     const isInitialRender = useRef(true);
     useEffect(() => {

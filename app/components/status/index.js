@@ -6,23 +6,25 @@ import { Penalty } from "@app/utils/enums"
 import { useDispatch } from 'react-redux'
 import { setPenalty, modifyTime, deleteTime } from "@app/redux/slices/sessions/operations"
 import useNewScramble from "@app/utils/useNewScramble"
+import { useStore } from "@app/redux/accessors"
 export default function Status() {
-    let [{ penalty }, sessionName] = useData()
+    let [sessionData, sessionName] = useData()
     let dispatch = useDispatch()
-    let generateNewScramble = useNewScramble()
+    let store = useStore()
+    let {genScramble} = useNewScramble(undefined, useData())
     let modifyPenalty = (penalty) => {
         dispatch(setPenalty(penalty))
-        dispatch(modifyTime({ idx: -1, penalty }))
+        dispatch(modifyTime({ idx: -1, penalty: sessionData.penalty }))
     }
     let deleteLastTime = () => {
         dispatch(deleteTime(-1))
-        generateNewScramble(undefined, sessionName)
+        genScramble(undefined, store)
     }
     return (
         <div>
-            <PenaltyToggle type="OK" selected={penalty === Penalty.OK} onClick={() => modifyPenalty(Penalty.OK)} />
-            <PenaltyToggle type="+2" selected={penalty === Penalty.PLUS2} onClick={() => modifyPenalty(Penalty.PLUS2)} />
-            <PenaltyToggle type="DNF" selected={penalty === Penalty.DNF} onClick={() => modifyPenalty(Penalty.DNF)} />
+            <PenaltyToggle type="OK" selected={sessionData.penalty === Penalty.OK} onClick={() => modifyPenalty(Penalty.OK)} />
+            <PenaltyToggle type="+2" selected={sessionData.penalty === Penalty.PLUS2} onClick={() => modifyPenalty(Penalty.PLUS2)} />
+            <PenaltyToggle type="DNF" selected={sessionData.penalty === Penalty.DNF} onClick={() => modifyPenalty(Penalty.DNF)} />
             <span className={styles.deleteButton} onClick={deleteLastTime}><FiTrash />Delete</span>
         </div>
     )

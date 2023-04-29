@@ -12,12 +12,13 @@ import { JudgingPhase, TimerStatus } from './utils/enums'
 // import { useEffect } from 'react'
 import useStore from '@app/redux/accessors/useStore'
 import Bar from "@app/components/bar"
+import Ministats from './components/ministats'
 export default function Home() {
   let store = useStore()
   let [sessionData] = useData()
   let dispatch = useDispatch()
   return (
-    <div className={styles.page}>
+    <div className={styles.page} id="mainTimer">
       <Gate>
         <div className={styles.vsection}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
@@ -29,7 +30,7 @@ export default function Home() {
           {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
         </div>
         <div className={styles.vsection}>
-
+          <Ministats />
         </div>
       </Gate>
     </div>

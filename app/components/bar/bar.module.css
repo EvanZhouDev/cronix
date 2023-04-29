@@ -81,6 +81,7 @@
 	width: 5px;
 	height: 70%;
 	background-color: var(--bg-color);
+	border-radius: 1000px;
 }
 
 .dropdown {
@@ -99,6 +100,7 @@
 	height: 50vh;
 	overflow-y: scroll;
 }
+
 .dropdownParent:hover .dropdown {
 	display: block;
 	opacity: 1;

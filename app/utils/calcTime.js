@@ -1,5 +1,10 @@
 import { Penalty } from '@utils/enums';
-export default function calcTime(time, penalty) {
+export default function calcTime(time, penalty = Penalty.OK) {
+    if (time === Infinity) return {
+        Infinity,
+        formattedTime: "DNF",
+        formattedTimePrecise: "DNF"
+    }
     let mathematicalTime = time;
     if (penalty === Penalty.PLUS2) mathematicalTime += 2000;
 

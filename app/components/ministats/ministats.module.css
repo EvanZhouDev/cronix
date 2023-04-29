@@ -1,0 +1,10 @@
+.stats {
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 20px;
+}
+
+.pb {
+    font-weight: bold;
+    color: var(--highlight-color);
+}

@@ -1,7 +1,7 @@
 'use client'
 import styles from "./titlebar.module.css"
-import { useRef } from "react"
-import { FiChevronDown } from "react-icons/fi"
+import { useEffect, useRef } from "react"
+import { FiChevronDown, FiList } from "react-icons/fi"
 import useStore from "@app/redux/accessors/useStore"
 import { useDispatch } from "react-redux"
 import { setSession, deleteSession } from "@app/redux/slices/sessions/manager"
@@ -12,13 +12,19 @@ export default function Session() {
     let store = useStore()
     let dispatch = useDispatch()
     let inputRef = useRef(null)
+    useEffect(() => {
+        inputRef.current.addEventListener('keyup', function (e) {
+            e.stopPropagation();
+        }, false);
+        inputRef.current.addEventListener('keydown', function (e) {
+            e.stopPropagation();
+        }, false);
+    }, [])
     return (
         <div className={styles.sessionWrapper}>
             <div className={styles.session}>
+                <FiList />
                 <span className={styles.sessionName}>{store.sessions.current}</span>
-                <span className={styles.chevronDown}>
-                    <FiChevronDown />
-                </span>
             </div>
             <div className={styles.sessionDropdown}>
                 <span className={styles.label}>Create a new session:</span>
@@ -39,7 +45,6 @@ export default function Session() {
                 <span className={styles.label}>Available sessions:</span>
                 {
                     store.sessions.order.map(x => {
-                        let currentSession = store.sessions.data[x]
                         return (
                             <span key={x} onClick={() => dispatch(setSession(x))} className={classNames(
                                 styles.sessionSelectionWrapper, { [styles.selected]: (x === store.sessions.current) })}>
@@ -50,10 +55,6 @@ export default function Session() {
                     })
                 }
                 <span className={styles.disclaimer}>Learn more about sessions in the <Link href="/help">Help section</Link></span>
-                {/* {JSON.stringify(store.sessions)}
-                Session 1 <br />
-                Session 2 <br />
-                Session 3 <br /> */}
             </div>
         </div >
     )

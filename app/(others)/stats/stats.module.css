@@ -1,0 +1,12 @@
+.statsPage {
+	height: 85vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.vsection {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}

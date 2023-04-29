@@ -21,6 +21,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
                 console.info('Mouse up after Timer element triggered.');
             }
         };
+
         const handleTouchDown = (e) => {
             setIsMouseDown(true);
             timerTriggerActivated(e);
@@ -38,13 +39,13 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
 
         document.addEventListener('mousedown', handleMouseDown);
         document.addEventListener('mouseup', handleMouseUp);
-        document.addEventListener('touchdown', handleTouchDown, false);
+        document.addEventListener('touchstart', handleTouchDown, false);
         document.addEventListener('touchend', handleTouchEnd, false);
 
         return () => {
             document.removeEventListener('mousedown', handleMouseDown);
             document.removeEventListener('mouseup', handleMouseUp);
-            document.removeEventListener('touchdown', handleTouchDown);
+            document.removeEventListener('touchstart', handleTouchDown);
             document.removeEventListener('touchend', handleTouchEnd);
         };
     }, [isMouseDown, timerTriggerActivated, timerTriggerDeactivated]);

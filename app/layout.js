@@ -14,6 +14,8 @@ const firacode = Fira_Code({
   display: 'swap',
 })
 
+import { Analytics } from '@vercel/analytics/react';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={firacode.className}>
@@ -23,6 +25,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   )

@@ -12,6 +12,7 @@ import { JudgingPhase, TimerStatus } from './utils/enums'
 import useStore from '@app/redux/accessors/useStore'
 import Bar from "@app/components/bar"
 import Ministats from './components/ministats'
+
 export default function Home() {
   let store = useStore()
   let [sessionData] = useData()

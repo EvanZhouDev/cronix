@@ -38,7 +38,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             document.removeEventListener('mouseup', handleMouseUp);
             document.removeEventListener('touchstart', handleTouchDown);
         };
-    }, [isMouseDown, timerTriggerActivated, timerTriggerDeactivated]);
+    }, [isMouseDown, timerTriggerActivated, timerTriggerDeactivated, anyDown]);
 
     useEffect(() => {
         let handleKeyDown = (e) => {
@@ -72,7 +72,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             document.removeEventListener('keydown', handleKeyDown)
             document.removeEventListener('keyup', handleKeyUp)
         }
-    }, [timerTriggerActivated, timerTriggerDeactivated])
+    }, [timerTriggerActivated, timerTriggerDeactivated, anyDown, escDown])
 
     return elementRef
 }

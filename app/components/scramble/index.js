@@ -8,13 +8,13 @@ import useStore from "@app/redux/accessors/useStore";
 export default function Scramble() {
     let [sessionData, name] = useData()
     let store = useStore()
-    let {genScramble} = useNewScramble(undefined, useData())
+    let { genScramble } = useNewScramble(undefined, useData())
     useEffect(() => {
         if (!didInit) {
             if (sessionData.scramble === SCRAMBLE_LOADING_MSG || sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(undefined, store)
             didInit = true;
         }
-    }, [])
+    }, [genScramble, sessionData.scramble, store])
     if (sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(undefined, store)
     return (
         <div className={styles.scramble}>{sessionData.scramble}</div>

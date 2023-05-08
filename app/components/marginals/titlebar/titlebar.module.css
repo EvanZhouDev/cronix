@@ -20,6 +20,8 @@
 .title {
 	font-size: 30px;
 	padding-right: 10px;
+	text-decoration: none;
+	color: var(--font-color);
 }
 
 .icon:hover {
@@ -61,7 +63,6 @@
 	align-items: center;
 	height: 4vh;
 }
-
 
 .sessionName {
 	padding-top: 10px;
@@ -156,6 +157,11 @@
 .inputBox:focus {
 	outline: 1px solid var(--highlight-color);
 }
+
+.active {
+	color: var(--highlight-color) !important;
+}
+
 .addSessionButton {
 	height: 50px;
 	width: 50px;

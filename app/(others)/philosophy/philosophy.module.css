@@ -1,5 +1,6 @@
 .philosophyPage {
-    height: 80vh;
-    width: 60vw;
-    mask-image: linear-gradient(to top, transparent, black 8%);
+	height: 80vh;
+	width: 60vw;
+	overflow-y: scroll;
+	mask-image: linear-gradient(to top, transparent, black 8% );
 }

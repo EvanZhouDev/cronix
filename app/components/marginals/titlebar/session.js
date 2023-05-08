@@ -17,7 +17,7 @@ export default function Session() {
     let [sessionData, sessionName] = useData()
     let dispatch = useDispatch()
     let inputRef = useRef(null)
-    let { genScramble, cancelRequests } = useNewScramble(undefined, useData())
+    let { genScramble, cancelRequests } = useNewScramble(undefined)
     useEffect(() => {
         inputRef.current.addEventListener('keyup', function (e) {
             e.stopPropagation();

@@ -28,8 +28,12 @@ export const sessionSlice = createSlice({
         },
         // Cannot assign scramble in reducer
         // Because doing that removes predictability of reducer
-        setScramble: (state, { payload }) => {
-            state.data[state.current].scramble = payload
+        setScramble: (state, { payload: { scramble, destination } }) => {
+            console.log("hi")
+            if (destination === undefined) {
+                destination = state.current;
+            }
+            state.data[destination].scramble = scramble;
         },
         // Sets the phase of the timer to the targeted phase
         setPhase: (state, { payload }) => {

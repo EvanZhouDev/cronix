@@ -18,7 +18,7 @@ export default function useTimer() {
     let [sessionData, sessionName] = useSession()
     let store = useStore()
     const dispatch = useDispatch()
-    let {genScramble} = useNewScramble(undefined, useSession())
+    let { genScramble } = useNewScramble(undefined)
 
     const [primer, setPrimer] = useState(null);
     const [timer, setTimer] = useState(null);

@@ -11,7 +11,7 @@ export default function Status() {
     let [sessionData, sessionName] = useData()
     let dispatch = useDispatch()
     let store = useStore()
-    let {genScramble} = useNewScramble(undefined, useData())
+    let {genScramble} = useNewScramble(undefined)
     let modifyPenalty = (penalty) => {
         dispatch(setPenalty(penalty))
         dispatch(modifyTime({ idx: -1, penalty: sessionData.penalty }))

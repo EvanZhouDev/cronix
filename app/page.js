@@ -31,7 +31,7 @@ export default function Home() {
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
             <Bar /> : null}
         </div>
-        <div className={styles.vsection}>
+        <div className={styles.vsection} id={"timerSection"}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
           <Timer />
           {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}

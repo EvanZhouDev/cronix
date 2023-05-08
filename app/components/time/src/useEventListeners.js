@@ -7,7 +7,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
     useEffect(() => {
         const handleMouseDown = (e) => {
             anyDown(e)
-            if (e.target === elementRef.current) {
+            if (e.target === document.getElementById('timerSection')) {
                 setIsMouseDown(true);
                 timerTriggerActivated(e);
                 console.info('Mouse down on Timer element.');
@@ -23,7 +23,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleTouchDown = (e) => {
-            if (e.target === elementRef.current) {
+            if (e.target === document.getElementById('timerSection')) {
                 timerTriggerActivated(e);
                 console.info('Touch down on Timer element.');
             }

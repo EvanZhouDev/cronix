@@ -7,9 +7,11 @@ export const metadata = {
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
 }
 import { Fira_Code } from 'next/font/google'
+
 const firacode = Fira_Code({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
+  display: 'swap',
 })
 
 export default function RootLayout({ children }) {

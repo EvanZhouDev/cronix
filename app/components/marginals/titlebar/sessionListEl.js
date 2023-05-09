@@ -5,7 +5,7 @@ import { renameSession } from "@app/redux/slices/sessions/manager";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
 
-export default function sessionListEl({ sessionName, onClick, onDeleteClick, className, resetEditStatus }) {
+export default function SessionListEl({ sessionName, onClick, onDeleteClick, className, resetEditStatus }) {
     let inputRef = useRef()
     let dispatch = useDispatch();
     const [editing, setEditing] = useState(false);

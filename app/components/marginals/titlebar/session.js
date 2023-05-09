@@ -12,12 +12,23 @@ import Link from "next/link"
 import useNewScramble from "@app/utils/useNewScramble"
 import { SCRAMBLE_LOADING_MSG, SCRAMBLE_UNAVAILABLE_MSG } from "@app/utils/constants"
 import { Events } from "@app/utils/settings"
+import SessionListEl from "./sessionListEl"
+import { useState } from "react"
 export default function Session() {
+    let [sessionData, curSession] = useData()
     let store = useStore()
-    let [sessionData, sessionName] = useData()
     let dispatch = useDispatch()
     let inputRef = useRef(null)
     let { genScramble, cancelRequests } = useNewScramble(undefined)
+    const [resetStatus, setResetStatus] = useState(false);
+
+    // Function to reset all SessionListEl components
+    const resetSessionListElStates = () => {
+        setResetStatus(resetStatus => {
+            console.log(resetStatus)
+            return !resetStatus
+        });
+    };
     useEffect(() => {
         inputRef.current.addEventListener('keyup', function (e) {
             e.stopPropagation();
@@ -44,10 +55,10 @@ export default function Session() {
                     />
                     <button
                         onClick={() => {
-                            if (inputRef.current.value) {
+                            if (inputRef.current.value && !store.sessions.order.includes(inputRef.current.value)) {
                                 cancelRequests()
                                 dispatch(setSession(inputRef.current.value))
-                                genScramble(Events["3x3"], store)
+                                genScramble(Events["3x3"])
                             }
                         }}
                         className={styles.addSessionButton}
@@ -58,15 +69,14 @@ export default function Session() {
                 {
                     store.sessions.order.map(x => {
                         return (
-                            <span key={x} onClick={() => {
-                                cancelRequests()
-                                dispatch(setSession(x))
-                                if (store.sessions.data[x].scramble === SCRAMBLE_LOADING_MSG || store.sessions.data[x].scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(store.sessions.data[x].event, store)
-                            }} className={classNames(
-                                styles.sessionSelectionWrapper, { [styles.selected]: (x === store.sessions.current) })}>
-                                <span className={styles.sessionName}>{x}</span>
-                                <span className={styles.delSession} onClick={(e) => { e.stopPropagation(); dispatch(deleteSession(x)) }}><FiTrash /></span>
-                            </span>
+                            <SessionListEl key={x} resetEditStatus={resetStatus} sessionName={x} onClick={
+                                () => {
+                                    if (x !== curSession) resetSessionListElStates()
+                                    dispatch(setSession(x))
+                                    if (store.sessions.data[x].scramble === SCRAMBLE_LOADING_MSG || store.sessions.data[x].scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(store.sessions.data[x].event, store)
+                                }
+                            } onDeleteClick={(e) => { e.stopPropagation(); dispatch(deleteSession(x)) }} className={classNames(
+                                styles.sessionSelectionWrapper, { [styles.selected]: (x === store.sessions.current) })} />
                         )
                     })
                 }

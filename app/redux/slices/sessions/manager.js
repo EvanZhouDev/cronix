@@ -62,7 +62,7 @@ export const sessionSlice = createSlice({
             }
 
             if (targetIdx !== -1) {
-                console.error(`Trying to rename session "${from}" to "${to}", but "${to}" already exists in session list.`);
+                // console.error(`Trying to rename session "${from}" to "${to}", but "${to}" already exists in session list.`);
                 return;
             }
 

@@ -113,16 +113,52 @@
 	color: var(--bg-color);
 }
 
-.sessionSelectionWrapper svg {
+.trash {
 	transition: all 0.1s;
 	padding-top: 5px;
 	padding-left: 20px;
 	cursor: pointer;
 }
-.sessionSelectionWrapper svg:hover {
+.trash:hover {
 	color: var(--error-color);
 }
-.sessionSelectionWrapper svg:active {
+.trash:active {
+	color: var(--font-color);
+}
+.edit {
+	transition: all 0.1s;
+	padding-top: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.edit:hover {
+	color: var(--green-color);
+}
+.edit:active {
+	color: var(--bg-color);
+}
+.check {
+	transition: all 0.1s;
+	padding-top: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.check:hover {
+	color: var(--green-color);
+}
+.check:active {
+	color: var(--bg-color);
+}
+.xButton {
+	transition: all 0.1s;
+	padding-top: 5px;
+	padding-left: 20px;
+	cursor: pointer;
+}
+.xButton:hover {
+	color: var(--error-color);
+}
+.xButton:active {
 	color: var(--font-color);
 }
 

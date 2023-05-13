@@ -132,7 +132,7 @@
 	cursor: pointer;
 }
 .edit:hover {
-	color: var(--green-color);
+	color: var(--font-color);
 }
 .edit:active {
 	color: var(--bg-color);
@@ -144,7 +144,7 @@
 	cursor: pointer;
 }
 .check:hover {
-	color: var(--green-color);
+	color: var(--font-color);
 }
 .check:active {
 	color: var(--bg-color);

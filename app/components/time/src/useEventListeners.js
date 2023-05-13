@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import dev from "@utils/dev"
+
 export default function useEventListeners(timerTriggerActivated, timerTriggerDeactivated, escDown, anyDown) {
     const [isMouseDown, setIsMouseDown] = useState(false);
     const elementRef = useRef(null);
@@ -10,7 +11,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             if (e.target === document.getElementById('timerSection')) {
                 setIsMouseDown(true);
                 timerTriggerActivated(e);
-                console.info('Mouse down on Timer element.');
+                dev && console.info('Mouse down on Timer element.');
             }
         };
 
@@ -18,14 +19,14 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
             if (isMouseDown) {
                 setIsMouseDown(false);
                 timerTriggerDeactivated(e);
-                console.info('Mouse up after Timer element triggered.');
+                dev && console.info('Mouse up after Timer element triggered.');
             }
         };
 
         const handleTouchDown = (e) => {
             if (e.target === document.getElementById('timerSection')) {
                 timerTriggerActivated(e);
-                console.info('Touch down on Timer element.');
+                dev && console.info('Touch down on Timer element.');
             }
         };
 

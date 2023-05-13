@@ -17,7 +17,7 @@ export default function Bar() {
     let dispatch = useDispatch()
     let [sessionData, sessionName] = useData()
     let store = useStore()
-    let {genScramble} = useNewScramble(undefined)
+    let genScramble = useNewScramble()
     let [options, setOptions] = useState([{
         name: "event",
         types: [

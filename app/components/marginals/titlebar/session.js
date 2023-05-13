@@ -19,7 +19,7 @@ export default function Session() {
     let store = useStore()
     let dispatch = useDispatch()
     let inputRef = useRef(null)
-    let { genScramble, cancelRequests } = useNewScramble(undefined)
+    let genScramble = useNewScramble()
     const [resetStatus, setResetStatus] = useState(false);
 
     // Function to reset all SessionListEl components

@@ -8,15 +8,13 @@ import { useDispatch } from "react-redux";
 import useData from "@app/redux/accessors/useSessionData";
 import { SCRAMBLE_LOADING_MSG } from "./constants";
 
-export default function useNewScramble(event) {
+export default function useNewScramble() {
     let [sessionData, session] = useData();
     let dispatch = useDispatch();
 
-    if (!event) event = sessionData.event;
-
     setDebug({
         logPerf: false,
-        scramblePrefetchLevel: "none",
+        // scramblePrefetchLevel: "none",
         forceStringWorker: true
     });
 
@@ -27,10 +25,5 @@ export default function useNewScramble(event) {
         dispatch(setScramble({ scramble: scramble.toString(), destination: session }));
     }
 
-    // Function to cancel ongoing requests
-    function cancelRequests() {
-        // isCancelled = true;
-    }
-
-    return { genScramble, cancelRequests };
+    return genScramble;
 }

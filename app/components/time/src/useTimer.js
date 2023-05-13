@@ -4,7 +4,7 @@ import { setStatus } from '@redux/slices/timer'
 import { useState } from "react"
 import useEventListeners from './useEventListeners'
 import { TimerStatus, JudgingPhase } from "@utils/enums.js"
-import { useStore, useTimerData } from "@redux/accessors"
+import { useTimerData } from "@redux/accessors"
 import { Penalty } from "@utils/enums.js"
 import dev from "@utils/dev"
 import { useSession } from '@redux/accessors'
@@ -15,10 +15,10 @@ import useNewScramble from '@app/utils/useNewScramble'
 
 export default function useTimer() {
     let { status } = useTimerData()
-    let [sessionData, sessionName] = useSession()
-    let store = useStore()
+    let [sessionData] = useSession()
+
     const dispatch = useDispatch()
-    let { genScramble } = useNewScramble(undefined)
+    let genScramble = useNewScramble()
 
     const [primer, setPrimer] = useState(null);
     const [timer, setTimer] = useState(null);
@@ -39,8 +39,6 @@ export default function useTimer() {
 
     let stopTimer = (penalty = Penalty.OK) => {
         clearIntervals();
-        console.log("doscramblecalledfromoutside")
-        genScramble(undefined, store)
 
         let elapsed = updateTime();
         dispatch(pushTime({
@@ -50,6 +48,7 @@ export default function useTimer() {
             scramble: sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG ? null : sessionData.scramble,
             uuid: uuidv4()
         }))
+
         dispatch(setStatus(TimerStatus.IDLE));
     }
 
@@ -81,6 +80,8 @@ export default function useTimer() {
                 break;
             case TimerStatus.READY:
                 dispatch(setStatus(TimerStatus.TIMING));
+                console.log("GENN GENN GENN")
+                genScramble(undefined)
                 let time = Date.now();
                 setTimer(setInterval(() => {
                     dispatch(setTime(Date.now() - time));
@@ -102,13 +103,11 @@ export default function useTimer() {
                 dispatch(setStatus(TimerStatus.IDLE));
                 dispatch(setPenalty(Penalty.OK));
                 dispatch(resetTime())
-                genScramble(undefined, store)
                 break;
         }
     }
 
     let anyDown = (e) => {
-        // Clear all timers, and reset to idle
         if (status === TimerStatus.TIMING) stopTimer()
     }
 

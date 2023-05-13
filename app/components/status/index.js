@@ -14,7 +14,7 @@ export default function Status() {
     let genScramble = useNewScramble()
     let modifyPenalty = (penalty) => {
         dispatch(setPenalty(penalty))
-        dispatch(modifyTime({ idx: -1, penalty: sessionData.penalty }))
+        dispatch(modifyTime({ idx: -1, penalty: penalty }))
     }
     let deleteLastTime = () => {
         dispatch(deleteTime(-1))

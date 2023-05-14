@@ -25,7 +25,6 @@ export default function Session() {
     // Function to reset all SessionListEl components
     const resetSessionListElStates = () => {
         setResetStatus(resetStatus => {
-            console.log(resetStatus)
             return !resetStatus
         });
     };

@@ -32,7 +32,6 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
         if (event.key === "Enter") {
             event.preventDefault(); // Prevent default behavior of the Enter key
             setEditing(false);
-            console.log(sessionName, editedSessionName);
             dispatch(renameSession({ from: sessionName, to: editedSessionName }));
         }
     }

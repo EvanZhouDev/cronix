@@ -80,7 +80,6 @@ export default function useTimer() {
                 break;
             case TimerStatus.READY:
                 dispatch(setStatus(TimerStatus.TIMING));
-                console.log("GENN GENN GENN")
                 genScramble(undefined)
                 let time = Date.now();
                 setTimer(setInterval(() => {

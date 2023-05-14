@@ -25,7 +25,6 @@ export default function Stackmat() {
 
     let handle = (arg) => {
         dispatch(setStatus(TimerStatus.TIMING))
-        console.log(arg.isRunning, timerData.status)
         // if (arg.isRunning) {
         //     console.log("YES")
         // }

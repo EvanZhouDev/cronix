@@ -29,7 +29,6 @@ export const sessionSlice = createSlice({
         // Cannot assign scramble in reducer
         // Because doing that removes predictability of reducer
         setScramble: (state, { payload: { scramble, destination } }) => {
-            console.log("hi")
             if (destination === undefined) {
                 destination = state.current;
             }

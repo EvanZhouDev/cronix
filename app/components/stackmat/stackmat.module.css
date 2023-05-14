@@ -1,0 +1,12 @@
+.time {
+    font-size: 125px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.unready {
+    color: var(--error-color);
+}
+.ready {
+    color: var(--highlight-color);
+}

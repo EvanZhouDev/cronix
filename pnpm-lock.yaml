@@ -55,6 +55,9 @@ dependencies:
   redux-thunk:
     specifier: ^2.4.2
     version: 2.4.2(redux@4.2.1)
+  stackmat-signal-processor:
+    specifier: ^0.1.0
+    version: 0.1.0
   styled-jsx:
     specifier: ^5.1.2
     version: 5.1.2(react@18.2.0)
@@ -2044,6 +2047,10 @@ packages:
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /stackmat-signal-processor@0.1.0:
+    resolution: {integrity: sha512-HZXQz3J1PfwYa+yxlAbNAJZZBwdiqs+b0jeNeSGqaQWF6AN8GfIGdOhGZ+txWtDX+VTh9LkpGmH1TGJZp0qgyQ==}
     dev: false
 
   /stop-iteration-iterator@1.0.0:

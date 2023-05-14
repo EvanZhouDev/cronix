@@ -27,6 +27,7 @@
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
+    "stackmat-signal-processor": "^0.1.0",
     "styled-jsx": "^5.1.2",
     "uuid": "^9.0.0"
   },

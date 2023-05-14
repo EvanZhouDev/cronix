@@ -6,9 +6,10 @@ import useData from "@app/redux/accessors/useSessionData"
 import styles from "./page.module.css"
 import { JudgingPhase, TimerStatus } from './utils/enums'
 import useStore from '@app/redux/accessors/useStore'
-
+import { Inputs } from './utils/settings'
 import Scramble from "@app/components/scramble"
 import Timer from "@app/components/time"
+import Stackmat from "@app/components/stackmat"
 import Status from "@app/components/status"
 import Bar from "@app/components/bar"
 import Ministats from '@app/components/ministats'
@@ -16,7 +17,7 @@ import Ministats from '@app/components/ministats'
 export default function Home() {
   let store = useStore()
   let [sessionData] = useData()
-  
+
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', function () {
       // Disable scrolling on touch devices
@@ -32,9 +33,10 @@ export default function Home() {
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
             <Bar /> : null}
         </div>
-        <div className={styles.vsection} id={"timerSection"}>
+        <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
-          <Timer />
+          {/* <Timer /> */}
+          {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
           {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
         </div>
         <div className={styles.vsection}>

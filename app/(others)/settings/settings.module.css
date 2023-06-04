@@ -1,0 +1,95 @@
+.settingsPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.settingsPage h1 {
+	font-size: 30px;
+	margin: 0px;
+    margin-bottom: 10px;
+	color: var(--font-color);
+	transition: 0.25s;
+}
+
+.settingsPage p {
+	font-size: 20px;
+	margin: 0px;
+	color: var(--font-color-dull);
+	margin-bottom: 20px;
+}
+
+.settingsSection {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	background-color: var(--darker-bg-color);
+	padding: 20px;
+	border-radius: 20px;
+	width: 50vw;
+	min-height: 5vh;
+	height: auto;
+}
+
+.settingsLabel {
+	font-size: 20px;
+	padding-right: 10px;
+	color: var(--font-color);
+}
+
+.settingsInput {
+	background-color: var(--bg-color);
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+    font-size: 20px;
+    text-align: right;
+    border: none;
+	font-family: inherit;
+	color: var(--font-color);
+	height: 3vw;
+}
+
+.settingDescription {
+	font-size: 15px;
+	color: var(--font-color-dull);
+}
+
+.checkbox input[type="checkbox"] {
+	display: none;
+}
+.checkbox input[type="checkbox"]:checked + .wrapper {
+	background-color: var(--highlight-color);
+}
+.checkbox input[type="checkbox"]:checked + .wrapper .knob {
+	left: 20px;
+}
+.checkbox .wrapper {
+	background-color: #666;
+	/* border: 1px solid #666; */
+	border-radius: 1000px;
+	width: 50px;
+	height: 30px;
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	outline: none;
+}
+.checkbox .knob {
+	background-color: white;
+	/* border: 1px solid #666; */
+	border-radius: 100%;
+	display: inline-block;
+	margin-left: 2px;
+	position: relative;
+	width: 28px;
+	height: 28px;
+	left: 0;
+	transition: left 100ms ease-in-out 0s;
+}

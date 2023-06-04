@@ -14,6 +14,8 @@ import { SCRAMBLE_LOADING_MSG, SCRAMBLE_UNAVAILABLE_MSG } from "@app/utils/const
 import { Events } from "@app/utils/settings"
 import SessionListEl from "./sessionListEl"
 import { useState } from "react"
+import { success, error, message } from "@app/utils/notify";
+
 export default function Session() {
     let [sessionData, curSession] = useData()
     let store = useStore()
@@ -55,9 +57,13 @@ export default function Session() {
                     <button
                         onClick={() => {
                             if (inputRef.current.value && !store.sessions.order.includes(inputRef.current.value)) {
-                                cancelRequests()
                                 dispatch(setSession(inputRef.current.value))
                                 genScramble(Events["3x3"])
+                                success(`Created session: "${inputRef.current.value}"`)
+                            } else {
+                                if (store.sessions.order.includes(inputRef.current.value)) {
+                                    error(`Session "${inputRef.current.value}" already exists, not created.`)
+                                }
                             }
                         }}
                         className={styles.addSessionButton}
@@ -74,7 +80,15 @@ export default function Session() {
                                     dispatch(setSession(x))
                                     if (store.sessions.data[x].scramble === SCRAMBLE_LOADING_MSG || store.sessions.data[x].scramble === SCRAMBLE_UNAVAILABLE_MSG) genScramble(store.sessions.data[x].event, store)
                                 }
-                            } onDeleteClick={(e) => { e.stopPropagation(); dispatch(deleteSession(x)) }} className={classNames(
+                            } onDeleteClick={(e) => {
+                                e.stopPropagation()
+                                dispatch(deleteSession(x));
+                                if (store.sessions.order.length === 1) {
+                                    message(`Deleted session: "${x}", and restored default "Session 1"`)
+                                } else {
+                                    success(`Successfully deleted session: "${x}"`)
+                                }
+                            }} className={classNames(
                                 styles.sessionSelectionWrapper, { [styles.selected]: (x === store.sessions.current) })} />
                         )
                     })

@@ -12,17 +12,19 @@ import { v4 as uuidv4 } from 'uuid';
 import { SCRAMBLE_UNAVAILABLE_MSG } from '@app/utils/constants'
 import { setPenalty } from '@redux/slices/sessions/operations'
 import useNewScramble from '@app/utils/useNewScramble'
+import { message } from '@app/utils/notify'
+import calcTime from '@app/utils/calcTime'
 
-export default function useTimer() {
+export default function useTimer(setIsExploding) {
     let { status } = useTimerData()
     let [sessionData] = useSession()
-
     const dispatch = useDispatch()
     let genScramble = useNewScramble()
 
     const [primer, setPrimer] = useState(null);
     const [timer, setTimer] = useState(null);
     const [startTime, setStartTime] = useState(null);
+    const [confettiTimeout, setConfettiTimeout] = useState(null);
 
     // Handles various situations where timer ends
     // Either actual timer stop, timer reset due to aborted time, and other scenarios
@@ -39,7 +41,6 @@ export default function useTimer() {
 
     let stopTimer = (penalty = Penalty.OK) => {
         clearIntervals();
-
         let elapsed = updateTime();
         dispatch(pushTime({
             time: elapsed,
@@ -48,6 +49,16 @@ export default function useTimer() {
             scramble: sessionData.scramble === SCRAMBLE_UNAVAILABLE_MSG ? null : sessionData.scramble,
             uuid: uuidv4()
         }))
+        if (Math.min(...sessionData.list.map(x => x.derived.mathematicalTime)) > elapsed) {
+            message(`New single PB: ${calcTime(elapsed).formattedTime}`)
+            setIsExploding(true)
+            clearTimeout(confettiTimeout)
+            setConfettiTimeout(
+                setTimeout(() => {
+                    setIsExploding(false)
+                }, 2200)
+            )
+        }
 
         dispatch(setStatus(TimerStatus.IDLE));
     }

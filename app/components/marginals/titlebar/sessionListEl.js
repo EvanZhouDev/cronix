@@ -4,6 +4,7 @@ import { useState } from "react";
 import { renameSession } from "@app/redux/slices/sessions/manager";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
+import { success } from "@app/utils/notify";
 
 export default function SessionListEl({ sessionName, onClick, onDeleteClick, className, resetEditStatus }) {
     let inputRef = useRef()
@@ -25,6 +26,7 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
         event.stopPropagation();
         setEditing(false);
         dispatch(renameSession({ from: sessionName, to: editedSessionName }));
+        success(`Successfully edited session name to "${editedSessionName}"`)
     }
 
     const handleKeyDown = (event) => {
@@ -33,6 +35,7 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
             event.preventDefault(); // Prevent default behavior of the Enter key
             setEditing(false);
             dispatch(renameSession({ from: sessionName, to: editedSessionName }));
+            success(`Successfully edited session name to "${editedSessionName}"`)
         }
     }
 
@@ -41,6 +44,7 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
         setEditing(false);
         setEditedSessionName(sessionName);
         dispatch(renameSession(sessionName));
+        success(`Successfully canceled edit`)
     }
 
     const handleInputChange = (event) => {

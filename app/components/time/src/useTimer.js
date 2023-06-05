@@ -14,8 +14,11 @@ import { setPenalty } from '@redux/slices/sessions/operations'
 import useNewScramble from '@app/utils/useNewScramble'
 import { message } from '@app/utils/notify'
 import calcTime from '@app/utils/calcTime'
+import useSettings from '@redux/accessors/useSettings'
 
 export default function useTimer(setIsExploding) {
+    let settings = useSettings();
+    console.log(settings)
     let { status } = useTimerData()
     let [sessionData] = useSession()
     const dispatch = useDispatch()
@@ -51,13 +54,16 @@ export default function useTimer(setIsExploding) {
         }))
         if (Math.min(...sessionData.list.map(x => x.derived.mathematicalTime)) > elapsed) {
             message(`New single PB: ${calcTime(elapsed).formattedTime}`)
-            setIsExploding(true)
-            clearTimeout(confettiTimeout)
-            setConfettiTimeout(
-                setTimeout(() => {
-                    setIsExploding(false)
-                }, 2200)
-            )
+            console.log(settings.useConfetti)
+            if (settings.useConfetti) {
+                setIsExploding(true)
+                clearTimeout(confettiTimeout)
+                setConfettiTimeout(
+                    setTimeout(() => {
+                        setIsExploding(false)
+                    }, 2200)
+                )
+            }
         }
 
         dispatch(setStatus(TimerStatus.IDLE));

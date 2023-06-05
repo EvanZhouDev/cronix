@@ -1,12 +1,13 @@
 .bar {
 	color: var(--font-color-dull);
 	background-color: var(--darker-bg-color);
-	width: 50vw;
+	width: auto;
 	height: 5vh;
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	min-width: 50vw;
 }
 
 .toggle {

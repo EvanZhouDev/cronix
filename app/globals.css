@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+
 :root {
 	--bg-color: #323437;
 	--darker-bg-color: #2c2e31;
@@ -12,6 +14,7 @@
 }
 
 body {
+	font-family: "Fira Code";
 	margin: 0px;
 	padding: 0px;
 	background-color: var(--bg-color);

@@ -95,7 +95,7 @@ export default function DefaultColorsSection() {
             bgColor: '#EEEEEE',
             darkerBgColor: '#CFCFCF',
             fontColor: '#111111',
-            fontColorDull: '#C1C1C1',
+            fontColorDull: '#9A9A9A',
             highlightColor: '#111111',
             errorColor: '#D93232',
             greenColor: '#61c9a8',

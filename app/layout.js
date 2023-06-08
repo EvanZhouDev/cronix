@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import { Fira_Code } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 
+
 export const metadata = {
   title: 'Cronix Timer',
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
@@ -18,6 +19,8 @@ const firacode = Fira_Code({
 })
 
 export default function RootLayout({ children }) {
+  
+
   return (
     <html lang="en" className={firacode.className}>
       <body>

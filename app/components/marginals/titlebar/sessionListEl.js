@@ -17,7 +17,7 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
     }, [resetEditStatus])
 
     const handleEditClick = (event) => {
-        onClick()
+        if (typeof onClick === "function") onClick()
         event.stopPropagation();
         setEditing(true);
     }

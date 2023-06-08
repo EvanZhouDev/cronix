@@ -40,8 +40,14 @@ export const settingsSlice = createSlice({
                 state.settings.useConfetti = payload
             }
         },
+        setThemeColor: (state, { payload }) => {
+            state.settings.colors = {
+                ...state.settings.colors,
+                ...payload
+            }
+        },
     }
 });
 
-export const { setDefaultInput, setDefaultEvent, setUseConfetti } = settingsSlice.actions;
+export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor } = settingsSlice.actions;
 export default settingsSlice.reducer;

@@ -18,5 +18,15 @@ export const DEFAULT_SESSION = {
 export const DEFAULT_SETTINGS = {
     useConfetti: true,
     defaultEvent: DEFAULT_EVENT,
-    defaultInput: DEFAULT_INPUT
+    defaultInput: DEFAULT_INPUT,
+    colors: {
+        bgColor: "#323437",
+        darkerBgColor: "#2c2e31",
+        fontColor: "#d1d0c5",
+        fontColorDull: "#646669",
+        highlightColor: "#e2b712",
+        errorColor: "#ca4754",
+        greenColor: "#61c9a8",
+        blueColor: "#89d2dc"
+    }
 }

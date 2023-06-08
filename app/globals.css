@@ -29,3 +29,7 @@ body * {
 	/* transition: all 0.1s; */
 	user-select: none;
 }
+
+input:focus {
+	outline: 1px solid var(--highlight-color);
+}

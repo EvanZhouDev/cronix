@@ -87,6 +87,7 @@ export default function DefaultColorsSection() {
             <div className={styles.colorSwatchRow}>
                 {firstRow.map((themeKey) => (
                     <ColorSwatch
+                        key={keyToNameMap[themeKey]}
                         colors={themes[themeKey]}
                         name={keyToNameMap[themeKey]}
                         onClick={() => {
@@ -104,6 +105,7 @@ export default function DefaultColorsSection() {
                         <div key={rowIndex} className={styles.colorSwatchRow}>
                             {row.map((themeKey) => (
                                 <ColorSwatch
+                                    key={keyToNameMap[themeKey]}
                                     colors={themes[themeKey]}
                                     name={keyToNameMap[themeKey]}
                                     onClick={() => {

@@ -72,6 +72,27 @@ export default function Colors() {
                     <ColorPicker name="fontColorDull" />
                 }
             />
+            <Section
+                title="Error Color"
+                description="Usually red. Used as a warning color."
+                input={
+                    <ColorPicker name="errorColor" />
+                }
+            />
+            <Section
+                title="Green Color"
+                description="Used for edit and approve."
+                input={
+                    <ColorPicker name="greenColor" />
+                }
+            />
+            <Section
+                title="Blue Color"
+                description="Used in graphs and other multicolor experiences."
+                input={
+                    <ColorPicker name="blueColor" />
+                }
+            />
             {/* <Section
                         title="Show Confetti"
                         description="Show confetti animations when you get a new PB single."
@@ -102,12 +123,12 @@ export default function Colors() {
                     <FiArrowRight size={20} />
                 </div>
             </span>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </div >
     );
 }

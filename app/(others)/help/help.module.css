@@ -1,6 +1,7 @@
 .helpPage {
 	height: 80vh;
 	width: 60vw;
+	margin: 0px;
 	overflow-y: scroll;
-	mask-image: linear-gradient(to top, transparent, black 8% );
+	mask-image: linear-gradient(to top, transparent, black 8%);
 }

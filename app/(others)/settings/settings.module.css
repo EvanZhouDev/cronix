@@ -1,0 +1,246 @@
+.settingsPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	height: 80vh;
+	overflow-y: hidden;
+}
+
+.settingsPage h1 {
+	font-size: 30px;
+	margin: 0px;
+	margin-bottom: 10px;
+	color: var(--font-color);
+	transition: 0.25s;
+	text-align: center;
+	width: 50vw;
+}
+
+.settingsPage h2 {
+	text-align: center;
+	margin-top: 2vh;
+}
+
+.settingsPage p {
+	font-size: 20px;
+	margin: 0px;
+	color: var(--font-color-dull);
+	margin-bottom: 20px;
+	width: 50vw;
+	text-align: center;
+}
+
+.settingsSection {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	background-color: var(--darker-bg-color);
+	padding: 20px;
+	border-radius: 20px;
+	width: 50vw;
+}
+.themeSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding: 10px;
+	border-radius: 20px;
+	width: 50vw;
+}
+
+.settingsLabel {
+	font-size: 20px;
+	padding-right: 10px;
+	color: var(--font-color);
+}
+
+.settingsInput {
+	background-color: var(--bg-color);
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+	font-size: 20px;
+	text-align: right;
+	border: none;
+	font-family: inherit;
+	color: var(--font-color);
+	height: 3vw;
+}
+
+.settingDescription {
+	font-size: 15px;
+	color: var(--font-color-dull);
+}
+
+.checkbox input[type="checkbox"] {
+	display: none;
+}
+
+.checkbox input[type="checkbox"]:checked + .wrapper {
+	background-color: var(--highlight-color);
+}
+
+.checkbox input[type="checkbox"]:checked + .wrapper .knob {
+	left: calc(100% - 32px);
+}
+
+.checkbox .wrapper {
+	background-color: #666;
+	border-radius: 1000px;
+	width: 50px;
+	height: 30px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: flex-start; /* Updated */
+	cursor: pointer;
+	outline: none;
+	position: relative;
+}
+
+.checkbox .knob {
+	background-color: white;
+	border-radius: 100%;
+	display: inline-block;
+	margin-left: 2px;
+	position: absolute; /* Updated */
+	width: 28px;
+	height: 28px;
+	left: 0;
+	transition: left 100ms ease-in-out 0s;
+}
+
+.picker {
+	position: relative;
+}
+
+.colorDropdown {
+	position: absolute; /* Change the position to relative */
+	opacity: 0;
+	transition: opacity 0.5s;
+	height: auto;
+	display: none;
+	z-index: 1; /* Add a higher z-index to ensure the dropdown is on top of other elements */
+}
+
+.picker:focus-within .colorDropdown,
+.colorDropdown:hover {
+	display: block;
+	opacity: 1;
+}
+
+.hexLabel {
+	background-color: var(--bg-color);
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+	font-size: 20px;
+	text-align: center;
+	color: var(--font-color);
+	font-family: "Fira Code";
+	border: none;
+}
+
+.swatchBackground {
+	width: auto;
+	height: auto;
+	border-radius: 1000px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.swatchColor {
+	width: 3vw;
+	height: 3vw;
+	border-radius: 50%;
+	margin: 5px;
+}
+
+.swatchButton {
+	background-color: var(--darker-bg-color);
+	padding: 20px;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: 0.25s;
+	cursor: pointer;
+}
+
+.active {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+
+.colorSwatchRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	margin-bottom: 10px;
+	gap: 10px;
+	width: 100%;
+}
+
+.swatchButton {
+	flex-grow: 1;
+}
+
+.moreButton {
+	margin: 10px;
+	margin-top: 0px;
+}
+
+.currentTheme {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.importInput {
+	flex: 1;
+	text-align: left;
+}
+
+.importButton {
+	padding: 10px;
+	background-color: var(--bg-color);
+	border-radius: 10px;
+	margin: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.25s;
+}
+
+.importButton:hover {
+	background-color: var(--darker-bg-color);
+}
+.importButton:active {
+	background-color: var(--bg-color);
+}
+
+.tabContent {
+	width: 70vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow-y: auto; /* Change to auto for scrolling within the tabContent */
+	height: 80vh;
+}

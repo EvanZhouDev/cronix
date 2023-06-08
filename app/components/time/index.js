@@ -9,7 +9,7 @@ import { useState } from 'react'
 import ConfettiExplosion from 'react-confetti-explosion'
 export default function Time() {
     const [isExploding, setIsExploding] = useState(false);
-    const timerRef = useTimer(setIsExploding, isExploding)
+    const timerRef = useTimer(setIsExploding)
 
     const [sessionData] = useSession()
     const timerData = useTimerData()

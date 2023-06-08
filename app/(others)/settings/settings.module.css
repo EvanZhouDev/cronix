@@ -205,6 +205,12 @@
 	margin-top: 0px;
 }
 
+.colorSwatchSection {
+	display: flex;
+	flex-direction: column;
+	width: 50vw;
+}
+
 .currentTheme {
 	margin-bottom: 10px;
 	display: flex;

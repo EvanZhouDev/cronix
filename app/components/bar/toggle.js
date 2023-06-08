@@ -3,7 +3,7 @@ import classNames from "classnames"
 export default function Toggle({ onClick, icon, name, selected, updateEvents }) {
     return (
         <span onClick={() => {
-            onClick()
+            if (typeof onClick === "function") onClick()
         }} className={classNames(styles.toggle, {
             [styles.selected]: selected
         })}>

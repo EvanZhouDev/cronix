@@ -37,6 +37,9 @@ dependencies:
   react-confetti-explosion:
     specifier: ^2.1.2
     version: 2.1.2(react-dom@18.2.0)(react@18.2.0)
+  react-confirm-alert:
+    specifier: ^3.0.6
+    version: 3.0.6(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
@@ -2033,6 +2036,16 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-jss: 10.10.0(react@18.2.0)
+    dev: false
+
+  /react-confirm-alert@3.0.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-rplP6Ed9ZSNd0KFV5BUzk4EPQ77BxsrayllBXGFuA8xPXc7sbBjgU5KUrNpl7aWFmP7mXRlVXfuy1IT5DbffYw==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=10.0.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-display-name@0.2.5:

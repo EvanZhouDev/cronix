@@ -5,10 +5,14 @@ import { renameSession } from "@app/redux/slices/sessions/manager";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
 import { success } from "@app/utils/notify";
+import { confirmAlert } from 'react-confirm-alert';
+import useSettings from "@app/redux/accessors/useSettings";
+import './custom-react-confirm.css'; // Import the default styles (optional)
 
 export default function SessionListEl({ sessionName, onClick, onDeleteClick, className, resetEditStatus }) {
     let inputRef = useRef()
     let dispatch = useDispatch();
+    let settings = useSettings();
     const [editing, setEditing] = useState(false);
     const [editedSessionName, setEditedSessionName] = useState(sessionName);
 
@@ -71,6 +75,26 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
         )
     }, [inputRef, inputRef.current, editing, handleKeyDown]);
 
+    const openConfirmationDialog = (e) => {
+        if (settings.showDeleteConfirmation) {
+            confirmAlert({
+                title: 'Confirm Deletion',
+                message: `Are you sure you want to delete "${sessionName}"? This is an irreversable action.`,
+                buttons: [
+                    {
+                        label: 'Cancel',
+                    },
+                    {
+                        label: 'Delete',
+                        onClick: () => onDeleteClick(e)
+                    },
+                ]
+            });
+        } else {
+            onDeleteClick(e)
+        }
+    };
+
     const renderContent = () => {
         if (editing) {
             return (
@@ -88,7 +112,7 @@ export default function SessionListEl({ sessionName, onClick, onDeleteClick, cla
                     <span className={styles.sessionName}>{sessionName}</span>
                     <span>
                         <span className={styles.edit} onClick={handleEditClick}><FiPenTool /></span>
-                        <span className={styles.trash} onClick={onDeleteClick}><FiTrash /></span>
+                        <span className={styles.trash} onClick={openConfirmationDialog}><FiTrash /></span>
                     </span>
                 </>
             );

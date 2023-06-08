@@ -5,6 +5,8 @@ import Gate from "@redux/gate"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './react-tabs-custom.css';
 import Colors from "./tabs/colors"
+import General from "./tabs/general"
+import Timer from "./tabs/timer"
 export default function Page() {
     return (
         <div>
@@ -13,15 +15,19 @@ export default function Page() {
                     <h1>Settings</h1>
                     <Tabs>
                         <TabList>
+                            <Tab>General</Tab>
+                            <Tab>Timer</Tab>
                             <Tab>Colors</Tab>
-                            {/* <Tab>Title 2</Tab> */}
                         </TabList>
+                        <TabPanel>
+                            <General />
+                        </TabPanel>
+                        <TabPanel>
+                            <Timer />
+                        </TabPanel>
                         <TabPanel>
                             <Colors />
                         </TabPanel>
-                        {/* <TabPanel>
-                            <h2>Any content 2</h2>
-                        </TabPanel> */}
                     </Tabs>
                 </Gate>
             </div>

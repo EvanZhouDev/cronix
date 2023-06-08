@@ -17,6 +17,8 @@ export const DEFAULT_SESSION = {
 }
 export const DEFAULT_SETTINGS = {
     useConfetti: true,
+    hideTime: false,
+    showDeleteConfirmation: true,
     defaultEvent: DEFAULT_EVENT,
     defaultInput: DEFAULT_INPUT,
     colors: {

@@ -46,8 +46,14 @@ export const settingsSlice = createSlice({
                 ...payload
             }
         },
+        setSettings: (state, { payload }) => {
+            state.settings = {
+                ...state.settings,
+                ...payload
+            }
+        },
     }
 });
 
-export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor } = settingsSlice.actions;
+export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor, setSettings } = settingsSlice.actions;
 export default settingsSlice.reducer;

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import styles from '../../settings.module.css';
 import { useState } from 'react';
-import Section from "./components/section"
+import Section from "../components/section"
 import { setThemeColor } from '@app/redux/slices/sessions/settings';
 import useSettings from '@app/redux/accessors/useSettings';
 import useStore from "@app/redux/accessors/useStore"

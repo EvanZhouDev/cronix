@@ -124,7 +124,10 @@ export default function useTimer(setIsExploding) {
     }
 
     let anyDown = (e) => {
-        if (status === TimerStatus.TIMING) stopTimer()
+        if (status === TimerStatus.TIMING) {
+            dispatch(setPhase(JudgingPhase.JUDGE))
+            stopTimer()
+        }
     }
 
     let timerRef = useEventListeners(timerTriggerActivated, timerTriggerDeactivated, escDown, anyDown)

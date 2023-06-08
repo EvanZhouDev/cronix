@@ -8,7 +8,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 
 export const metadata = {
-  title: 'Cronix Timer',
+  title: 'Cronix Nightly Build',
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
 }
 

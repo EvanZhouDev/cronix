@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styles from './settings.module.css';
 import Gate from "@redux/gate"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './react-tabs-custom.css';
+import '@app/styles/react-tabs-custom.css';
 import Colors from "./tabs/colors"
 import General from "./tabs/general"
 import Timer from "./tabs/timer"

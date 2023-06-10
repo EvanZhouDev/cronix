@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styles from './help.module.css';
 import Gate from "@redux/gate"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import './react-tabs-custom.css';
+import '@app/redux/accessors/useSettings';
 import useSettings from '@app/redux/accessors/useSettings';
 import { setHelpTab } from '@app/redux/slices/sessions/settings';
 import { useDispatch } from 'react-redux';

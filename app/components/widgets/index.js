@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import settings from "@app/redux/slices/sessions/settings";
 import { success, error, message } from "@app/utils/notify";
 import Tippy from '@tippyjs/react';
-import './tippy.css';
+import '@app/styles/tippy.css';
 export default function Widgets() {
     let [sessionData] = useSession();
     // console.log(sessionData)

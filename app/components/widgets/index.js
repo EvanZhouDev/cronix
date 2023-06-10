@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 
 export default function Widgets() {
     let [sessionData] = useSession();
-    console.log(sessionData)
+    // console.log(sessionData)
     const [showWidgets, setShowWidgets] = useState(false);
     let dispatch = useDispatch();
     let widgetList = sessionData.widgets;
@@ -33,7 +33,7 @@ export default function Widgets() {
                 {widgetList.length ? <WidgetFrame showOptions={showWidgets} type={widgetList[0].type} idx={0} /> : "Add a widget to get started."}
                 <div className={classNames(styles.movingWidgets, { [styles.movingWidgetsShow]: showWidgets })}>
                     {widgetList.slice(1).map((x, i) => (
-                        <WidgetFrame showOptions={true} type={x.type} idx={i + 1} />
+                        <WidgetFrame key={i} showOptions={true} type={x.type} idx={i + 1} />
                     ))}
                 </div>
             </div >

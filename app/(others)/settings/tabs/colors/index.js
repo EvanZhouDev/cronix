@@ -15,7 +15,7 @@ import classNames from 'classnames';
 import { error, success } from "@app/utils/notify";
 export default function Colors() {
     let settings = useSettings()
-    console.log(useStore(), settings)
+    // console.log(useStore(), settings)
     const [inputValue, setInputValue] = useState(JSON.stringify(settings.colors));
     let dispatch = useDispatch()
     const handleGoButton = () => {

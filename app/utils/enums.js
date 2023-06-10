@@ -15,3 +15,11 @@ export const Penalty = {
     PLUS2: "plusTwo",
     DNF: "dnf",
 }
+
+export const WidgetTypes = {
+    DEFAULT: "Select a Widget...",
+    SCRAMBLE: "Scramble Visualizer",
+    COMMENT: "Comment",
+    TABLE: "Time (Table)",
+    GRAPH: "Time (Graph)",
+}

@@ -14,7 +14,7 @@ import Status from "@app/components/status"
 import Bar from "@app/components/bar"
 import Ministats from '@app/components/ministats'
 import "cubing/twisty";
-import { ScrambleVisualizerEvents } from './utils/settings'
+import Widgets from './components/widgets'
 
 export default function Home() {
   let store = useStore()
@@ -34,26 +34,6 @@ export default function Home() {
   return (
     <div className={styles.page} id="mainTimer">
       <Gate>
-        {/* {(() => {
-          if (sessionData.scramble && ScrambleVisualizerEvents[sessionData.event]) {
-            try {
-              return (
-                <twisty-player
-                  puzzle={ScrambleVisualizerEvents[sessionData.event]}
-                  alg={sessionData.scramble}
-                  hint-facelets="none"
-                  back-view="side-by-side"
-                  background="none"
-                  control-panel="none"
-                ></twisty-player>
-              )
-            } catch (error) {
-              console.log(error)
-            }
-          } else {
-            return null
-          }
-        })()} */}
         <player />
         <div className={styles.vsection} ref={test}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
@@ -68,6 +48,7 @@ export default function Home() {
         <div className={styles.vsection}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
         </div>
+        {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Widgets /> : null}
       </Gate>
     </div>
   )

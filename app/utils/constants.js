@@ -14,6 +14,7 @@ export const DEFAULT_SESSION = {
     input: DEFAULT_INPUT,
     penalty: Penalty.OK,
     scramble: SCRAMBLE_UNAVAILABLE_MSG,
+    widgets: []
 }
 export const DEFAULT_SETTINGS = {
     useConfetti: true,

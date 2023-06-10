@@ -16,6 +16,7 @@ export const DEFAULT_SESSION = {
     scramble: SCRAMBLE_UNAVAILABLE_MSG,
     widgets: []
 }
+export const SOLVING_MESSAGE = "solving"
 export const DEFAULT_SETTINGS = {
     useConfetti: true,
     hideTime: false,

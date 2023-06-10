@@ -9,7 +9,7 @@ import { Penalty } from "@utils/enums.js"
 import dev from "@utils/dev"
 import { useSession } from '@redux/accessors'
 import { v4 as uuidv4 } from 'uuid';
-import { SCRAMBLE_UNAVAILABLE_MSG } from '@app/utils/constants'
+import { SCRAMBLE_UNAVAILABLE_MSG, SOLVING_MESSAGE } from '@app/utils/constants'
 import { setPenalty } from '@redux/slices/sessions/operations'
 import useNewScramble from '@app/utils/useNewScramble'
 import { message } from '@app/utils/notify'
@@ -99,9 +99,13 @@ export default function useTimer(setIsExploding) {
                 dispatch(setStatus(TimerStatus.TIMING));
                 genScramble(undefined)
                 let time = Date.now();
-                setTimer(setInterval(() => {
-                    dispatch(setTime(Date.now() - time));
-                }, 10))
+                if (settings.hideTime) {
+                    dispatch(setTime(SOLVING_MESSAGE));
+                } else {
+                    setTimer(setInterval(() => {
+                        dispatch(setTime(Date.now() - time));
+                    }, 10))
+                }
                 setStartTime(time);
                 break;
         }

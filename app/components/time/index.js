@@ -7,16 +7,22 @@ import { TimerStatus } from '@app/utils/enums'
 import calcTime from '@app/utils/calcTime'
 import { useState } from 'react'
 import ConfettiExplosion from 'react-confetti-explosion'
+import { SOLVING_MESSAGE } from '@app/utils/constants'
 export default function Time() {
     const [isExploding, setIsExploding] = useState(false);
     const timerRef = useTimer(setIsExploding)
 
     const [sessionData] = useSession()
     const timerData = useTimerData()
-    let derivedTime = calcTime(sessionData.time, sessionData.penalty)
-    let useMilli = false
-    if (useMilli) derivedTime = derivedTime.formattedTimePrecise
-    else derivedTime = derivedTime.formattedTime
+    let derivedTime;
+    if (sessionData.time !== SOLVING_MESSAGE) {
+        derivedTime = calcTime(sessionData.time, sessionData.penalty)
+        let useMilli = false
+        if (useMilli) derivedTime = derivedTime.formattedTimePrecise
+        else derivedTime = derivedTime.formattedTime
+    } else {
+        derivedTime = SOLVING_MESSAGE
+    }
     return (
         <div>
             <div className={styles.confetti}>

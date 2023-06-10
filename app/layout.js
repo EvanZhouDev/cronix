@@ -7,8 +7,13 @@ import { Fira_Code } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import dev from './utils/dev';
 
+let preview = process.env.VERCEL_ENV
+let title = "Cronix Timer"
+if (dev) title = "Cronix In-Dev Edition"
+else if (preview === "preview") title = "Cronix Nightly Build"
+
 export const metadata = {
-  title: dev ? 'Cronix In-Dev Edition' : 'Cronix Nightly Build',
+  title: title,
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
 }
 

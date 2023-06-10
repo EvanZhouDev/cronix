@@ -11,7 +11,7 @@ import WidgetText from "./widgetText";
 import ScrambleWidget from "./widgets/scrambleWidget";
 export default function WidgetFrame({ idx, showOptions, type }) {
     let dispatch = useDispatch()
-    console.log(Object.entries(WidgetTypes))
+    // console.log(Object.entries(WidgetTypes))
 
     let [dropdownShown, setDropdownShown] = useState(false);
 
@@ -34,9 +34,9 @@ export default function WidgetFrame({ idx, showOptions, type }) {
                             [styles.showDropdown]: dropdownShown,
                         })}>
                             {
-                                Object.entries(WidgetTypes).map(([_key, name], i) => (
+                                Object.entries(WidgetTypes).map(([key, name], i) => (
                                     <>
-                                        <span onClick={() => dispatch(changeWidget({ idx: idx, newType: name }))} className={classNames(styles.dropdownOption, { [styles.dropdownActive]: type === name })}>{name}</span>
+                                        <span key={key} onClick={() => dispatch(changeWidget({ idx: idx, newType: name }))} className={classNames(styles.dropdownOption, { [styles.dropdownActive]: type === name })}>{name}</span>
                                         <br />
                                     </>
                                 )

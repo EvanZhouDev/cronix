@@ -209,3 +209,17 @@
 	justify-content: center;
 	text-align: center;
 }
+
+.widgetShowHide {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	justify-items: center;
+	padding-right: 1vw;
+	margin-right: -1vw;
+}
+
+.tooltip {
+	background-color: var(--highlight-color);
+}

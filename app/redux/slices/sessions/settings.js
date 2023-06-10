@@ -55,8 +55,11 @@ export const settingsSlice = createSlice({
         setSettingsTab: (state, { payload }) => {
             state.settings.currentSettingsTab = payload
         },
+        setHelpTab: (state, { payload }) => {
+            state.settings.currentHelpTab = payload
+        },
     }
 });
 
-export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor, setSettings, setSettingsTab } = settingsSlice.actions;
+export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor, setSettings, setSettingsTab, setHelpTab } = settingsSlice.actions;
 export default settingsSlice.reducer;

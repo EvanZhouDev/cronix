@@ -35,4 +35,5 @@ export const DEFAULT_SETTINGS = {
         blueColor: "#89d2dc"
     },
     currentSettingsTab: 0,
+    currentHelpTab: 0,
 }

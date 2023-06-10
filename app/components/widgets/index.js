@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./widgets.module.css";
 import { FiPlus, FiMoreVertical, FiEyeOff, FiEye } from "react-icons/fi";
 import WidgetFrame from "./components/widgetFrame";
@@ -8,6 +8,8 @@ import { addWidget, setUseWidgets } from "@app/redux/slices/sessions/widgets";
 import { useDispatch } from "react-redux";
 import settings from "@app/redux/slices/sessions/settings";
 import { success, error, message } from "@app/utils/notify";
+import Tippy from '@tippyjs/react';
+import './tippy.css';
 export default function Widgets() {
     let [sessionData] = useSession();
     // console.log(sessionData)
@@ -45,32 +47,35 @@ export default function Widgets() {
             >
                 {showWidgets &&
                     <>
-                        <div className={styles.widgetAddButton}>
-                            <FiPlus size={30} onClick={() => {
-                                if (widgetList.length < 2) {
-                                    dispatch(addWidget());
-                                    success("Added new widget.")
-                                } else {
-                                    error("Max limit of 2 widgets reached.")
-                                }
-                            }} />
-                        </div>
+                        <Tippy content="Add a new Widget">
+                            <div className={styles.widgetAddButton}>
+                                <FiPlus size={30} onClick={() => {
+                                    if (widgetList.length < 2) {
+                                        dispatch(addWidget());
+                                        success("Added new widget.")
+                                    } else {
+                                        error("Max limit of 2 widgets reached.")
+                                    }
+                                }} />
+                            </div>
+                        </Tippy>
+
                         {
-                            sessionData.useWidgets ? <FiEyeOff
+                            sessionData.useWidgets ? <Tippy content="Hide Widgets"><span className={styles.widgetShowHide}><FiEyeOff
                                 onClick={() => {
                                     dispatch(setUseWidgets(false));
                                     message("Widgets hidden.")
                                 }}
                                 className={styles.widgetHideButton}
                                 size={30}
-                            /> : <FiEye
+                            /></span></Tippy> : <Tippy content="Show Widgets"><span className={styles.widgetShowHide}><FiEye
                                 onClick={() => {
                                     dispatch(setUseWidgets(true));
                                     message("Widgets shown.")
                                 }}
                                 className={styles.widgetHideButton}
                                 size={30}
-                            />
+                            /></span></Tippy>
                         }
                     </>
                 }

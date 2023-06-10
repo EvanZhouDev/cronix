@@ -5,7 +5,7 @@ export default function Version() {
     return (
         <span className={styles.version}>
             <FiGitMerge size={20} />
-            <span className={styles.name}>0.3.0</span>
+            <span className={styles.name}>v0.3.0(&alpha;)</span>
         </span>
     )
 }

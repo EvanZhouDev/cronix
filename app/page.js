@@ -16,8 +16,6 @@ import Ministats from '@app/components/ministats'
 import "cubing/twisty";
 import Widgets from './components/widgets'
 
-import I_DONT_EXIST from "./layout.js"
-
 export default function Home() {
   let store = useStore()
   let [sessionData] = useData()

@@ -1,7 +1,6 @@
 {
 	"extends": "next/core-web-vitals",
 	"rules": {
-		"import/named": 2,
-    "eqeqeq": ["error", "always"]
+		"import/named": 2
 	}
 }

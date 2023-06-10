@@ -14,9 +14,11 @@ Inspired by Monkeytype's UI and VIM (and various other editors') modal usage, I 
 
 ### Builds
 
-Stable Build: [cronix.vercel.app](https://cronix.vercel.app)
-
-Nightly Release: [cronix-nightly.vercel.app](https://cronix-nightly.vercel.app)
+| Build Type | Website Title        | How to Access                                                  |
+|------------|----------------------|----------------------------------------------------------------|
+| Stable     | Cronix Nightly Build | [cronix.vercel.app](https://cronix.vercel.app)                 |
+| Nightly    | Cronix Nightly       | [cronix-nightly.vercel.app](https://cronix-nightly.vercel.app) |
+| Local      | Cronix Dev           | Clone and  `pnpm run dev`                                      |
 
 Feel free to test out the nightly release for me, and leave any issues you may find here in the issues tab!
 

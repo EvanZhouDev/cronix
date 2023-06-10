@@ -32,5 +32,6 @@ export const DEFAULT_SETTINGS = {
         errorColor: "#ca4754",
         greenColor: "#61c9a8",
         blueColor: "#89d2dc"
-    }
+    },
+    currentSettingsTab: 0,
 }

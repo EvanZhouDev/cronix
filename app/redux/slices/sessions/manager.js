@@ -8,7 +8,7 @@ let initialState = {
     data: {
         [DEFAULT_SESSION_NAME]: DEFAULT_SESSION,
     },
-    settings: DEFAULT_SETTINGS
+    settings: DEFAULT_SETTINGS,
 }
 export const sessionSlice = createSlice({
     name: "sessions",

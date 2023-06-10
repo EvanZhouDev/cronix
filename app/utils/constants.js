@@ -14,7 +14,8 @@ export const DEFAULT_SESSION = {
     input: DEFAULT_INPUT,
     penalty: Penalty.OK,
     scramble: SCRAMBLE_UNAVAILABLE_MSG,
-    widgets: []
+    widgets: [],
+    useWidgets: true,
 }
 export const SOLVING_MESSAGE = "solving"
 export const DEFAULT_SETTINGS = {

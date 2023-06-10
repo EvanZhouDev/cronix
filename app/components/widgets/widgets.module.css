@@ -19,8 +19,8 @@
 	padding-left: 15px;
 	padding-right: 15px;
 	position: fixed;
-	right: 4vw;
-	bottom: 8vh;
+	right: 4.5vw;
+	bottom: 7vh;
 	width: 24vw;
 	height: 5vh;
 	/* background-color: red; */
@@ -44,7 +44,7 @@
 	flex-direction: column-reverse;
 	align-items: center;
 	transition: 0.25s all;
-	
+
 	/* background-color: blue; */
 }
 .widgetGroupInactive {
@@ -60,7 +60,7 @@
 }
 
 .movingWidgetsShow {
-	right: 1vw
+	right: 1vw;
 }
 
 .widgetFrame {
@@ -121,14 +121,15 @@
 	flex-direction: column;
 }
 
-.widgetAddMenu {
+.widgetHideButton {
 	cursor: pointer;
+	margin-left: 1vw;
 }
 
-.widgetAddMenu:hover {
+.widgetHideButton:hover {
 	color: var(--highlight-color);
 }
-.widgetAddMenu:active {
+.widgetHideButton:active {
 	color: var(--font-color);
 }
 
@@ -138,10 +139,10 @@
 }
 
 .deleteWidget:hover {
-	color: var(--error-color)
+	color: var(--error-color);
 }
 .deleteWidget:active {
-	color: var(--font-color)
+	color: var(--font-color);
 }
 
 .dropdownDisplay {
@@ -201,10 +202,10 @@
 }
 
 .widgetText {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 }

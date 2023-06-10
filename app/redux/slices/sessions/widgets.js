@@ -26,8 +26,12 @@ export const widgetSlice = createSlice({
                 state.data[state.current].widgets[idx].type = newType
             } else console.error(`"${newType}" is not a valid widget type. Make sure to use the widgets exported from "@app/utils/enums"`)
         },
+        // Change widget purpose
+        setUseWidgets: (state, { payload }) => {
+            state.data[state.current].useWidgets = payload;
+        },
     }
 });
 
-export const { addWidget, deleteWidget, changeWidget } = widgetSlice.actions;
+export const { addWidget, deleteWidget, changeWidget, setUseWidgets } = widgetSlice.actions;
 export default widgetSlice.reducer;

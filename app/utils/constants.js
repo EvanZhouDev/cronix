@@ -14,9 +14,14 @@ export const DEFAULT_SESSION = {
     input: DEFAULT_INPUT,
     penalty: Penalty.OK,
     scramble: SCRAMBLE_UNAVAILABLE_MSG,
+    widgets: [],
+    useWidgets: true,
 }
+export const SOLVING_MESSAGE = "solving"
 export const DEFAULT_SETTINGS = {
     useConfetti: true,
+    hideTime: false,
+    showDeleteConfirmation: true,
     defaultEvent: DEFAULT_EVENT,
     defaultInput: DEFAULT_INPUT,
     colors: {
@@ -28,5 +33,7 @@ export const DEFAULT_SETTINGS = {
         errorColor: "#ca4754",
         greenColor: "#61c9a8",
         blueColor: "#89d2dc"
-    }
+    },
+    currentSettingsTab: 0,
+    currentHelpTab: 0,
 }

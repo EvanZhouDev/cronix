@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import styles from '../../settings.module.css';
 import { useState } from 'react';
-import Section from "./components/section"
+import Section from "../components/section"
 import { setThemeColor } from '@app/redux/slices/sessions/settings';
 import useSettings from '@app/redux/accessors/useSettings';
 import useStore from "@app/redux/accessors/useStore"
@@ -15,7 +15,7 @@ import classNames from 'classnames';
 import { error, success } from "@app/utils/notify";
 export default function Colors() {
     let settings = useSettings()
-    console.log(useStore(), settings)
+    // console.log(useStore(), settings)
     const [inputValue, setInputValue] = useState(JSON.stringify(settings.colors));
     let dispatch = useDispatch()
     const handleGoButton = () => {

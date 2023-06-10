@@ -9,7 +9,7 @@ import { Penalty } from "@utils/enums.js"
 import dev from "@utils/dev"
 import { useSession } from '@redux/accessors'
 import { v4 as uuidv4 } from 'uuid';
-import { SCRAMBLE_UNAVAILABLE_MSG } from '@app/utils/constants'
+import { SCRAMBLE_UNAVAILABLE_MSG, SOLVING_MESSAGE } from '@app/utils/constants'
 import { setPenalty } from '@redux/slices/sessions/operations'
 import useNewScramble from '@app/utils/useNewScramble'
 import { message } from '@app/utils/notify'
@@ -18,7 +18,7 @@ import useSettings from '@redux/accessors/useSettings'
 
 export default function useTimer(setIsExploding) {
     let settings = useSettings();
-    console.log(settings)
+    // console.log(settings)
     let { status } = useTimerData()
     let [sessionData] = useSession()
     const dispatch = useDispatch()
@@ -54,7 +54,7 @@ export default function useTimer(setIsExploding) {
         }))
         if (Math.min(...sessionData.list.map(x => x.derived.mathematicalTime)) > elapsed) {
             message(`New single PB: ${calcTime(elapsed).formattedTime}`)
-            console.log(settings.useConfetti)
+            // console.log(settings.useConfetti)
             if (settings.useConfetti) {
                 setIsExploding(true)
                 clearTimeout(confettiTimeout)
@@ -99,9 +99,13 @@ export default function useTimer(setIsExploding) {
                 dispatch(setStatus(TimerStatus.TIMING));
                 genScramble(undefined)
                 let time = Date.now();
-                setTimer(setInterval(() => {
-                    dispatch(setTime(Date.now() - time));
-                }, 10))
+                if (settings.hideTime) {
+                    dispatch(setTime(SOLVING_MESSAGE));
+                } else {
+                    setTimer(setInterval(() => {
+                        dispatch(setTime(Date.now() - time));
+                    }, 10))
+                }
                 setStartTime(time);
                 break;
         }

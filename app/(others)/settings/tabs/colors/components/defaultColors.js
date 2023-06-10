@@ -12,9 +12,13 @@ export default function DefaultColorsSection() {
     const dispatch = useDispatch();
     const keyToNameMap = {
         default: 'Serika',
-        serikaLight: 'Serika Light',
+        serikaLight: 'Serika (Light)',
         botanical: 'Botanical',
         camping: 'Camping',
+        nord: 'Nord',
+        nordLight: 'Nord (Light)',
+        dark: 'Dark',
+        light: 'Light',
     };
     const themes = {
         default: {
@@ -54,6 +58,46 @@ export default function DefaultColorsSection() {
             fontColorDull: '#C2B8AB',
             highlightColor: '#618C55',
             errorColor: '#FF7D7D',
+            greenColor: '#61c9a8',
+            blueColor: '#89d2dc',
+        },
+        nord: {
+            bgColor: '#242933',
+            darkerBgColor: '#1B1F27',
+            fontColor: '#D8DEE9',
+            fontColorDull: '#617B94',
+            highlightColor: '#D8DEE9',
+            errorColor: '#BF616A',
+            greenColor: '#61c9a8',
+            blueColor: '#89d2dc',
+        },
+        nordLight: {
+            bgColor: '#EBEFF5',
+            darkerBgColor: '#D8DEE9',
+            fontColor: '#8FBCBB',
+            fontColorDull: '#697791',
+            highlightColor: '#8FBCBB',
+            errorColor: '#BF616A',
+            greenColor: '#61c9a8',
+            blueColor: '#89d2dc',
+        },
+        dark: {
+            bgColor: '#111111',
+            darkerBgColor: '#191919',
+            fontColor: '#EEEEEE',
+            fontColorDull: '#3E3E3E',
+            highlightColor: '#EEEEEE',
+            errorColor: '#D93232',
+            greenColor: '#61c9a8',
+            blueColor: '#89d2dc',
+        },
+        light: {
+            bgColor: '#EEEEEE',
+            darkerBgColor: '#CFCFCF',
+            fontColor: '#111111',
+            fontColorDull: '#9A9A9A',
+            highlightColor: '#111111',
+            errorColor: '#D93232',
             greenColor: '#61c9a8',
             blueColor: '#89d2dc',
         },
@@ -100,7 +144,7 @@ export default function DefaultColorsSection() {
             </div>
             <div className={styles.moreButton} onClick={toggleDropdown}>{showDropdown ? <><FiChevronDown /> Hide additional themes</> : <><FiChevronRight /> Show additional themes</>}</div>
             {showDropdown && (
-                <div className={styles.colorSwatchRow}>
+                <div className={styles.colorSwatchSection}>
                     {rows.slice(1).map((row, rowIndex) => (
                         <div key={rowIndex} className={styles.colorSwatchRow}>
                             {row.map((themeKey) => (

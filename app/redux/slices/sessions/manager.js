@@ -1,7 +1,6 @@
 import { createSlice, current, createReducer } from '@reduxjs/toolkit'
 import { JudgingPhase, TimerStatus } from '@utils/enums'
 import { DEFAULT_SESSION_NAME, DEFAULT_SETTINGS, DEFAULT_SESSION } from '@utils/constants'
-import { Events, Inputs } from '@app/utils/settings'
 let initialState = {
     current: DEFAULT_SESSION_NAME,
     order: [DEFAULT_SESSION_NAME],
@@ -9,7 +8,7 @@ let initialState = {
     data: {
         [DEFAULT_SESSION_NAME]: DEFAULT_SESSION,
     },
-    settings: DEFAULT_SETTINGS
+    settings: DEFAULT_SETTINGS,
 }
 export const sessionSlice = createSlice({
     name: "sessions",

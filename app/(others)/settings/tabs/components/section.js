@@ -1,4 +1,4 @@
-import styles from '../../../settings.module.css';
+import styles from "../../settings.module.css";
 
 export default function Section({ title, description, input }) {
     return (

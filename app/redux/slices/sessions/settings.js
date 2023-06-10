@@ -7,7 +7,7 @@ let initialState = {
         event: DEFAULT_EVENT,
         input: DEFAULT_INPUT,
     },
-    settings: DEFAULT_SETTINGS
+    settings: DEFAULT_SETTINGS,
 }
 
 
@@ -46,8 +46,20 @@ export const settingsSlice = createSlice({
                 ...payload
             }
         },
+        setSettings: (state, { payload }) => {
+            state.settings = {
+                ...state.settings,
+                ...payload
+            }
+        },
+        setSettingsTab: (state, { payload }) => {
+            state.settings.currentSettingsTab = payload
+        },
+        setHelpTab: (state, { payload }) => {
+            state.settings.currentHelpTab = payload
+        },
     }
 });
 
-export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor } = settingsSlice.actions;
+export const { setDefaultInput, setDefaultEvent, setUseConfetti, setThemeColor, setSettings, setSettingsTab, setHelpTab } = settingsSlice.actions;
 export default settingsSlice.reducer;

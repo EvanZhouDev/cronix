@@ -1,0 +1,134 @@
+body.react-confirm-alert-body-element {
+	overflow: hidden;
+	font-family: "Fira Code";
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: var(--font-color);
+}
+
+.react-confirm-alert-blur {
+	filter: url(#gaussian-blur);
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+}
+
+.react-confirm-alert-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+	opacity: 0;
+	-webkit-animation: react-confirm-alert-fadeIn 0.25s 0.25s forwards;
+	-moz-animation: react-confirm-alert-fadeIn 0.25s 0.25s forwards;
+	-o-animation: react-confirm-alert-fadeIn 0.25s 0.25s forwards;
+	animation: react-confirm-alert-fadeIn 0.25s 0.25s forwards;
+}
+
+.react-confirm-alert-body {
+	width: 400px;
+	padding: 30px;
+	background: var(--darker-bg-color);
+	border-radius: 10px;
+	box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+	opacity: 1 !important;
+	color: var(--font-color-dull);
+}
+
+.react-confirm-alert-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 1 !important;
+}
+
+.react-confirm-alert-body > h1 {
+	color: var(--font-color);
+	margin-top: 0;
+}
+
+.react-confirm-alert-body > h3 {
+	margin: 0;
+	font-size: 16px;
+}
+
+.react-confirm-alert-button-group {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.react-confirm-alert-button-group > button {
+	font-family: "Fira Code";
+	outline: none;
+	background: #333;
+	border: none;
+	display: inline-block;
+	padding: 6px 18px;
+	color: #eee;
+	margin-right: 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.react-confirm-alert-button-group > button:nth-of-type(2) {
+	background: var(--error-color);
+	font-weight: bold;
+}
+.react-confirm-alert-button-group > button:hover {
+	background: var(--font-color);
+	color: var(--bg-color);
+}
+.react-confirm-alert-button-group > button:active {
+	background: var(--bg-color);
+}
+
+@-webkit-keyframes react-confirm-alert-fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes react-confirm-alert-fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-o-keyframes react-confirm-alert-fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes react-confirm-alert-fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

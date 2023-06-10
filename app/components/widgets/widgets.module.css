@@ -1,0 +1,225 @@
+.widgetAddButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--highlight-color);
+	border-radius: 10000px;
+	color: var(--bg-color);
+	cursor: pointer;
+	transition: 0.25s all;
+}
+.widgetAddButton:hover {
+	background-color: var(--font-color);
+}
+.widgetAddButton:active {
+	background-color: var(--highlight-color);
+}
+
+.widgetSpawnGroup {
+	padding-left: 15px;
+	padding-right: 15px;
+	position: fixed;
+	right: 4.5vw;
+	bottom: 7vh;
+	width: 24vw;
+	height: 5vh;
+	/* background-color: red; */
+	display: flex;
+	flex-direction: row;
+	align-content: end;
+	align-items: end;
+	justify-items: end;
+	justify-content: end;
+	transition: 0.25s all;
+}
+.widgetGroup {
+	position: fixed;
+	right: 4vw;
+	bottom: 10vh;
+	width: auto;
+	margin-bottom: 0px;
+	padding: 15px;
+	height: auto;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	transition: 0.25s all;
+
+	/* background-color: blue; */
+}
+.widgetGroupInactive {
+	margin-bottom: -12px;
+}
+
+.movingWidgets {
+	position: absolute;
+	bottom: 36vh;
+	right: -30vw;
+	transition: 0.25s all;
+	overflow-y: scroll;
+}
+
+.movingWidgetsShow {
+	right: 1vw;
+}
+
+.widgetFrame {
+	width: 22.5vw;
+	height: 30vh;
+	margin-top: 0.5vw;
+	margin-bottom: 0.5vw;
+	background-color: var(--darker-bg-color);
+	padding: 10px;
+	border-radius: 20px;
+	padding-bottom: 20px;
+	/* -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.35);
+	-moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.35); */
+	transition: 0.25s all;
+	display: flex;
+	justify-content: center;
+}
+
+.widgetContent {
+	align-self: end;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 25vh;
+	width: 22.5vw;
+}
+.widgetContent > * {
+	height: 25vh;
+	width: 22.5vw;
+}
+
+.shortWidgetFrame {
+	height: 25vh;
+}
+
+.widgetControls {
+	height: 5vh;
+	width: 22.5vw;
+	position: absolute;
+	align-self: start;
+	display: flex;
+	padding: 0px;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.dropdown {
+	margin-left: 30px;
+	margin-right: 30px;
+	background-color: var(--bg-color);
+	padding: 10px;
+	width: 14vw;
+	border-radius: 1000000px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.widgetHideButton {
+	cursor: pointer;
+	margin-left: 1vw;
+}
+
+.widgetHideButton:hover {
+	color: var(--highlight-color);
+}
+.widgetHideButton:active {
+	color: var(--font-color);
+}
+
+.deleteWidget {
+	cursor: pointer;
+	transition: 0.25s;
+}
+
+.deleteWidget:hover {
+	color: var(--error-color);
+}
+.deleteWidget:active {
+	color: var(--font-color);
+}
+
+.dropdownDisplay {
+	font-size: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.dropdownContent {
+	position: absolute;
+	top: 100%;
+	z-index: 1000000;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--bg-color);
+	width: 10vw;
+	padding: 10px;
+	padding-bottom: 0px;
+	border-radius: 20px;
+	display: none;
+	position: absolute;
+	background: var(--darker-bg-color);
+	border-radius: 10px;
+	padding: 10px;
+	display: none;
+	transition: all 0.25s;
+	overflow-y: scroll;
+	width: 14vw;
+	height: 25vh;
+}
+
+.showDropdown {
+	display: block;
+}
+
+.dropdownOption {
+	cursor: pointer;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	transition: all 0.1s;
+	background-color: var(--bg-color);
+	color: var(--font-color);
+	padding: 10px;
+	margin: -5px;
+	border-radius: 10px;
+}
+
+.dropdownActive {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+
+.widgetText {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.widgetShowHide {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	justify-items: center;
+	padding-right: 1vw;
+	margin-right: -1vw;
+}
+
+.tooltip {
+	background-color: var(--highlight-color);
+}

@@ -9,7 +9,7 @@ import dev from './utils/dev';
 
 let preview = process.env.VERCEL_ENV
 let title = "Cronix Timer"
-if (dev) title = "Cronix In-Dev Edition"
+if (dev) title = "Cronix Dev"
 else if (preview === "preview") title = "Cronix Nightly Build"
 
 export const metadata = {

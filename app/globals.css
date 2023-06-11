@@ -32,7 +32,3 @@ body * {
 input:focus {
 	outline: 1px solid var(--highlight-color);
 }
-
-.wrapper {
-	display: flex;
-}

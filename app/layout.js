@@ -30,11 +30,9 @@ export default function RootLayout({ children }) {
       <body>
         <Toaster position="top-right" />
         <Providers>
-          <div className={styles.wrapper}>
-            <Titlebar />
-            {children}
-            <Footer />
-          </div>
+          <Titlebar />
+          {children}
+          <Footer />
         </Providers>
         <Analytics />
       </body>

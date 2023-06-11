@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast';
 import { Fira_Code } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react';
 import dev from './utils/dev';
-
+import styles from "./globals.css"
 let preview = process.env.VERCEL_ENV
 let title = "Cronix Timer"
 if (dev) title = "Cronix Dev"
@@ -15,6 +15,7 @@ else if (preview === "preview") title = "Cronix Nightly Build"
 export const metadata = {
   title: title,
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
+  viewport: "width=device-width, initial-scale=1.0"
 }
 
 const firacode = Fira_Code({
@@ -24,16 +25,16 @@ const firacode = Fira_Code({
 })
 
 export default function RootLayout({ children }) {
-
-
   return (
     <html lang="en" className={firacode.className}>
       <body>
         <Toaster position="top-right" />
         <Providers>
-          <Titlebar />
-          {children}
-          <Footer />
+          <div className={styles.wrapper}>
+            <Titlebar />
+            {children}
+            <Footer />
+          </div>
         </Providers>
         <Analytics />
       </body>

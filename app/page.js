@@ -15,12 +15,11 @@ import Bar from "@app/components/bar"
 import Ministats from '@app/components/ministats'
 import "cubing/twisty";
 import Widgets from './components/widgets'
-
+import useIsMobile from './utils/useIsMobile'
 export default function Home() {
+  let isMobile = useIsMobile()
   let store = useStore()
   let [sessionData] = useData()
-
-  let test = useRef(null)
 
   useEffect(() => {
     document.addEventListener('DOMContentLoaded', function () {
@@ -34,21 +33,22 @@ export default function Home() {
   return (
     <div className={styles.page} id="mainTimer">
       <Gate>
-        <player />
-        <div className={styles.vsection} ref={test}>
+        <div className={styles.vsection}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
             <Bar /> : null}
         </div>
+
         <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
-          {/* <Timer /> */}
           {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
           {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
         </div>
+
         <div className={styles.vsection}>
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
         </div>
-        {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Widgets /> : null}
+
+        {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY && !isMobile ? <Widgets /> : null}
       </Gate>
     </div>
   )

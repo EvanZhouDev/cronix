@@ -4,3 +4,7 @@
 	overflow-y: scroll;
 	mask-image: linear-gradient(to top, transparent, black 8% );
 }
+
+.philosophyPageMobile {
+	width: 95vw;
+}

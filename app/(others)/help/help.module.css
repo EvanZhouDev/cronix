@@ -6,7 +6,12 @@
 	mask-image: linear-gradient(to top, transparent, black 8%);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: start;
+	overflow: hidden;
+}
+
+.helpPageMobile {
+	width: 95vw;
 }
 
 .helpTitle {
@@ -20,4 +25,9 @@
 	overflow-y: scroll;
 	height: 70vh;
 	mask-image: linear-gradient(to top, transparent, black 8% );
+}
+
+
+.infoTabMobile {
+	width: 95vw;
 }

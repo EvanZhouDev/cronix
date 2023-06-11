@@ -5,3 +5,15 @@ export default function useIsMobile() {
     if (isPortrait && isMobile) return true;
     return false;
 }
+
+export function RenderOnMobile({ children }) {
+    return (
+        <>{useIsMobile() ? children : null}</>
+    )
+}
+
+export function RenderOnDesktop({ children }) {
+    return (
+        <>{!useIsMobile() ? children : null}</>
+    )
+}

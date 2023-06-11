@@ -15,6 +15,7 @@ import useIsMobile from '@app/utils/useIsMobile';
 export default function Page() {
     let settings = useSettings()
     let dispatch = useDispatch()
+
     return (
         <div>
             <div className={classNames(styles.settingsPage)}>

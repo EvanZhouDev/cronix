@@ -6,6 +6,8 @@ import ColorSwatch from './colorSwatch';
 import useSettings from '@app/redux/accessors/useSettings';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { error, success } from "@app/utils/notify";
+import classNames from 'classnames';
+import useIsMobile from '@app/utils/useIsMobile';
 
 export default function DefaultColorsSection() {
     const settings = useSettings();
@@ -104,6 +106,7 @@ export default function DefaultColorsSection() {
     };
 
     const [showDropdown, setShowDropdown] = useState(false);
+    let isMobile = useIsMobile();
 
     const toggleDropdown = () => {
         setShowDropdown((prevShowDropdown) => !prevShowDropdown);
@@ -121,7 +124,7 @@ export default function DefaultColorsSection() {
     const firstRow = rows[0];
 
     return (
-        <div className={styles.themeSection}>
+        <div className={classNames(styles.themeSection, { [styles.themeSectionMobile]: isMobile })}>
             <span className={styles.currentTheme}>
                 Current theme: {keyToNameMap[Object.keys(themes).find(
                     (themeKey) =>
@@ -144,7 +147,7 @@ export default function DefaultColorsSection() {
             </div>
             <div className={styles.moreButton} onClick={toggleDropdown}>{showDropdown ? <><FiChevronDown /> Hide additional themes</> : <><FiChevronRight /> Show additional themes</>}</div>
             {showDropdown && (
-                <div className={styles.colorSwatchSection}>
+                <div className={classNames(styles.colorSwatchSection, { [styles.colorSwatchSectionMobile]: isMobile })}>
                     {rows.slice(1).map((row, rowIndex) => (
                         <div key={rowIndex} className={styles.colorSwatchRow}>
                             {row.map((themeKey) => (

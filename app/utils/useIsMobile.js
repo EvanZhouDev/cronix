@@ -1,18 +1,25 @@
 
 import { isMobile } from "react-device-detect";
+import { useState, useEffect } from "react"
 
 export default function useIsMobile() {
-    return isMobile;
+    const [isMobileState, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(isMobile)
+    }, [isMobile]);
+
+    return isMobileState;
 }
 
 export function RenderOnMobile({ children }) {
     return (
-        <>{isMobile ? children : null}</>
+        <>{useIsMobile() ? children : null}</>
     )
 }
 
 export function RenderOnDesktop({ children }) {
     return (
-        <>{!isMobile ? children : null}</>
+        <>{useIsMobile() ? null : children}</>
     )
 }

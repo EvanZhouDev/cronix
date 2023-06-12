@@ -117,6 +117,7 @@ export default function Colors() {
                     onChange={(e) => setInputValue(e.target.value)}
                 />
                 <div className={classNames(styles.importButton)} onClick={() => {
+                    success(`Copied theme.`)
                     navigator.clipboard.writeText(inputValue);
                 }}>
                     <FiCopy size={20} />

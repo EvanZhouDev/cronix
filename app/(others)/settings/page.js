@@ -22,8 +22,6 @@ export default function Page() {
                 <Gate>
                     <h1>Settings</h1>
                     <Tabs defaultIndex={settings.currentSettingsTab} onSelect={(index) => {
-                        console.log(index)
-                        console.log(settings)
                         dispatch(setSettingsTab(index))
                     }}>
                         <TabList>

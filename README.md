@@ -25,5 +25,7 @@ Feel free to test out the nightly release for me, and leave any issues you may f
 ### More information
 
 Read more about Cronix in the timer itself!
+
 Usage Instructions: [cronix/help](https://cronix.vercel.app/help)
+
 Philosophy: [cronix/philosophy](https://cronix.vercel.app/philosophy)

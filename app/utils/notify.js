@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-
+import { isMobile } from "react-device-detect";
 let style = {
     style: {
         border: '1px solid var(--highlight-color)',
@@ -12,6 +12,7 @@ let style = {
         primary: ' var(--highlight-color)',
         secondary: 'var(--bg-color)',
     },
+    position: isMobile ? "bottom-center" : "top-right"
 }
 export function success(msg) {
     toast.success(msg, style)

@@ -23,3 +23,9 @@ export const WidgetTypes = {
     TABLE: "Time (Table)",
     GRAPH: "Time (Graph)",
 }
+
+export const UiMode = {
+    AUTO: "auto",
+    MOBILE: "mobile",
+    DESKTOP: "desktop"
+}

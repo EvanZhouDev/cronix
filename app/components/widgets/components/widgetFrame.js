@@ -20,7 +20,7 @@ export default function WidgetFrame({ idx, showOptions, type }) {
 
 
     let widgetNameToComponent = {
-        [WidgetTypes.SCRAMBLE]: <ScrambleWidget/>
+        [WidgetTypes.SCRAMBLE]: <ScrambleWidget />
     }
 
     return (
@@ -33,7 +33,7 @@ export default function WidgetFrame({ idx, showOptions, type }) {
                             [styles.showDropdown]: dropdownShown,
                         })}>
                             {
-                                Object.entries(WidgetTypes).map(([key, name], i) => (
+                                Object.entries(WidgetTypes).map(([key, name]) => (
                                     <>
                                         <span key={key} onClick={() => dispatch(changeWidget({ idx: idx, newType: name }))} className={classNames(styles.dropdownOption, { [styles.dropdownActive]: type === name })}>{name}</span>
                                         <br />

@@ -94,6 +94,10 @@
 	z-index: 10;
 }
 
+.sessionDropdownMobile {
+	right: 21vw;
+}
+
 .sessionWrapper:hover .sessionDropdown {
 	display: block;
 }

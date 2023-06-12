@@ -15,8 +15,10 @@ import { Events } from "@app/utils/settings"
 import SessionListEl from "./sessionListEl"
 import { useState } from "react"
 import { success, error, message } from "@app/utils/notify";
+import useIsMobile from "@app/utils/useIsMobile"
 
 export default function Session() {
+    let isMobile = useIsMobile()
     let [sessionData, curSession] = useData()
     let store = useStore()
     let dispatch = useDispatch()
@@ -44,7 +46,7 @@ export default function Session() {
                 <FiList />
                 <span className={styles.sessionName}>{store.sessions.current}</span>
             </div>
-            <div className={styles.sessionDropdown}>
+            <div className={classNames(styles.sessionDropdown, {[styles.sessionDropdownMobile]: isMobile})}>
                 <span className={styles.label}>Create a new session:</span>
                 <br />
                 <span className={styles.newSessionSection}>

@@ -17,7 +17,7 @@ import useIsMobile from '@app/utils/useIsMobile';
 export default function Colors() {
     let settings = useSettings()
     let isMobile = useIsMobile()
-    // console.log(useStore(), settings)
+
     const [inputValue, setInputValue] = useState(JSON.stringify(settings.colors));
     let dispatch = useDispatch()
     const handleGoButton = () => {

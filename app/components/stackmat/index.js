@@ -25,25 +25,7 @@ export default function Stackmat() {
 
     let handle = (arg) => {
         dispatch(setStatus(TimerStatus.TIMING))
-        // if (arg.isRunning) {
-        //     console.log("YES")
-        // }
-        // if (!arg.isRunning && store.timer.status === TimerStatus.TIMING) {
-        //     // console.log("AHHH")
-        //     dispatch(setTime(arg.time))
-        //     dispatch(setStatus(TimerStatus.IDLE))
-        //     dispatch(setPhase(JudgingPhase.JUDGE))
-        // }
-        // if (arg.isRunning) {
-        //     // console.log("UPDATE???")
-        //     setRunning(arg.running)
-        //     dispatch(setTime(arg.time))
-        // }
     }
-
-    // useEffect(() => {
-    //     connect()
-    // }, [])
 
     async function connect() {
         // Connect to media device

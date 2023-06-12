@@ -11,7 +11,6 @@ import WidgetText from "./widgetText";
 import ScrambleWidget from "./widgets/scrambleWidget";
 export default function WidgetFrame({ idx, showOptions, type }) {
     let dispatch = useDispatch()
-    // console.log(Object.entries(WidgetTypes))
 
     let [dropdownShown, setDropdownShown] = useState(false);
 

@@ -12,7 +12,6 @@ import Tippy from '@tippyjs/react';
 import '@app/styles/tippy.css';
 export default function Widgets() {
     let [sessionData] = useSession();
-    // console.log(sessionData)
     const [showWidgets, setShowWidgets] = useState(false);
     let dispatch = useDispatch();
     let widgetList = sessionData.widgets;

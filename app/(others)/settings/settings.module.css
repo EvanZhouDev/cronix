@@ -139,6 +139,11 @@
 	right: 5%;
 }
 
+.importInputMobile {
+	width: 10vw;
+	height: 5vh;
+}
+
 .picker:focus-within .colorDropdown,
 .colorDropdown:hover {
 	display: block;

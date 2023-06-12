@@ -6,7 +6,7 @@ export default function Option({ name, icon, link }) {
     return (
         <Link href={link} className={styles.option}>
             {icon}
-            {!isMobile && <span className={styles.name}>{name}</span>}
+            {!isMobile ? <span className={styles.name}>{name}</span> : <span></span>}
         </Link>
     )
 }

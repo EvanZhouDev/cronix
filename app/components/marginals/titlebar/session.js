@@ -14,10 +14,11 @@ import { SCRAMBLE_LOADING_MSG, SCRAMBLE_UNAVAILABLE_MSG } from "@app/utils/const
 import { Events } from "@app/utils/settings"
 import SessionListEl from "./sessionListEl"
 import { useState } from "react"
-import { success, error, message } from "@app/utils/notify";
+import useCustomToaster from "@app/utils/notify";
 import useIsMobile from "@app/utils/useIsMobile"
 
 export default function Session() {
+    let { success, error, message } = useCustomToaster()
     let isMobile = useIsMobile()
     let [sessionData, curSession] = useData()
     let store = useStore()

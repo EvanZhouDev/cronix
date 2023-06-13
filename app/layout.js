@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={firacode.className}>
       <body>
-        <Toaster position="top-right" />
+        <div><Toaster /></div>
         <Providers>
           <Titlebar />
           {children}

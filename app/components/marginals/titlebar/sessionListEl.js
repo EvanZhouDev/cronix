@@ -4,12 +4,13 @@ import { useState } from "react";
 import { renameSession } from "@app/redux/slices/sessions/manager";
 import { useDispatch } from "react-redux";
 import { useEffect, useRef } from "react";
-import { success } from "@app/utils/notify";
+import useCustomToaster from "@app/utils/notify";
 import { confirmAlert } from 'react-confirm-alert';
 import useSettings from "@app/redux/accessors/useSettings";
 import './custom-react-confirm.css'; // Import the default styles (optional)
 
 export default function SessionListEl({ sessionName, onClick, onDeleteClick, className, resetEditStatus }) {
+    let { success } = useCustomToaster()
     let inputRef = useRef()
     let dispatch = useDispatch();
     let settings = useSettings();

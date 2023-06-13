@@ -7,10 +7,11 @@ import { useSession } from "@app/redux/accessors";
 import { addWidget, setUseWidgets } from "@app/redux/slices/sessions/widgets";
 import { useDispatch } from "react-redux";
 import settings from "@app/redux/slices/sessions/settings";
-import { success, error, message } from "@app/utils/notify";
+import useCustomToaster from "@app/utils/notify";
 import Tippy from '@tippyjs/react';
 import '@app/styles/tippy.css';
 export default function Widgets() {
+    let { success, error, message } = useCustomToaster()
     let [sessionData] = useSession();
     const [showWidgets, setShowWidgets] = useState(false);
     let dispatch = useDispatch();

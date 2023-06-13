@@ -95,7 +95,7 @@
 }
 
 .sessionDropdownMobile {
-	right: 21vw;
+	left: 25%;
 }
 
 .sessionWrapper:hover .sessionDropdown {

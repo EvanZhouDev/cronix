@@ -13,113 +13,117 @@ import Dropdown from "./dropdown"
 import { cloneArray } from "@app/utils/cloneObject"
 import useNewScramble from "@app/utils/useNewScramble"
 import { useStore } from "@app/redux/accessors"
+import useIsMobile from "@app/utils/useIsMobile"
+import classNames from "classnames"
 export default function Bar() {
+    let isMobile = useIsMobile()
     let dispatch = useDispatch()
     let [sessionData, sessionName] = useData()
     let store = useStore()
     let genScramble = useNewScramble()
+    let eventTypes = [
+        {
+            name: "3x3",
+            icon: <FiBox size={15} />
+        },
+        {
+            name: "4x4",
+            icon: <FiBox size={15} />
+        },
+        {
+            name: "More",
+            icon: <FiMoreVertical size={15} />,
+            submenu: [
+                {
+                    type: "label",
+                    name: "NxNs"
+                },
+                {
+                    name: "2x2",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "3x3",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "4x4",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "5x5",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "6x6",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "7x7",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other 3x3 Events"
+                },
+                {
+                    name: "3x3 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "3x3 One-Handed",
+                    icon: <FiBox size={15} /> // add more relevant symbol
+                },
+                {
+                    name: "3x3 Multi-Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "3x3 FMC",
+                    icon: <FiPenTool size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other WCA Events"
+                },
+                {
+                    name: "Square-1",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Megaminx",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Clock",
+                    icon: <FiClock size={15} />
+                },
+                {
+                    name: "Pyraminx",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Skewb",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other Blind Events"
+                },
+                {
+                    name: "4x4 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "5x5 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+            ]
+        },
+    ]
     let [options, setOptions] = useState([{
         name: "event",
-        types: [
-            {
-                name: "3x3",
-                icon: <FiBox size={15} />
-            },
-            {
-                name: "4x4",
-                icon: <FiBox size={15} />
-            },
-            {
-                name: "More",
-                icon: <FiMoreVertical size={15} />,
-                submenu: [
-                    {
-                        type: "label",
-                        name: "NxNs"
-                    },
-                    {
-                        name: "2x2",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        name: "3x3",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        name: "4x4",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        name: "5x5",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        name: "6x6",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        name: "7x7",
-                        icon: <FiBox size={15} />
-                    },
-                    {
-                        type: "label",
-                        name: "Other 3x3 Events"
-                    },
-                    {
-                        name: "3x3 Blind",
-                        icon: <FiEyeOff size={15} />
-                    },
-                    {
-                        name: "3x3 One-Handed",
-                        icon: <FiBox size={15} /> // add more relevant symbol
-                    },
-                    {
-                        name: "3x3 Multi-Blind",
-                        icon: <FiEyeOff size={15} />
-                    },
-                    {
-                        name: "3x3 FMC",
-                        icon: <FiPenTool size={15} />
-                    },
-                    {
-                        type: "label",
-                        name: "Other WCA Events"
-                    },
-                    {
-                        name: "Square-1",
-                        icon: <FiStar size={15} />
-                    },
-                    {
-                        name: "Megaminx",
-                        icon: <FiStar size={15} />
-                    },
-                    {
-                        name: "Clock",
-                        icon: <FiClock size={15} />
-                    },
-                    {
-                        name: "Pyraminx",
-                        icon: <FiStar size={15} />
-                    },
-                    {
-                        name: "Skewb",
-                        icon: <FiStar size={15} />
-                    },
-                    {
-                        type: "label",
-                        name: "Other Blind Events"
-                    },
-                    {
-                        name: "4x4 Blind",
-                        icon: <FiEyeOff size={15} />
-                    },
-                    {
-                        name: "5x5 Blind",
-                        icon: <FiEyeOff size={15} />
-                    },
-                ]
-            },
-        ],
+        types: eventTypes,
         map: Events,
         // setter: setEvent,
         setter: (name) => {
@@ -153,12 +157,30 @@ export default function Bar() {
     }])
     const isInitialRender = useRef(true);
     useEffect(() => {
-        if (sessionData.event !== Events["3x3"]) {
+        console.log(isMobile)
+        if (isMobile) {
             setOptions(oldOptions => {
                 let newOptions = cloneArray(oldOptions)
-                newOptions[0].types[1].name = Object.fromEntries(Object.entries(Events).map(([key, value]) => [value, key]))[sessionData.event]
+                newOptions[0].types.splice(0, 1)
+                return newOptions
+            })
+        }
+    }, [isMobile])
+    useEffect(() => {
+        if (isMobile) {
+            setOptions(oldOptions => {
+                let newOptions = cloneArray(oldOptions)
+                newOptions[0].types[0].name = Object.fromEntries(Object.entries(Events).map(([key, value]) => [value, key]))[sessionData.event]
                 return newOptions;
             })
+        } else {
+            if (sessionData.event !== Events["3x3"]) {
+                setOptions(oldOptions => {
+                    let newOptions = cloneArray(oldOptions)
+                    newOptions[0].types[1].name = Object.fromEntries(Object.entries(Events).map(([key, value]) => [value, key]))[sessionData.event]
+                    return newOptions;
+                })
+            }
         }
         if (isInitialRender.current) {
             isInitialRender.current = false;
@@ -168,7 +190,7 @@ export default function Bar() {
 
 
     return (
-        <div className={styles.bar}>
+        <div className={classNames(styles.bar, {[styles.barMobile]: isMobile})}>
             {
                 options.map((x, i) => (
                     <Fragment key={x.name}>

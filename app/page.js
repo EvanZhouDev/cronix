@@ -50,8 +50,22 @@ export default function Home() {
             {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
           </div>
 
-          {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY && !isMobile ? <Widgets /> : null}
+          {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Widgets /> : null}
         </RenderOnDesktop>
+        <RenderOnMobile>
+          <div className={styles.vsection}>
+            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
+              <Bar /> : null}
+          </div>
+          <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
+            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
+            {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
+            {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
+          </div>
+          <div className={styles.vsection}>
+            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
+          </div>
+        </RenderOnMobile>
       </Gate>
     </div>
   )

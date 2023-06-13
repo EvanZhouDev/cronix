@@ -11,7 +11,6 @@ import useSettings from '@app/redux/accessors/useSettings';
 import { setSettingsTab } from '@app/redux/slices/sessions/settings';
 import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
-import useIsMobile from '@app/utils/useIsMobile';
 export default function Page() {
     let settings = useSettings()
     let dispatch = useDispatch()

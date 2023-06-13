@@ -1,5 +1,5 @@
 
-import { isMobile } from "react-device-detect";
+import { isMobile, isTablet, useMobileOrientation } from "react-device-detect";
 import { useState, useEffect } from "react"
 import useSettings from "@redux/accessors/useSettings";
 import { UiMode } from "./enums"
@@ -7,9 +7,19 @@ import { UiMode } from "./enums"
 export default function useIsMobile() {
     let settings = useSettings();
     const [isMobileState, setIsMobile] = useState(false);
-
+    let mobileOrientation = useMobileOrientation();
     useEffect(() => {
-        setIsMobile(isMobile)
+        let returnValue = false;
+        // if tablet and vertical, setIsMobile(false)
+        // if tablet and horizontal, setIsMobile(true)
+        // otherwise, use ifMobile
+        if (isTablet && mobileOrientation.isLandscape) {
+            setIsMobile(false)
+        } else if (isTablet && mobileOrientation.isPortrait) {
+            setIsMobile(true)
+        } else {
+            setIsMobile(isMobile)
+        }
     }, [isMobile]);
 
     if (settings.uiMode === UiMode.AUTO) {

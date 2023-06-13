@@ -2,9 +2,17 @@
     padding-left: 30px;
     padding-right: 30px;
     font-size: 20px;
+    text-align: center;
 }
 
 .pb {
     font-weight: bold;
     color: var(--highlight-color);
+}
+
+.statsContainer {
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

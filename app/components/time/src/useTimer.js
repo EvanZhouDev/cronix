@@ -12,12 +12,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { SCRAMBLE_UNAVAILABLE_MSG, SOLVING_MESSAGE } from '@app/utils/constants'
 import { setPenalty } from '@redux/slices/sessions/operations'
 import useNewScramble from '@app/utils/useNewScramble'
-import useCustomToaster from '@app/utils/notify'
+import { message } from '@app/utils/notify'
 import calcTime from '@app/utils/calcTime'
 import useSettings from '@redux/accessors/useSettings'
 
 export default function useTimer(setIsExploding) {
-    let { message } = useCustomToaster()
     let settings = useSettings();
     let { status } = useTimerData()
     let [sessionData] = useSession()

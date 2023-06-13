@@ -5,12 +5,11 @@ import { setThemeColor } from '@app/redux/slices/sessions/settings';
 import ColorSwatch from './colorSwatch';
 import useSettings from '@app/redux/accessors/useSettings';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
-import useCustomToaster from "@app/utils/notify";
+import { success } from "@app/utils/notify";
 import classNames from 'classnames';
 import useIsMobile from '@app/utils/useIsMobile';
 
 export default function DefaultColorsSection() {
-    let { error, success } = useCustomToaster();
     const settings = useSettings();
     const dispatch = useDispatch();
     const keyToNameMap = {

@@ -12,10 +12,9 @@ import ColorPicker from './components/colorPicker';
 import DefaultColorsSection from './components/defaultColors';
 import { FiCopy, FiArrowRight } from 'react-icons/fi';
 import classNames from 'classnames';
-import useCustomToaster from "@app/utils/notify";
+import { error, success } from "@app/utils/notify";
 import useIsMobile from '@app/utils/useIsMobile';
 export default function Colors() {
-    let { error, success }=useCustomToaster();
     let settings = useSettings()
     let isMobile = useIsMobile()
 

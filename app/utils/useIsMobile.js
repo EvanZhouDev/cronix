@@ -9,11 +9,12 @@ export default function useIsMobile() {
     const [isMobileState, setIsMobile] = useState(false);
     let mobileOrientation = useMobileOrientation();
     useEffect(() => {
-        let returnValue = false;
         // if tablet and vertical, setIsMobile(false)
         // if tablet and horizontal, setIsMobile(true)
         // otherwise, use ifMobile
-        if (isTablet && mobileOrientation.isLandscape) {
+        if (typeof window === "undefined") {
+            setIsMobile(isMobile)
+        } else if (isTablet && mobileOrientation.isLandscape) {
             setIsMobile(false)
         } else if (isTablet && mobileOrientation.isPortrait) {
             setIsMobile(true)
@@ -30,6 +31,7 @@ export default function useIsMobile() {
         return false;
     }
 
+    return false;
 }
 
 export function RenderOnMobile({ children }) {

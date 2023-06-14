@@ -9,14 +9,23 @@
 .statMobile {
 	margin-top: 5vh;
 	width: 100vw;
-	font-size: 12px;
-	line-height: 15px;
+	font-size: 20px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .stat > div {
 	flex: 1;
 	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+.statMobile > div {
+	display: flex;
+	flex-basis: 50%;
+	/* adjust as needed for spacing */
+	padding: 10px;
+	box-sizing: border-box;
 	text-align: center;
 	justify-content: center;
 }

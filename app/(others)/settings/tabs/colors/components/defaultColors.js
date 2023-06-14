@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../../settings.module.css';
 import { useDispatch } from 'react-redux';
 import { setThemeColor } from '@app/redux/slices/sessions/settings';
@@ -8,11 +8,12 @@ import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
 import { success } from "@app/utils/notify";
 import classNames from 'classnames';
 import useIsMobile from '@app/utils/useIsMobile';
+import { browserName } from 'react-device-detect';
 
 export default function DefaultColorsSection() {
     const settings = useSettings();
     const dispatch = useDispatch();
-    const keyToNameMap = {
+    const [keyToNameMap, setKeyToNameMap] = useState({
         default: 'Serika',
         serikaLight: 'Serika (Light)',
         botanical: 'Botanical',
@@ -22,8 +23,45 @@ export default function DefaultColorsSection() {
         dark: 'Dark',
         light: 'Light',
         arc: "Arc"
-    };
-    const themes = {
+    });
+    useEffect(() => {
+        const styles = getComputedStyle(document.documentElement);
+        const bgColor = styles.getPropertyValue('--arc-palette-foregroundPrimary');
+        if (bgColor === "") {
+            setKeyToNameMap(oldMap => {
+                let newMap = structuredClone(oldMap)
+                delete newMap.arc
+                return newMap
+            })
+            setThemes(oldThemes => {
+                let newThemes = structuredClone(oldThemes)
+                delete newThemes.arc
+                return newThemes
+            })
+        } else {
+            setKeyToNameMap(oldMap => {
+                let newMap = structuredClone(oldMap)
+                newMap.arc = "Arc"
+                return newMap
+            })
+            setThemes(oldThemes => {
+                let newThemes = structuredClone(oldThemes)
+                newThemes.arc = {
+                    bgColor: 'var(--arc-palette-foregroundPrimary)',
+                    darkerBgColor: 'var(--arc-palette-focus)',
+                    fontColor: 'var(--arc-palette-foregroundTertiary)',
+                    fontColorDull: 'var(--arc-palette-hover)',
+                    highlightColor: 'var(--arc-palette-maxContrastColor)',
+                    errorColor: '#D93232',
+                    greenColor: '#61c9a8',
+                    blueColor: '#89d2dc',
+                }
+                return newThemes
+            })
+        }
+        // console.log(styles, bgColor)
+    }, [getComputedStyle(document.documentElement)])
+    const [themes, setThemes] = useState({
         default: {
             bgColor: '#323437',
             darkerBgColor: '#2c2e31',
@@ -114,7 +152,7 @@ export default function DefaultColorsSection() {
             greenColor: '#61c9a8',
             blueColor: '#89d2dc',
         },
-    };
+    });
 
     const [showDropdown, setShowDropdown] = useState(false);
     let isMobile = useIsMobile();

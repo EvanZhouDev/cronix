@@ -7,7 +7,8 @@ import { UiMode } from "./enums"
 export default function useIsMobile() {
     let settings = useSettings();
     const [isMobileState, setIsMobile] = useState(false);
-    let mobileOrientation = useMobileOrientation();
+    let mobileOrientation = { isLandscape: true, isPortrait: false }
+    if (typeof window !== "undefined") mobileOrientation = useMobileOrientation();
     useEffect(() => {
         // if tablet and vertical, setIsMobile(false)
         // if tablet and horizontal, setIsMobile(true)

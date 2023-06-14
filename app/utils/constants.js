@@ -26,6 +26,8 @@ export const DEFAULT_SETTINGS = {
     defaultEvent: DEFAULT_EVENT,
     defaultInput: DEFAULT_INPUT,
     uiMode: UiMode.AUTO,
+    holdTime: 400,
+    useMouseTimer: false,
     colors: {
         bgColor: "#323437",
         darkerBgColor: "#2c2e31",

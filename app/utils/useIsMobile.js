@@ -1,21 +1,47 @@
 
-import { isMobile, isTablet, useMobileOrientation } from "react-device-detect";
+import { isMobile, isTablet } from "react-device-detect";
 import { useState, useEffect } from "react"
 import useSettings from "@redux/accessors/useSettings";
 import { UiMode } from "./enums"
 
+function useMobileOrientation() {
+    const [orientation, setOrientation] = useState({
+        isPortrait: false,
+        isLandscape: true,
+    });
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        const handleOrientationChange = () => {
+            setOrientation({
+                isPortrait: window.matchMedia('(orientation: portrait)').matches,
+                isLandscape: window.matchMedia('(orientation: landscape)').matches,
+            });
+        };
+
+        handleOrientationChange();
+        window.addEventListener('resize', handleOrientationChange);
+
+        return () => {
+            window.removeEventListener('resize', handleOrientationChange);
+        };
+    }, []);
+
+    return orientation;
+}
+
+
 export default function useIsMobile() {
     let settings = useSettings();
     const [isMobileState, setIsMobile] = useState(false);
-    let mobileOrientation = { isLandscape: true, isPortrait: false }
-    if (typeof window !== "undefined") mobileOrientation = useMobileOrientation();
+    let mobileOrientation = useMobileOrientation();
+    console.log(mobileOrientation, isTablet)
     useEffect(() => {
         // if tablet and vertical, setIsMobile(false)
         // if tablet and horizontal, setIsMobile(true)
         // otherwise, use ifMobile
-        if (typeof window === "undefined") {
-            setIsMobile(isMobile)
-        } else if (isTablet && mobileOrientation.isLandscape) {
+        if (isTablet && mobileOrientation.isLandscape) {
             setIsMobile(false)
         } else if (isTablet && mobileOrientation.isPortrait) {
             setIsMobile(true)
@@ -31,8 +57,6 @@ export default function useIsMobile() {
     } else if (settings.uiMode === UiMode.DESKTOP) {
         return false;
     }
-
-    return false;
 }
 
 export function RenderOnMobile({ children }) {

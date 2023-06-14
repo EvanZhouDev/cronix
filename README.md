@@ -2,8 +2,6 @@
 
 > It's time, for the future.
 
-###
-
 Introducing a timer that has been re-thought and re-built from the ground up. A beautiful design, with a clean, simple interface, made to focus on _your solves_.
 
 Completely open-source, and open to suggestions!

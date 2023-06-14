@@ -36,7 +36,7 @@ export default function useIsMobile() {
     let settings = useSettings();
     const [isMobileState, setIsMobile] = useState(false);
     let mobileOrientation = useMobileOrientation();
-    console.log(mobileOrientation, isTablet)
+    
     useEffect(() => {
         // if tablet and vertical, setIsMobile(false)
         // if tablet and horizontal, setIsMobile(true)

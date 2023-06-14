@@ -157,7 +157,6 @@ export default function Bar() {
     }])
     const isInitialRender = useRef(true);
     useEffect(() => {
-        console.log(isMobile)
         if (isMobile) {
             setOptions(oldOptions => {
                 let newOptions = cloneArray(oldOptions)

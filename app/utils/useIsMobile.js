@@ -48,7 +48,7 @@ export default function useIsMobile() {
         } else {
             setIsMobile(isMobile)
         }
-    }, [isMobile]);
+    }, [isMobile, isTablet, mobileOrientation.isLandscape, mobileOrientation.isPortrait]);
 
     if (settings.uiMode === UiMode.AUTO) {
         return isMobileState;

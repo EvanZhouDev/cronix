@@ -21,6 +21,7 @@ export default function DefaultColorsSection() {
         nordLight: 'Nord (Light)',
         dark: 'Dark',
         light: 'Light',
+        arc: "Arc"
     };
     const themes = {
         default: {
@@ -99,6 +100,16 @@ export default function DefaultColorsSection() {
             fontColor: '#111111',
             fontColorDull: '#9A9A9A',
             highlightColor: '#111111',
+            errorColor: '#D93232',
+            greenColor: '#61c9a8',
+            blueColor: '#89d2dc',
+        },
+        arc: {
+            bgColor: 'var(--arc-palette-foregroundPrimary)',
+            darkerBgColor: 'var(--arc-palette-focus)',
+            fontColor: 'var(--arc-palette-foregroundTertiary)',
+            fontColorDull: 'var(--arc-palette-hover)',
+            highlightColor: 'var(--arc-palette-maxContrastColor)',
             errorColor: '#D93232',
             greenColor: '#61c9a8',
             blueColor: '#89d2dc',

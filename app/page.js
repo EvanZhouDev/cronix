@@ -34,38 +34,23 @@ export default function Home() {
   return (
     <div className={styles.page} id="mainTimer">
       <Gate>
+        <div className={styles.vsection}>
+          {/* Show hide logic is encapsulated into the bar itself, so that it is not re-mounted (because that causes visible resizing on adjusting for mobile) */}
+          <Bar />
+        </div>
+        <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
+          {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
+          {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
+          {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
+        </div>
+
+        <div className={styles.vsection}>
+          {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
+        </div>
+
         <RenderOnDesktop>
-          <div className={styles.vsection}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
-              <Bar /> : null}
-          </div>
-
-          <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
-            {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
-            {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
-          </div>
-
-          <div className={styles.vsection}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
-          </div>
-
           {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Widgets /> : null}
         </RenderOnDesktop>
-        <RenderOnMobile>
-          <div className={styles.vsection}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ?
-              <Bar /> : null}
-          </div>
-          <div className={styles.vsection} id={sessionData.input === Inputs.TIMER ? "timerSection" : null}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Scramble /> : null}
-            {sessionData.input === Inputs.STACKMAT ? <Stackmat /> : <Timer />}
-            {sessionData.phase === JudgingPhase.JUDGE ? <Status /> : null}
-          </div>
-          <div className={styles.vsection}>
-            {store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY ? <Ministats /> : null}
-          </div>
-        </RenderOnMobile>
       </Gate>
     </div>
   )

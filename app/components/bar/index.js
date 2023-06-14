@@ -4,7 +4,8 @@ import { FiBox, FiMoreVertical, FiEyeOff, FiPenTool, FiStar, FiClock, FiWatch, F
 import Toggle from "./toggle"
 import Selection from "./selection"
 import Divider from "./divider"
-import { Fragment, useEffect, useState, useRef } from "react"
+import { Fragment, useEffect, useState, useRef, useMemo } from "react"
+import { JudgingPhase, TimerStatus } from '@app/utils/enums'
 import useData from "@app/redux/accessors/useSessionData"
 import { Events, Inputs } from "@app/utils/settings"
 import { setEvent, setInput } from "@app/redux/slices/sessions/operations"
@@ -18,7 +19,7 @@ import classNames from "classnames"
 export default function Bar() {
     let isMobile = useIsMobile()
     let dispatch = useDispatch()
-    let [sessionData, sessionName] = useData()
+    let [sessionData, session] = useData()
     let store = useStore()
     let genScramble = useNewScramble()
     let eventTypes = [
@@ -121,6 +122,103 @@ export default function Bar() {
             ]
         },
     ]
+    let eventTypesMobile = [
+        {
+            name: "4x4",
+            icon: <FiBox size={15} />
+        },
+        {
+            name: "More",
+            icon: <FiMoreVertical size={15} />,
+            submenu: [
+                {
+                    type: "label",
+                    name: "NxNs"
+                },
+                {
+                    name: "2x2",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "3x3",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "4x4",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "5x5",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "6x6",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    name: "7x7",
+                    icon: <FiBox size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other 3x3 Events"
+                },
+                {
+                    name: "3x3 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "3x3 One-Handed",
+                    icon: <FiBox size={15} /> // add more relevant symbol
+                },
+                {
+                    name: "3x3 Multi-Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "3x3 FMC",
+                    icon: <FiPenTool size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other WCA Events"
+                },
+                {
+                    name: "Square-1",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Megaminx",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Clock",
+                    icon: <FiClock size={15} />
+                },
+                {
+                    name: "Pyraminx",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    name: "Skewb",
+                    icon: <FiStar size={15} />
+                },
+                {
+                    type: "label",
+                    name: "Other Blind Events"
+                },
+                {
+                    name: "4x4 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+                {
+                    name: "5x5 Blind",
+                    icon: <FiEyeOff size={15} />
+                },
+            ]
+        },
+    ]
+
     let [options, setOptions] = useState([{
         name: "event",
         types: eventTypes,
@@ -155,7 +253,9 @@ export default function Bar() {
             dispatch(setInput(map[name]))
         },
     }])
+
     const isInitialRender = useRef(true);
+
     useEffect(() => {
         if (isMobile) {
             setOptions(oldOptions => {
@@ -165,6 +265,7 @@ export default function Bar() {
             })
         }
     }, [isMobile])
+
     useEffect(() => {
         if (isMobile) {
             setOptions(oldOptions => {
@@ -185,11 +286,11 @@ export default function Bar() {
             isInitialRender.current = false;
             return; // Skip the code execution on initial render
         }
-    }, [sessionData.event])
+    }, [isMobile, sessionData.event])
 
 
     return (
-        <div className={classNames(styles.bar, {[styles.barMobile]: isMobile})}>
+        <div className={classNames(styles.bar, { [styles.barMobile]: isMobile, [styles.barHidden]: !(store.timer.status !== TimerStatus.TIMING && store.timer.status !== TimerStatus.READY) })}>
             {
                 options.map((x, i) => (
                     <Fragment key={x.name}>

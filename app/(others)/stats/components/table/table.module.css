@@ -57,3 +57,14 @@
 .opWrap {
 	display: flex;
 }
+
+.tableWrapperMobile {
+	height: 65vh;
+	width: 95vw;
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow-y: scroll;
+	display: flex;
+	margin-right: 0;
+	justify-content: end;
+}

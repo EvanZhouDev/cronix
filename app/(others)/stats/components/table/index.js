@@ -5,16 +5,35 @@ import styles from "./table.module.css"
 import { modifyTime, deleteTime } from "@app/redux/slices/sessions/operations"
 import { useDispatch } from "react-redux"
 import { Penalty } from "@app/utils/enums"
-import classNames from "classnames"
 import { FiTrash } from "react-icons/fi"
 import injectAverages from "@app/utils/injectAverages"
-export default function Table({ data, timeList, set, session }) {
+import classNames from "classnames"
+import useIsMobile from "@app/utils/useIsMobile"
+export default function Table() {
+    let isMobile = useIsMobile()
     let [{ list }] = useData()
     let dispatch = useDispatch()
     let newList = injectAverages(list)
 
     const columns = useMemo(
-        () => [
+        () => (isMobile ? [
+            {
+                Header: '#',
+                accessor: 'index',
+            },
+            {
+                Header: 'Time',
+                accessor: 'derived.formattedTimePrecise',
+            },
+            {
+                Header: 'ao5',
+                accessor: 'ao5',
+            },
+            {
+                Header: 'Operations',
+                accessor: 'operations',
+            },
+        ] : [
             {
                 Header: '#',
                 accessor: 'index',
@@ -39,8 +58,8 @@ export default function Table({ data, timeList, set, session }) {
                 Header: 'Operations',
                 accessor: 'operations',
             },
-        ],
-        []
+        ]),
+        [isMobile]
     )
 
 
@@ -88,7 +107,7 @@ export default function Table({ data, timeList, set, session }) {
     } = tableInstance
 
     return (
-        <div className={styles.tableWrapper}>
+        <div className={classNames(styles.tableWrapper, { [styles.tableWrapperMobile]: isMobile })}>
             <table className={styles.table} {...getTableProps()}>
                 <thead>
                     {// Loop over the header rows

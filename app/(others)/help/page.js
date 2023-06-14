@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './help.module.css';
 import Gate from "@redux/gate"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';

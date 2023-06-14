@@ -77,7 +77,7 @@ export default function useTimer(setIsExploding) {
                     dispatch(setPhase(JudgingPhase.IDLE))
                     dispatch(setStatus(TimerStatus.READY));
                     dispatch(setPenalty(Penalty.OK));
-                }, 400))
+                }, settings.holdTime))
                 break;
             case TimerStatus.TIMING:
                 dispatch(setPhase(JudgingPhase.JUDGE))

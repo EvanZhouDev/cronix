@@ -1,25 +1,31 @@
 import { useState, useEffect, useRef } from "react"
 import dev from "@utils/dev"
+import { useSettings } from "@app/redux/accessors";
 
 export default function useEventListeners(timerTriggerActivated, timerTriggerDeactivated, escDown, anyDown) {
+    let settings = useSettings()
     const [isMouseDown, setIsMouseDown] = useState(false);
     const elementRef = useRef(null);
 
     useEffect(() => {
         const handleMouseDown = (e) => {
-            anyDown(e)
-            if (e.target === document.getElementById('timerSection') || e.target === elementRef.current) {
-                setIsMouseDown(true);
-                timerTriggerActivated(e);
-                dev && console.info('Mouse down on Timer element.');
+            if (settings.mouseTimer) {
+                anyDown(e)
+                if (e.target === document.getElementById('timerSection') || e.target === elementRef.current) {
+                    setIsMouseDown(true);
+                    timerTriggerActivated(e);
+                    dev && console.info('Mouse down on Timer element.');
+                }
             }
         };
 
         const handleMouseUp = (e) => {
-            if (isMouseDown) {
-                setIsMouseDown(false);
-                timerTriggerDeactivated(e);
-                dev && console.info('Mouse up after Timer element triggered.');
+            if (settings.mouseTimer) {
+                if (isMouseDown) {
+                    setIsMouseDown(false);
+                    timerTriggerDeactivated(e);
+                    dev && console.info('Mouse up after Timer element triggered.');
+                }
             }
         };
 

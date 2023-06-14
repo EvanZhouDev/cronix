@@ -81,6 +81,11 @@
 	height: 3vw;
 }
 
+.settingsInputMobile {
+	width: 10vw;
+	height: 5vh;
+}
+
 .settingDescription {
 	font-size: 15px;
 	color: var(--font-color-dull);

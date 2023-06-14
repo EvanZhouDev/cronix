@@ -1,20 +1,23 @@
 .time {
-    font-size: 125px;
-    font-weight: 500;
-    user-select: none;
-    cursor: pointer;
+	font-size: 125px;
+	font-weight: 500;
+	user-select: none;
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 .unready {
-    color: var(--error-color);
+	color: var(--error-color);
 }
 .ready {
-    color: var(--highlight-color);
+	color: var(--highlight-color);
 }
 
 .confetti {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%, -50%);
 }

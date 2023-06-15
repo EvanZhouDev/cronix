@@ -1,7 +1,10 @@
+'use client'
 import styles from "./philosophy.module.css"
+import classNames from "classnames"
+import useIsMobile from "@app/utils/useIsMobile"
 export default function Page() {
     return (
-        <div className={styles.philosophyPage}>
+        <div className={classNames(styles.philosophyPage, { [styles.philosophyPageMobile]: useIsMobile() })}>
             <h1>Why Cronix?</h1>
             &ldquo;Not another cube timer! I&rsquo;ll just go back to using CSTimer after a while!&rdquo;
 

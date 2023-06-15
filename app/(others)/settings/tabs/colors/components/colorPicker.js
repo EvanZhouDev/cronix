@@ -5,6 +5,8 @@ import useSettings from '@app/redux/accessors/useSettings';
 import { useDispatch } from 'react-redux';
 import { HexColorPicker, HexColorInput } from "react-colorful";
 import styles from "../../../settings.module.css"
+import classNames from 'classnames';
+import useIsMobile from '@app/utils/useIsMobile';
 export default function ColorPicker({ name }) {
     let settings = useSettings()
     let dispatch = useDispatch();
@@ -16,7 +18,7 @@ export default function ColorPicker({ name }) {
                 color={settings.colors[name]}
                 onChange={(color) => dispatch(setThemeColor({ [name]: color }))}
             />
-            <div className={styles.colorDropdown}>
+            <div className={classNames(styles.colorDropdown, { [styles.colorDropdownMobile]: useIsMobile() })}>
                 <HexColorPicker
                     color={settings.colors[name]}
                     onChange={(color) => dispatch(setThemeColor({ [name]: color }))}

@@ -8,9 +8,11 @@ import calcTime from '@app/utils/calcTime'
 import { useState } from 'react'
 import ConfettiExplosion from 'react-confetti-explosion'
 import { SOLVING_MESSAGE } from '@app/utils/constants'
+import { useSettings } from '@redux/accessors'
 export default function Time() {
     const [isExploding, setIsExploding] = useState(false);
-    const timerRef = useTimer(setIsExploding)
+    const timerRef = useTimer(setIsExploding);
+    let settings = useSettings()
 
     const [sessionData] = useSession()
     const timerData = useTimerData()
@@ -34,6 +36,7 @@ export default function Time() {
                 }} />}
             </div>
             <div className={classNames(styles.time, {
+                [styles.pointer]: settings.mouseTimer,
                 [styles.ready]: timerData.status === TimerStatus.READY,
                 [styles.unready]: timerData.status === TimerStatus.UNREADY,
             })} ref={timerRef}>

@@ -15,6 +15,7 @@ else if (preview === "preview") title = "Cronix Nightly Build"
 export const metadata = {
   title: title,
   description: 'The Next-Generation Timer, Powered by Next-Generation Software',
+  viewport: "width=device-width, initial-scale=1.0"
 }
 
 const firacode = Fira_Code({
@@ -24,12 +25,10 @@ const firacode = Fira_Code({
 })
 
 export default function RootLayout({ children }) {
-
-
   return (
     <html lang="en" className={firacode.className}>
       <body>
-        <Toaster position="top-right" />
+        <div><Toaster /></div>
         <Providers>
           <Titlebar />
           {children}

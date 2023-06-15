@@ -2,6 +2,7 @@
 	height: 80vh;
 	display: flex;
 	justify-content: center;
+    overflow-y: scroll;
 	flex-direction: column;
 }
 

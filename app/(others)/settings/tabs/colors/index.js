@@ -13,9 +13,11 @@ import DefaultColorsSection from './components/defaultColors';
 import { FiCopy, FiArrowRight } from 'react-icons/fi';
 import classNames from 'classnames';
 import { error, success } from "@app/utils/notify";
+import useIsMobile from '@app/utils/useIsMobile';
 export default function Colors() {
     let settings = useSettings()
-    // console.log(useStore(), settings)
+    let isMobile = useIsMobile()
+
     const [inputValue, setInputValue] = useState(JSON.stringify(settings.colors));
     let dispatch = useDispatch()
     const handleGoButton = () => {
@@ -108,13 +110,14 @@ export default function Colors() {
 
             <h2>Import and Export Themes</h2>
             <p>Copy following text to save. Paste it into any Cronix timer, and your theme will be restored there.</p>
-            <span className={styles.settingsSection}>
+            <span className={classNames(styles.settingsSection, { [styles.settingsSectionMobile]: isMobile })}>
                 <input
                     value={inputValue}
-                    className={classNames(styles.settingsInput, styles.importInput)}
+                    className={classNames(styles.settingsInput, styles.importInput, { [styles.importInputMobile]: isMobile })}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
-                <div className={styles.importButton} onClick={() => {
+                <div className={classNames(styles.importButton)} onClick={() => {
+                    success(`Copied theme.`)
                     navigator.clipboard.writeText(inputValue);
                 }}>
                     <FiCopy size={20} />

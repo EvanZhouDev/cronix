@@ -8,6 +8,8 @@
 	align-items: center;
 	justify-content: center;
 	min-width: 50vw;
+	font-size: 20px;
+	transition: 0s all !important;
 }
 
 .toggle {
@@ -16,7 +18,7 @@
 	padding-right: 10px;
 	display: flex;
 	align-items: center;
-	transition: all 0.1s;
+	transition: background-color 0.1s;
 	margin-top: 6px;
 	margin-bottom: 6px;
 }
@@ -35,7 +37,7 @@
 	padding-right: 10px;
 	display: flex;
 	align-items: center;
-	transition: all 0.1s;
+	transition: background-color 0.1s;
 	background-color: var(--bg-color);
 	color: var(--font-color);
 	padding: 10px;
@@ -63,7 +65,7 @@
 
 .name {
 	padding-left: 5px;
-	transition: all 0.1s;
+	transition: background-color 0.1s;
 }
 
 .selection {
@@ -71,7 +73,7 @@
 	padding-right: 5px;
 	display: flex;
 	align-items: center;
-	font-size: 20px;
+	/* font-size: 20px; */
 }
 
 .selected {
@@ -97,7 +99,7 @@
 	padding: 10px;
 	padding-left: 2.5px;
 	display: none;
-	transition: all 0.25s;
+	transition: background-color 0.25s;
 	height: 60vh;
 	overflow-y: scroll;
 }
@@ -118,7 +120,15 @@
 
 .label::after {
 	content: "";
-	width: 15vw;
+	width: calc(100% - 10px);
 	height: 2px;
 	background-color: var(--font-color-dull);
+}
+
+.barMobile {
+	font-size: 15px;
+}
+
+.barHidden {
+	display: none;
 }

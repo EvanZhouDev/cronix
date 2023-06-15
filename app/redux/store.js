@@ -8,7 +8,10 @@ import rootReducer from "./rootSlice";
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['timer']
+    blacklist: ['timer'],
+    migrate: (state) => {
+        return Promise.resolve(state)
+    }
 }
 
 

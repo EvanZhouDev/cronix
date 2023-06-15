@@ -1,7 +1,10 @@
 import styles from "../help.module.css"
+import useIsMobile from "@app/utils/useIsMobile"
+import classNames from "classnames"
 export default function MainPageTab() {
+    let isMobile = useIsMobile()
     return (
-        <div className={styles.infoTab}>
+        <div className={classNames(styles.infoTab, { [styles.infoTabMobile]: isMobile })}>
             <h2>Introduction</h2>
             The main page, reachable with the first icon in the top menu, or alternatively reachable by clicking the logo, contains everything you need for timing solves, viewing current averages, and more.
             <h2>Timing</h2>
@@ -12,6 +15,9 @@ export default function MainPageTab() {
             Above the time you will see your scramble. Above the scramble, you will see the Action Bar, containing Quick Settings for events and input method. Feel free to choose the event of your choice, and the scramble will change depending on your event. Alternatively, feel free to choose how you enter your times, with the keyboard or Stackmat.
             <h2>Data Persist</h2>
             Data Persist is a special feature in Cronix, built directly into the core of the timer. Nearly every aspect of the timer is saved in browser cache, allowing the scramble, current judging status, and more to be saved. This means that across refresh and/or leaving and restoring the page, Cronix will be exactly as you left it, without any extra work.
+            <br/>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>

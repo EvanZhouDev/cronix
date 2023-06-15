@@ -1,6 +1,7 @@
 import { Events, Inputs } from "./settings";
 import { JudgingPhase } from "./enums";
 import { Penalty } from "./enums";
+import { UiMode } from "./enums"
 export const SCRAMBLE_UNAVAILABLE_MSG = "No scramble available at this time.";
 export const SCRAMBLE_LOADING_MSG = "Scrambling. This may take some time for 4x4.";
 export const DEFAULT_SESSION_NAME = "Session 1";
@@ -24,6 +25,9 @@ export const DEFAULT_SETTINGS = {
     showDeleteConfirmation: true,
     defaultEvent: DEFAULT_EVENT,
     defaultInput: DEFAULT_INPUT,
+    uiMode: UiMode.AUTO,
+    holdTime: 400,
+    mouseTimer: false,
     colors: {
         bgColor: "#323437",
         darkerBgColor: "#2c2e31",

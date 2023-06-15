@@ -74,11 +74,11 @@ body.react-confirm-alert-body-element {
 .react-confirm-alert-button-group > button {
 	font-family: "Fira Code";
 	outline: none;
-	background: #333;
+	background: var(--bg-color);
 	border: none;
 	display: inline-block;
 	padding: 6px 18px;
-	color: #eee;
+	color: var(--font-color);
 	margin-right: 10px;
 	border-radius: 5px;
 	font-size: 12px;

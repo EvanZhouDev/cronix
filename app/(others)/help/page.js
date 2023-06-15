@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './help.module.css';
 import Gate from "@redux/gate"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -13,12 +13,16 @@ import SessionsTab from "./tabs/sessionsTab";
 import SettingsTab from "./tabs/settingsTab";
 import StatisticsTab from "./tabs/statisticsTab";
 import WidgetsTab from "./tabs/widgetsTab";
+import '@app/styles/react-tabs-custom.css'
+import classNames from 'classnames';
+import useIsMobile from '@app/utils/useIsMobile';
 export default function Page() {
+    let isMobile = useIsMobile();
     let settings = useSettings()
     let dispatch = useDispatch()
     return (
         <div>
-            <div className={styles.settingsPage}>
+            <div className={classNames(styles.helpPage, { [styles.helpPageMobile]: isMobile })}>
                 <Gate>
                     <h1 className={styles.helpTitle}>Help</h1>
                     <Tabs defaultIndex={settings.currentHelpTab} onSelect={(index) => {

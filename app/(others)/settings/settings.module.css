@@ -2,8 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
-	height: 80vh;
+	padding: 0px;
+	height: 85vh;
 	overflow-y: hidden;
 }
 
@@ -41,6 +41,9 @@
 	border-radius: 20px;
 	width: 50vw;
 }
+.settingsSectionMobile {
+	width: 80vw;
+}
 .themeSection {
 	display: flex;
 	flex-direction: column;
@@ -51,11 +54,14 @@
 	border-radius: 20px;
 	width: 50vw;
 }
+.themeSectionMobile {
+	width: 95vw;
+}
 
 .settingsLabel {
 	font-size: 20px;
 	padding-right: 10px;
-	color: var(--font-color);
+	color: var(--font-cxfolor);
 }
 
 .settingsInput {
@@ -73,6 +79,11 @@
 	font-family: inherit;
 	color: var(--font-color);
 	height: 3vw;
+}
+
+.settingsInputMobile {
+	width: 10vw;
+	height: 5vh;
 }
 
 .settingDescription {
@@ -129,6 +140,14 @@
 	display: none;
 	z-index: 1; /* Add a higher z-index to ensure the dropdown is on top of other elements */
 }
+.colorDropdownMobile {
+	right: 5%;
+}
+
+.importInputMobile {
+	width: 10vw;
+	height: 5vh;
+}
 
 .picker:focus-within .colorDropdown,
 .colorDropdown:hover {
@@ -150,6 +169,7 @@
 	color: var(--font-color);
 	font-family: "Fira Code";
 	border: none;
+	width: 20vw;
 }
 
 .swatchBackground {
@@ -210,6 +230,9 @@
 	flex-direction: column;
 	width: 50vw;
 }
+.colorSwatchSectionMobile {
+	width: 95vw;
+}
 
 .currentTheme {
 	margin-bottom: 10px;
@@ -243,10 +266,63 @@
 }
 
 .tabContent {
-	width: 70vw;
+	width: 95vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	overflow-y: auto; /* Change to auto for scrolling within the tabContent */
-	height: 80vh;
+	height: 85vh;
+}
+
+.uiSelectGroup {
+	display: flex;
+	flex-direction: row;
+}
+.uiSelectGroupMobile {
+	flex-direction: column;
+}
+
+.uiSelectButton {
+	background-color: var(--bg-color);
+	border-radius: 20px;
+	padding: 1vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
+	margin: 0.5vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: var(--font-color-dull);
+	height: 5vh;
+	width: auto;
+	min-width: 5vw;
+	cursor: pointer;
+	transition: 0.1s all;
+}
+.uiButtonSelected {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+.uiButtonSelected .uiSelectIcon {
+	color: var(--bg-color)
+}
+.uiSelectButton:hover {
+	background-color: var(--font-color);
+	color: var(--bg-color);
+}
+.uiSelectButton:hover .uiSelectIcon {
+	color: var(--bg-color);
+}
+.uiSelectButton:active {
+	background-color: var(--bg-color);
+	color: var(--font-color-dull);
+}
+.uiSelectButton:active .uiSelectIcon {
+	color: var(--font-color-dull);
+}
+
+.uiSelectIcon {
+	color: var(--font-color);
+	margin-bottom: 1vh;
 }

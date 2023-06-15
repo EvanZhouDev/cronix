@@ -4,12 +4,15 @@ import useData from '@app/redux/accessors/useSessionData'
 import injectAverages from "@app/utils/injectAverages"
 import styles from "./chart.module.css"
 import useSettings from '@app/redux/accessors/useSettings';
+import useIsMobile from '@app/utils/useIsMobile';
+import classNames from 'classnames';
 export default function Chart() {
     let [{ list }] = useData()
+    let isMobile = useIsMobile()
     let settings = useSettings()
     let newList = injectAverages(list)
     return (
-        <div className={styles.chart}>
+        <div className={classNames(styles.chart, { [styles.chartMobile]: isMobile })}>
             <Line data={
                 {
                     labels: Array(newList.length).fill(0).map((_, i) => i + 1),

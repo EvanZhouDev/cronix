@@ -8,10 +8,14 @@
 
 .react-tabs__tab-list {
 	width: 50vw;
-	padding: 0px;
 	margin: 0px;
 	display: flex;
-	justify-content: center;
+	justify-content: start;
+	overflow-x: scroll;
+	width: auto;
+	max-width: 95vw;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .react-tabs__tab {
@@ -22,9 +26,12 @@
 	position: relative;
 	list-style: none;
 	padding: 6px 12px;
+	text-align: center;
 	cursor: pointer;
 	margin: 5px;
-	padding: 10px;
+	height: 4vh;
+	line-height: 4vh;
+	min-width: 100px;
 }
 
 .react-tabs__tab--selected {

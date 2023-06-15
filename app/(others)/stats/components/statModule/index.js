@@ -1,7 +1,10 @@
 import useData from '@app/redux/accessors/useSessionData'
 import injectAverages from "@app/utils/injectAverages"
 import styles from "./statModule.module.css"
+import classNames from 'classnames'
+import useIsMobile, { RenderOnMobile } from '@app/utils/useIsMobile'
 export default function StatModule() {
+    let isMobile = useIsMobile()
     let [{ list }] = useData()
     let newList = injectAverages(list)
     let bestSingle = Math.min(...newList.map(x => parseFloat(x.derived.mathematicalTime)).filter(x => !isNaN(x)))
@@ -28,32 +31,32 @@ export default function StatModule() {
     }
 
     return (
-        <div className={styles.stat}>
+        <div className={classNames(styles.stat, { [styles.statMobile]: isMobile })}>
             <div>
                 Single: {newList[newList.length - 1].derived.formattedTimePrecise}
                 <br />
-                Best single: {bestSingle === Infinity ? "..." : bestSingle / 1000}
+                Best{!isMobile && " single"}: {bestSingle === Infinity ? "..." : bestSingle / 1000}
             </div>
             <div>
                 ao5: {newList[newList.length - 1].ao5}
                 <br />
-                Best ao5: {bestAo5 === Infinity ? "..." : bestAo5}
+                Best{!isMobile && " ao5"}: {bestAo5 === Infinity ? "..." : bestAo5}
             </div>
             <div>
                 mo3: {newList[newList.length - 1].mo3}
                 <br />
-                Best mo3: {bestMo3 === Infinity ? "..." : bestMo3}
+                Best{!isMobile && " mo3"}: {bestMo3 === Infinity ? "..." : bestMo3}
             </div>
             <div>
                 ao12: {newList[newList.length - 1].ao12}
                 <br />
-                Best ao12: {bestAo12 === Infinity ? "..." : bestAo12}
+                Best{!isMobile && " ao12"}: {bestAo12 === Infinity ? "..." : bestAo12}
             </div>
-            <div>
-                Standard Deviation:
+            {!isMobile && <div>
+                {isMobile ? "σ" : "Standard Deviation"}:
                 <br />
-                {Math.round(calculateStandardDeviation(newList) * 1000) / 1000} seconds
-            </div>
+                {Math.round(calculateStandardDeviation(newList) * 1000) / 1000}{!isMobile && " seconds"}
+            </div>}
         </div>
     )
 }

@@ -10,17 +10,17 @@ import Timer from "./tabs/timer"
 import useSettings from '@app/redux/accessors/useSettings';
 import { setSettingsTab } from '@app/redux/slices/sessions/settings';
 import { useDispatch } from 'react-redux';
+import classNames from 'classnames';
 export default function Page() {
     let settings = useSettings()
     let dispatch = useDispatch()
+
     return (
         <div>
-            <div className={styles.settingsPage}>
+            <div className={classNames(styles.settingsPage)}>
                 <Gate>
                     <h1>Settings</h1>
                     <Tabs defaultIndex={settings.currentSettingsTab} onSelect={(index) => {
-                        console.log(index)
-                        console.log(settings)
                         dispatch(setSettingsTab(index))
                     }}>
                         <TabList>

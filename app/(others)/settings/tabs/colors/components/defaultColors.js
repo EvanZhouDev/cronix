@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../../settings.module.css';
 import { useDispatch } from 'react-redux';
 import { setThemeColor } from '@app/redux/slices/sessions/settings';
 import ColorSwatch from './colorSwatch';
 import useSettings from '@app/redux/accessors/useSettings';
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi';
-import { error, success } from "@app/utils/notify";
+import { success } from "@app/utils/notify";
+import classNames from 'classnames';
+import useIsMobile from '@app/utils/useIsMobile';
+import { browserName } from 'react-device-detect';
 
 export default function DefaultColorsSection() {
     const settings = useSettings();
     const dispatch = useDispatch();
-    const keyToNameMap = {
+    const [keyToNameMap, setKeyToNameMap] = useState({
         default: 'Serika',
         serikaLight: 'Serika (Light)',
         botanical: 'Botanical',
@@ -19,8 +22,34 @@ export default function DefaultColorsSection() {
         nordLight: 'Nord (Light)',
         dark: 'Dark',
         light: 'Light',
-    };
-    const themes = {
+    });
+    useEffect(() => {
+        const styles = getComputedStyle(document.documentElement);
+        const bgColor = styles.getPropertyValue('--arc-palette-foregroundPrimary');
+        if (bgColor !== "") {
+            setKeyToNameMap(oldMap => {
+                let newMap = structuredClone(oldMap)
+                newMap.arc = "Arc"
+                return newMap
+            })
+            setThemes(oldThemes => {
+                let newThemes = structuredClone(oldThemes)
+                newThemes.arc = {
+                    bgColor: 'var(--arc-palette-foregroundPrimary)',
+                    darkerBgColor: 'var(--arc-palette-focus)',
+                    fontColor: 'var(--arc-palette-foregroundTertiary)',
+                    fontColorDull: 'var(--arc-palette-hover)',
+                    highlightColor: 'var(--arc-palette-maxContrastColor)',
+                    errorColor: '#D93232',
+                    greenColor: '#61c9a8',
+                    blueColor: '#89d2dc',
+                }
+                return newThemes
+            })
+        }
+        // console.log(styles, bgColor)
+    }, [getComputedStyle(document.documentElement)])
+    const [themes, setThemes] = useState({
         default: {
             bgColor: '#323437',
             darkerBgColor: '#2c2e31',
@@ -101,9 +130,10 @@ export default function DefaultColorsSection() {
             greenColor: '#61c9a8',
             blueColor: '#89d2dc',
         },
-    };
+    });
 
     const [showDropdown, setShowDropdown] = useState(false);
+    let isMobile = useIsMobile();
 
     const toggleDropdown = () => {
         setShowDropdown((prevShowDropdown) => !prevShowDropdown);
@@ -121,7 +151,7 @@ export default function DefaultColorsSection() {
     const firstRow = rows[0];
 
     return (
-        <div className={styles.themeSection}>
+        <div className={classNames(styles.themeSection, { [styles.themeSectionMobile]: isMobile })}>
             <span className={styles.currentTheme}>
                 Current theme: {keyToNameMap[Object.keys(themes).find(
                     (themeKey) =>
@@ -144,7 +174,7 @@ export default function DefaultColorsSection() {
             </div>
             <div className={styles.moreButton} onClick={toggleDropdown}>{showDropdown ? <><FiChevronDown /> Hide additional themes</> : <><FiChevronRight /> Show additional themes</>}</div>
             {showDropdown && (
-                <div className={styles.colorSwatchSection}>
+                <div className={classNames(styles.colorSwatchSection, { [styles.colorSwatchSectionMobile]: isMobile })}>
                     {rows.slice(1).map((row, rowIndex) => (
                         <div key={rowIndex} className={styles.colorSwatchRow}>
                             {row.map((themeKey) => (

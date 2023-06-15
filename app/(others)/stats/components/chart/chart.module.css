@@ -2,4 +2,13 @@
     width: 50vw;
     height: 65vh;
     position: relative;
+    overflow-y: scroll;
+}
+
+.chartMobile {
+    margin-top: 2vh;
+    width: 98vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    height: 40vh;
 }

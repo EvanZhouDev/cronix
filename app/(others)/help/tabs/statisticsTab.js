@@ -1,7 +1,10 @@
 import styles from "../help.module.css"
+import useIsMobile from "@app/utils/useIsMobile"
+import classNames from "classnames"
 export default function StatisticsTab() {
+    let isMobile = useIsMobile()
     return (
-        <div className={styles.infoTab}>
+        <div className={classNames(styles.infoTab, { [styles.infoTabMobile]: isMobile })}>
             <h2>Introduction</h2>
             The Statistics Page is the place to view all of your data. It is split into 3 sections: The Table, the Graph, and the section for all the averages and other mathematical values.
             <h2>Table</h2>
@@ -10,6 +13,9 @@ export default function StatisticsTab() {
             This is where you can view the plot for your singles, means, and averages. They are displayed gorgeously in color, and the graph is interactive too! Click on a key at the top to enable or disable the display for that specific type of data.
             <h2>Averages and Numbers</h2>
             Here, you can view your current mean and averages, and your best mean and averages. You can also view your standard deviation.
+            <br/>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>

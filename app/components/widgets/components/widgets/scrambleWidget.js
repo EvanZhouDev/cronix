@@ -10,6 +10,7 @@ export default function ScrambleWidget() {
             back-view="side-by-side"
             background="none"
             control-panel="none"
+            visualization="PG3D"
         ></twisty-player>
     )
 }

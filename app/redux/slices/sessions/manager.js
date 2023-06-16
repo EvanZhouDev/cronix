@@ -79,8 +79,26 @@ export const sessionSlice = createSlice({
 
             state.order = [...order.slice(0, sessionIdx), to, ...order.slice(sessionIdx + 1)];
         },
+        // Moves a session up
+        moveSessionUp: (state, { payload }) => {
+            const { order } = state;
+            const index = order.indexOf(payload);
+            if (index > 0) {
+                [order[index - 1], order[index]] = [order[index], order[index - 1]];
+            }
+            state.order = order;
+        },
+        // Moves a session down
+        moveSessionDown: (state, { payload }) => {
+            const { order } = state;
+            const index = order.indexOf(payload);
+            if (index < order.length - 1) {
+                [order[index], order[index + 1]] = [order[index + 1], order[index]];
+            }
+            state.order = order;
+        },
     },
 })
 
-export const { setSession, deleteSession, renameSession } = sessionSlice.actions;
+export const { setSession, deleteSession, renameSession, moveSessionDown, moveSessionUp } = sessionSlice.actions;
 export default sessionSlice.reducer;

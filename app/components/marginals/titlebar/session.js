@@ -42,11 +42,11 @@ export default function Session() {
     }, [])
     return (
         <div className={styles.sessionWrapper}>
-            <div className={styles.session}>
+            <Link href="/sessions" className={styles.session}>
                 <FiList />
                 <span className={styles.sessionName}>{store.sessions.current}</span>
-            </div>
-            <div className={classNames(styles.sessionDropdown, {[styles.sessionDropdownMobile]: isMobile})}>
+            </Link>
+            <div className={classNames(styles.sessionDropdown, { [styles.sessionDropdownMobile]: isMobile })}>
                 <span className={styles.label}>Create a new session:</span>
                 <br />
                 <span className={styles.newSessionSection}>
@@ -62,6 +62,7 @@ export default function Session() {
                                 dispatch(setSession(inputRef.current.value))
                                 genScramble(Events["3x3"])
                                 success(`Created session: "${inputRef.current.value}"`)
+                                inputRef.current.value = ""
                             } else {
                                 if (store.sessions.order.includes(inputRef.current.value)) {
                                     error(`Session "${inputRef.current.value}" already exists, not created.`)

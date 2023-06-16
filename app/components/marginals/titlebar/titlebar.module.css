@@ -67,12 +67,24 @@
 	display: flex;
 	align-items: center;
 	height: 4vh;
+	text-decoration: none;
+	color: var(--font-color);
+}
+
+.session:hover {
+	background-color: var(--highlight-color);
+	color: var(--bg-color);
+}
+.session:active {
+	background-color: var(--bg-color);
+	color: var(--font-color);
 }
 
 .sessionName {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 7px;
+	
 }
 
 .sessionIcon {
@@ -83,7 +95,6 @@
 }
 
 .sessionDropdown {
-	cursor: pointer;
 	position: absolute;
 	font-size: 17.5px;
 	background-color: var(--darker-bg-color);
@@ -92,6 +103,7 @@
 	display: none;
 	padding: 15px;
 	z-index: 10;
+	
 }
 
 .sessionDropdownMobile {
@@ -103,6 +115,7 @@
 }
 
 .sessionSelectionWrapper {
+	cursor: pointer;
 	background-color: var(--bg-color);
 	padding: 10px;
 	padding-top: 5px;

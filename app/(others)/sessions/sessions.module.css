@@ -1,0 +1,189 @@
+/* MAIN CODE */
+.table {
+	border-collapse: collapse;
+	height: min-content;
+	width: 40vw;
+	margin-left: 1vw;
+	text-align: center;
+}
+.timeTable {
+	border-collapse: collapse;
+	height: min-content;
+	width: 50vw;
+	margin-left: 1vw;
+	text-align: center;
+}
+.tableWrapper {
+	height: 65vh;
+	width: 40vw;
+	overflow-y: scroll;
+	display: flex;
+	margin-right: 1vw;
+	justify-content: end;
+}
+.timeTableWrapper {
+	height: 65vh;
+	width: 50vw;
+	margin-left: 1vw;
+	overflow-y: scroll;
+	display: flex;
+	margin: 0px;
+	justify-content: end;
+	margin-top: 2vh;
+}
+.table tr {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.table th {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.table td {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.timeTable tr {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.timeTable th {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.timeTable td {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+
+.selection {
+	background-color: var(--darker-bg-color);
+	margin: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	transition: 0.25s all;
+	cursor: pointer;
+	line-height: 100%;
+	font-size: 15px;
+	height: 4vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.selection:hover {
+	color: var(--font-color);
+}
+
+.selected {
+	color: var(--highlight-color);
+}
+
+.trash {
+	margin: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	color: var(--font-color);
+	transition: 0.25s all;
+	padding-top: 2px;
+}
+.trash:hover {
+	color: var(--error-color);
+}
+
+.opWrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tableWrapperMobile {
+	height: 65vh;
+	width: 95vw;
+	margin-left: 10px;
+	margin-right: 10px;
+	overflow-y: scroll;
+	display: flex;
+	margin-right: 0;
+	justify-content: end;
+}
+
+.chart {
+	height: 42.5vh;
+	margin-left: 1vw;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+}
+
+.hsection {
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+}
+
+.noSolves {
+	width: 50vw;
+	height: 85vh;
+	display: flex;
+	justify-content: center;
+}
+
+.selected {
+	background-color: var(--darker-bg-color);
+}
+.selected .selection {
+	background-color: var(--bg-color);
+}
+
+.newSessionSection {
+	width: 50vw;
+	font-family: "Fira Code";
+}
+
+.newSessionSection {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 40vw;
+	margin-left: 1vw;
+}
+
+.newSessionInput {
+	background-color: var(--darker-bg-color);
+	color: var(--font-color);
+	margin: 5px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-left: 1vw;
+	border-radius: 10px;
+	border: none;
+	height: 4vw;
+	font-family: inherit;
+	flex: 1;
+	padding-left: 1vw;
+	font-size: 20px;
+}
+
+.newSessionButton {
+	height: 4vw;
+	width: 4vw;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	border-radius: 10px;
+	background-color: var(--darker-bg-color);
+	color: var(--font-color-dull);
+	transition: 0.1s;
+}
+.newSessionButton:hover {
+	background-color: var(--highlight-color);
+	color: var(--darker-bg-color);
+}
+.newSessionButton:active {
+	background-color: var(--bg-color);
+	color: var(--font-color);
+}

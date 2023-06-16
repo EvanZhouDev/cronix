@@ -223,3 +223,31 @@
 .tooltip {
 	background-color: var(--highlight-color);
 }
+
+
+
+
+
+.table {
+	border-collapse: collapse;
+	height: min-content;
+	width: 100%;
+	margin-top: 10px
+}
+.tableWrapper {
+	width: 22vw;
+	height: 24.5vh;
+	overflow-y: scroll;
+}
+.table tr {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.table th {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}
+.table td {
+	padding: 5px;
+	border: 1px solid var(--font-color-dull);
+}

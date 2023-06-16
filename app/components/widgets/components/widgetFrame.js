@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { WidgetTypes } from "@app/utils/enums";
 import classNames from "classnames";
 import WidgetText from "./widgetText";
+import TimeGraphWidget from "./widgets/timeGraphWidget";
+import TimeTableWidget from "./widgets/timeTableWidget";
 
 import ScrambleWidget from "./widgets/scrambleWidget";
 export default function WidgetFrame({ idx, showOptions, type }) {
@@ -20,7 +22,9 @@ export default function WidgetFrame({ idx, showOptions, type }) {
 
 
     let widgetNameToComponent = {
-        [WidgetTypes.SCRAMBLE]: <ScrambleWidget />
+        [WidgetTypes.SCRAMBLE]: <ScrambleWidget />,
+        [WidgetTypes.GRAPH]: <TimeGraphWidget />,
+        [WidgetTypes.TABLE]: <TimeTableWidget />,
     }
 
     return (
@@ -60,14 +64,6 @@ export default function WidgetFrame({ idx, showOptions, type }) {
                         </WidgetText>
                     )
                 })()}
-                {/* <twisty-player
-                    puzzle={"3x3x3"}
-                    alg={"R U R' U'"}
-                    hint-facelets="none"
-                    back-view="side-by-side"
-                    background="none"
-                    control-panel="none"
-                ></twisty-player> */}
             </div>
         </div >
     )

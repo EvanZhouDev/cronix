@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from "react"
 import dev from "@utils/dev"
 import { useSettings } from "@app/redux/accessors";
-
+import useIsMobile from "@app/utils/useIsMobile";
 export default function useEventListeners(timerTriggerActivated, timerTriggerDeactivated, escDown, anyDown) {
     let settings = useSettings()
     const [isMouseDown, setIsMouseDown] = useState(false);
     const elementRef = useRef(null);
+    let isMobile = useIsMobile();
 
     useEffect(() => {
         const handleMouseDown = (e) => {
-            if (settings.mouseTimer) {
+            if (settings.mouseTimer || isMobile) {
                 anyDown(e)
                 if (e.target === document.getElementById('timerSection') || e.target === elementRef.current) {
                     setIsMouseDown(true);
@@ -20,7 +21,7 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
         };
 
         const handleMouseUp = (e) => {
-            if (settings.mouseTimer) {
+            if (settings.mouseTimer || isMobile) {
                 if (isMouseDown) {
                     setIsMouseDown(false);
                     timerTriggerDeactivated(e);
@@ -28,11 +29,11 @@ export default function useEventListeners(timerTriggerActivated, timerTriggerDea
                 }
             }
         };
-
         const handleTouchDown = (e) => {
             if (e.target === document.getElementById('timerSection') || e.target === elementRef.current) {
+                setIsMouseDown(true);
                 timerTriggerActivated(e);
-                dev && console.info('Touch down on Timer element.');
+                dev && console.info('Mouse down on Timer element.');
             }
         };
 

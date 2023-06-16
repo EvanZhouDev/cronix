@@ -144,7 +144,7 @@ export default function SessionTable() {
                     },
                 }}
             >
-                <h2>Rename "{currentEditingSession}" to:</h2>
+                <h2>Rename &quot;{currentEditingSession}&quot; to:</h2>
                 <input ref={renameModalRef} defaultValue={currentEditingSession} className={styles.renameBox} />
                 <span>
                     <button className={styles.renameButton} onClick={modalRenameSesssion}>Rename</button>

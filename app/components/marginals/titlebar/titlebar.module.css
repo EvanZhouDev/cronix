@@ -228,6 +228,7 @@
 	cursor: pointer;
 	font-size: 40px;
 	color: var(--font-color-dull);
+	transition: 0.1s all;
 }
 .addSessionButton:hover {
 	color: var(--font-color);

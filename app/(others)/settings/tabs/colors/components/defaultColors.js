@@ -48,7 +48,7 @@ export default function DefaultColorsSection() {
             })
         }
         // console.log(styles, bgColor)
-    }, [getComputedStyle(document.documentElement)])
+    }, [getComputedStyle(document.documentElement).getPropertyValue('--arc-palette-foregroundPrimary')])
     const [themes, setThemes] = useState({
         default: {
             bgColor: '#323437',

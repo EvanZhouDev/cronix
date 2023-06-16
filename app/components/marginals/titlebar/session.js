@@ -64,6 +64,9 @@ export default function Session() {
                                 success(`Created session: "${inputRef.current.value}"`)
                                 inputRef.current.value = ""
                             } else {
+                                if (!inputRef.current.value) {
+                                    error(`Session name cannot be blank.`)
+                                }
                                 if (store.sessions.order.includes(inputRef.current.value)) {
                                     error(`Session "${inputRef.current.value}" already exists, not created.`)
                                 }

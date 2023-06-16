@@ -9,6 +9,8 @@ import { FiTrash } from "react-icons/fi"
 import injectAverages from "@app/utils/injectAverages"
 import classNames from "classnames"
 import useIsMobile from "@app/utils/useIsMobile"
+import React, { useState } from 'react';
+import Modal from 'react-modal';
 export default function TimeTable() {
     let isMobile = useIsMobile()
     let [{ list }] = useData()
@@ -85,8 +87,13 @@ export default function TimeTable() {
         prepareRow,
     } = tableInstance
 
+    
+
+
+
     return (
         <div className={classNames(styles.timeTableWrapper)}>
+
             <table className={styles.timeTable} {...getTableProps()}>
                 <thead>
                     {// Loop over the header rows

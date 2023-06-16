@@ -12,17 +12,30 @@ import { success, error } from "@app/utils/notify";
 import { Events } from "@app/utils/settings";
 import useNewScramble from "@app/utils/useNewScramble";
 import useData from "@app/redux/accessors/useSessionData";
+
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+
 export default function Page() {
     let inputRef = useRef(null)
     let store = useStore()
     console.log(store)
     let dispatch = useDispatch()
     let genScramble = useNewScramble();
-    let [sessionData, curSession] = useData()
+    let [sessionData] = useData()
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
     return (
         <Gate>
             <div className={styles.container}>
+
                 <div className={styles.hsection}>
                     <span className={styles.newSessionSection}>
                         <h1>Sessions</h1>
@@ -47,8 +60,10 @@ export default function Page() {
                             }}
                         >+</button>
                     </span>
+                    <span className={styles.info}>Click on a session to select it.</span>
                     <SessionTable />
                 </div>
+
                 <div className={styles.hsection}>
                     {
                         sessionData.list.length === 0 ?

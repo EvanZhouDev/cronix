@@ -161,6 +161,13 @@
 	margin-left: 1vw;
 }
 
+.newSessionSectionMobile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2vw;
+}
+
 .newSessionInput {
 	background-color: var(--darker-bg-color);
 	color: var(--font-color);
@@ -177,6 +184,21 @@
 	font-size: 20px;
 }
 
+.newSessionInputMobile {
+	background-color: var(--darker-bg-color);
+	color: var(--font-color);
+	border-radius: 10px;
+	padding: 5vw;
+	border: none;
+	margin-left: 1vw;
+	height: 5vw;
+	font-family: inherit;
+	flex: 1;
+	padding-left: 2vw;
+	font-size: 20px;
+	margin-right: 2vw;
+}
+
 .newSessionButton {
 	height: 4vw;
 	width: 4vw;
@@ -188,6 +210,19 @@
 	color: var(--font-color-dull);
 	transition: 0.1s;
 }
+
+.newSessionButtonMobile {
+	height: 15vw;
+	width: 15vw;
+	border: none;
+	cursor: pointer;
+	font-size: 20px;
+	border-radius: 10px;
+	background-color: var(--darker-bg-color);
+	color: var(--font-color-dull);
+	transition: 0.1s;
+}
+
 .newSessionButton:hover {
 	background-color: var(--highlight-color);
 	color: var(--darker-bg-color);
@@ -219,6 +254,12 @@
 	justify-content: center;
 }
 
+.mobileModal {
+	width: 100vw;
+	height: 30vh;
+	border-radius: 0px;
+}
+
 .renameBox {
 	background-color: var(--darker-bg-color);
 	color: var(--font-color);
@@ -232,6 +273,17 @@
 	text-align: center;
 	font-family: inherit;
 	font-size: 20px;
+}
+
+.mobileSessionsSection {
+	display: flex;
+	flex-direction: column;
+	height: 85vh;
+}
+
+.mobileSessionsSection table {
+	margin-left: 0.5vw;
+	margin-right: 0.5vw;
 }
 
 .renameButton {
@@ -250,4 +302,20 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.titleMobile {
+	margin-left: 3vw;
+	margin-bottom: -0.25vh;
+}
+.infoMobile {
+	margin-left: 3vw;
+}
+
+.tableMobile {
+	/* scale: 0.98; */
+}
+
+.tableScroll {
+	overflow-y: scroll;
 }

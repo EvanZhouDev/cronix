@@ -13,9 +13,11 @@ import useSettings from "@app/redux/accessors/useSettings";
 import { success, error } from "@app/utils/notify";
 import React, { useState, useRef } from 'react';
 import Modal from 'react-modal';
+import useIsMobile from "@app/utils/useIsMobile";
 
 let flip = obj => Object.fromEntries(Object.entries(obj).map(a => a.reverse()))
 export default function SessionTable() {
+    let isMobile = useIsMobile()
     let dispatch = useDispatch()
     let settings = useSettings();
     let { sessions: { data, order, current } } = useStore()
@@ -128,12 +130,12 @@ export default function SessionTable() {
     let renameModalRef = useRef(undefined)
 
     return (
-        <table className={styles.table} {...getTableProps()}>
+        <>
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={() => { }}
                 onRequestClose={closeModal}
-                className={styles.modal}
+                className={classNames(styles.modal, { [styles.mobileModal]: isMobile })}
                 contentLabel="Rename modal"
                 ariaHideApp={false}
                 style={{
@@ -148,47 +150,49 @@ export default function SessionTable() {
                     <button className={styles.renameButton} onClick={modalRenameSesssion}>Rename</button>
                 </span>
             </Modal>
-            <thead>
-                {// Loop over the header rows
-                    headerGroups.map(headerGroup => (
-                        // Apply the header row props
-                        <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.getHeaderGroupProps().key}>
-                            {// Loop over the headers in each row
-                                headerGroup.headers.map(column => (
-                                    // Apply the header cell props
-                                    <th {...column.getHeaderProps()} key={column.getHeaderProps().key}>
-                                        {// Render the header
-                                            column.render('Header')}
-                                    </th>
-                                ))}
-                        </tr>
-                    ))}
-            </thead>
-            {/* Apply the table body props */}
-            <tbody {...getTableBodyProps()}>
-                {// Loop over the table rows
-                    rows.map(row => {
-                        // Prepare the row for display
-                        prepareRow(row)
-                        return (
-                            // Apply the row props
-                            <tr onClick={() => {
-                                dispatch(setSession(row.values.name))
-                            }} className={classNames({ [styles.selected]: row.values.name === current })} {...row.getRowProps()} key={row.getRowProps().key}>
-                                {// Loop over the rows cells
-                                    row.cells.map(cell => {
-                                        // Apply the cell props
-                                        return (
-                                            <td {...cell.getCellProps()} key={cell.getCellProps().key}>
-                                                {// Render the cell contents
-                                                    cell.render('Cell')}
-                                            </td>
-                                        )
-                                    })}
+            <table className={classNames(styles.table, { [styles.tableMobile]: isMobile })} {...getTableProps()}>
+                <thead>
+                    {// Loop over the header rows
+                        headerGroups.map(headerGroup => (
+                            // Apply the header row props
+                            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroup.getHeaderGroupProps().key}>
+                                {// Loop over the headers in each row
+                                    headerGroup.headers.map(column => (
+                                        // Apply the header cell props
+                                        <th {...column.getHeaderProps()} key={column.getHeaderProps().key}>
+                                            {// Render the header
+                                                column.render('Header')}
+                                        </th>
+                                    ))}
                             </tr>
-                        )
-                    })}
-            </tbody>
-        </table>
+                        ))}
+                </thead>
+                {/* Apply the table body props */}
+                <tbody {...getTableBodyProps()}>
+                    {// Loop over the table rows
+                        rows.map(row => {
+                            // Prepare the row for display
+                            prepareRow(row)
+                            return (
+                                // Apply the row props
+                                <tr onClick={() => {
+                                    dispatch(setSession(row.values.name))
+                                }} className={classNames({ [styles.selected]: row.values.name === current })} {...row.getRowProps()} key={row.getRowProps().key}>
+                                    {// Loop over the rows cells
+                                        row.cells.map(cell => {
+                                            // Apply the cell props
+                                            return (
+                                                <td {...cell.getCellProps()} key={cell.getCellProps().key}>
+                                                    {// Render the cell contents
+                                                        cell.render('Cell')}
+                                                </td>
+                                            )
+                                        })}
+                                </tr>
+                            )
+                        })}
+                </tbody>
+            </table>
+        </>
     )
 }

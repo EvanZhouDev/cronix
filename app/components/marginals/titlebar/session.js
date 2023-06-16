@@ -44,9 +44,9 @@ export default function Session() {
         <div className={styles.sessionWrapper}>
             <Link href="/sessions" className={styles.session}>
                 <FiList />
-                <span className={styles.sessionName}>{store.sessions.current}</span>
+                <span className={classNames(styles.sessionName, { [styles.sessionNameMobile]: isMobile })}>{store.sessions.current}</span>
             </Link>
-            <div className={classNames(styles.sessionDropdown, { [styles.sessionDropdownMobile]: isMobile })}>
+            {!isMobile && <div className={classNames(styles.sessionDropdown, { [styles.sessionDropdownMobile]: isMobile })}>
                 <span className={styles.label}>Create a new session:</span>
                 <br />
                 <span className={styles.newSessionSection}>
@@ -100,7 +100,7 @@ export default function Session() {
                     })
                 }
                 <span className={styles.disclaimer}>Learn more about sessions in the <Link href="/help">Help section</Link></span>
-            </div>
+            </div>}
         </div >
     )
 }

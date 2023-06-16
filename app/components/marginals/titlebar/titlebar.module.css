@@ -17,6 +17,12 @@
 	padding-bottom: 5px;
 }
 
+.sessionNameMobile {
+	font-size: 15px;
+}
+
+
+
 .title {
 	font-size: 30px;
 	padding-right: 10px;
@@ -103,6 +109,8 @@
 	display: none;
 	padding: 15px;
 	z-index: 10;
+	overflow-y: scroll;
+	max-height: 50vh;
 	
 }
 
